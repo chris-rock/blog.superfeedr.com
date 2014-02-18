@@ -1,0 +1,118 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>Superfeedr : SubToMe: Angular, Localization and more! </title>
+  <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+  <meta name="google-site-verification" content="ofroHQ3qXBS1SQfblK9-U_oduGZ975Bb3i_uP13Myao" />
+
+  <!-- Stylesheets -->
+  <link href="http://yui.yahooapis.com/3.1.1/build/cssreset/reset-min.css" media="screen" rel="stylesheet" type="text/css" />
+  <link href="http://superfeedr.com/stylesheets/superfeedr.css" media="screen" rel="stylesheet" type="text/css" />
+  <link href="http://superfeedr.com/stylesheets/print.css" media="print" rel="stylesheet" type="text/css" />
+  <link href="http://superfeedr.com/stylesheets/shjs/sh_nedit.min.css" media="screen" rel="stylesheet" type="text/css" />
+  <link href="http://superfeedr.com/stylesheets/thickbox.css" media="screen" rel="stylesheet" type="text/css" />
+  <link href="/css/blog.css" media="screen" rel="stylesheet" type="text/css" />
+  <link rel="alternate" type="application/atom+xml" title="Atom Feed" href="/atom.xml">
+
+ </head>
+
+ <body class="blog">
+   <div id="bg">
+     <div id="wrapper">
+      <div id="logo">
+       <a href="http://superfeedr.com" class="home"><img alt="Superfeedr" src="http://superfeedr.com/images/superfeedr_complete.png" /></a>
+     </div>
+     <ul id="navigation">
+      <li><a href="http://documentation.superfeedr.com" alt="RTFM">Documentation</a></li>
+      <li><a href="http://superfeedr.com/about" alt="All you wanted to know. Almost">About</a></li>
+    </ul>
+    <div class="clear"></div>
+    <div id="main_bg">
+      <div id="main_top">
+       <h1>SubToMe: Angular, Localization and more!</h1>
+     </div> <!--main_top-->
+
+     <div id="content">
+        <div id="post">
+    <h2>SubToMe: Angular, Localization and more!</h2>
+    <div style="color:#666; font-size:0.9em; margin-bottom: 20px"><img style="float:left; margin: -2px 3px 3px 0px" src="http://www.gravatar.com/avatar/b30ce50678f0e934eaa6697425c59dd7?s=20" >By <a href="http://ouvre-boite.com">Julien</a>, on 14 Jun 2013</div>
+<p>The <a href='https://www.subtome.com/#/'>SubToMe</a> button we launched a couple weeks is now getting a <strong>significant traction</strong> and has been added to thousands of blogs and sites! This makes us very proud! Many readers now also support direct registration which makes them extremely convenient to use when susbcribing <em>on the fly</em>!</p>
+
+<h2 id='angularjs'>AngularJS</h2>
+
+<p><a href='https://www.subtome.com/#/'>SubToMe</a> is the perfect single page application as it does not even have an application server. It&#8217;s <a href='https://github.com/superfeedr/subtome'>just static files</a> (HTML + JS) linked together with smart redirects and a little localstorage love.</p>
+
+<p>At first, we did not use any framework, but maintaining the code while adding new functionnalities quickly made that a bad choice. After trying <a href='http://emberjs.com/'>Ember.js</a> and <a href='http://backbonejs.org/'>Backbone.js</a> we settled for <a href='http://angularjs.org/'>Angular.js</a>. Even though the first one is very ambitious, it still feels too early to use, and the seconds felt a bit too lightweight. Angular&#8217;s approach to <strong>focus on HTML</strong> seemed quite appropriate for us.</p>
+
+<p>Rewriting the whole app was <em>relatively simple and quite pain-free</em> if you put aside the learning of all the angularjs vocab and architecture. There&#8217;s probably room for improvment in our technique though!</p>
+
+<h2 id='localization'>Localization</h2>
+
+<p>As one of the key goals of SubToMe is <strong>simplicity of use</strong>, localization is one of our priorities. Not everyone speaks English and as the concepts of &#8220;following&#8221; or &#8220;subscribing&#8221; are not obvious to english speakers, adding a language barrier was a no-go. Luckily, Javascript has a couple nifty localization tools. We settled on <a href='http://i18next.com/'>i18next</a> which is very complete and includes most of what we need.</p>
+
+<p>Most JS localization tools will not include a way to translate the HTML, as they expect that you&#8217;re able to serve localized versions of these files. Given the lack of app server, we could not easily provide an HTML version of each of our files in all languages. <a href='http://i18next.com/'>i18next</a> comes with a very handy way to translate the content of HTML pages using JSON languages files. That&#8217;s perfect for us.</p>
+
+<p>Unfortunately though, i18next was <em>not built to work for Angular</em>, so we had to find a way to get it to work with it. After searching a a little bit, we found a <a href='http://docs.angularjs.org/api'>directive</a> by <a href='https://github.com/archer96'>Andre Meyering</a> which makes the <strong>bridge</strong> between the 2 awesome frameworks: <a href='https://github.com/archer96/ng-i18next'>ng-i18next</a>. It was a bit rough around the egdes but Andre quickly iterated to make it much better!</p>
+
+<p>SubToMe now has <a href='https://github.com/superfeedr/subtome/tree/master/locales'>french</a> (and english of course) :) We need to help to add more. Please get in touch: Spanish accounts for 5.04% of our traffic and Japanese for 3.80% already!</p>
+
+<h2 id='icing_on_the_cake'>Icing on the cake</h2>
+
+<p>We moved SubToMe to <a href='https://www.cloudflare.com/'>Cloudflare</a>! They offer SSL on custome domains, a pretty ubiquituous CDN (latency FTW!), as well as a complete optimizer which we plan on using to speed up the serving of SubToMe.</p>
+
+<p>Finally, along the way, we made the SubToMe modal responsive so that you can easily use it on mobile devices or tablets!</p>
+
+<p>We have a lot more to do, and we&#8217;re excited by the possibilities, but we&#8217;re even more excited to see random blogs adding support. <strong>It makes the web better and allows more people to follow more content in an open way</strong>: add your button now.</p>
+</div>
+
+<blockquote>
+  <p>Liked this post? <input type="button" onclick="(function(){var z=document.createElement('script');z.src='http://www.subtome.com/load.js';document.body.appendChild(z);})()" value="Follow this blog!" /> to get more or read the <a href="/archive.html">archive</a>.</p>
+</blockquote>
+
+
+<small class="meta">
+</small>
+
+<div id="comments">
+    <h2>Comments</h2>
+    <div id="disqus_thread">
+    </div>
+    <script type="text/javascript" src="http://disqus.com/forums/superfeedr-thoughts/embed.js"></script>
+    <noscript>
+        <a href="http://superfeedr-thoughts.disqus.com/?url=ref">View the discussion thread.</a>
+    </noscript>
+    <a href="http://disqus.com" class="dsq-brlink">blog comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+
+    </div> <!--content-->
+
+    <div id="footer">
+      <ul id="footer_navigation">
+        <li><a href="http://documentation.superfeedr.com">Docs</a></li>
+        <li><a href="https://github.com/superfeedr/documentation/issues">Support</a></li>
+        <li><a href="http://blog.superfeedr.com">Blog</a></li>
+        <li><a href="https://superfeedr.com/cost">Pricing</a></li>
+        <li><a href="https://superfeedr.com/terms">Terms</a></li>
+      </ul>
+    </div>
+    <div id="log" style="" ></div>
+  </div> <!--main_bg-->
+</div><!--wrapper-->
+</div><!--bg-->
+<script type="text/javascript">
+  var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+  document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+  <!--//--><![CDATA[//><!--
+  try {
+      var pageTracker = _gat._getTracker('UA-9285763-1');
+      pageTracker._setDomainName("superfeedr.com");
+      pageTracker._initData();
+      pageTracker._trackPageview();
+  } catch(err) {}
+  //--><!]]>
+</script>
+</body>
+</html>

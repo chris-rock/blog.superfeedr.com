@@ -1,0 +1,108 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>Superfeedr : A new PubSubHubbub endpoint </title>
+  <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+  <meta name="google-site-verification" content="ofroHQ3qXBS1SQfblK9-U_oduGZ975Bb3i_uP13Myao" />
+
+  <!-- Stylesheets -->
+  <link href="http://yui.yahooapis.com/3.1.1/build/cssreset/reset-min.css" media="screen" rel="stylesheet" type="text/css" />
+  <link href="http://superfeedr.com/stylesheets/superfeedr.css" media="screen" rel="stylesheet" type="text/css" />
+  <link href="http://superfeedr.com/stylesheets/print.css" media="print" rel="stylesheet" type="text/css" />
+  <link href="http://superfeedr.com/stylesheets/shjs/sh_nedit.min.css" media="screen" rel="stylesheet" type="text/css" />
+  <link href="http://superfeedr.com/stylesheets/thickbox.css" media="screen" rel="stylesheet" type="text/css" />
+  <link href="/css/blog.css" media="screen" rel="stylesheet" type="text/css" />
+  <link rel="alternate" type="application/atom+xml" title="Atom Feed" href="/atom.xml">
+
+ </head>
+
+ <body class="blog">
+   <div id="bg">
+     <div id="wrapper">
+      <div id="logo">
+       <a href="http://superfeedr.com" class="home"><img alt="Superfeedr" src="http://superfeedr.com/images/superfeedr_complete.png" /></a>
+     </div>
+     <ul id="navigation">
+      <li><a href="http://documentation.superfeedr.com" alt="RTFM">Documentation</a></li>
+      <li><a href="http://superfeedr.com/about" alt="All you wanted to know. Almost">About</a></li>
+    </ul>
+    <div class="clear"></div>
+    <div id="main_bg">
+      <div id="main_top">
+       <h1>A new PubSubHubbub endpoint</h1>
+     </div> <!--main_top-->
+
+     <div id="content">
+        <div id="post">
+    <h2>A new PubSubHubbub endpoint</h2>
+    <div style="color:#666; font-size:0.9em; margin-bottom: 20px"><img style="float:left; margin: -2px 3px 3px 0px" src="http://www.gravatar.com/avatar/b30ce50678f0e934eaa6697425c59dd7?s=20" >By <a href="http://ouvre-boite.com">Julien</a>, on 14 Nov 2013</div>
+<p>We&#8217;ve been a bit silent in the past couple months here at Superfeedr.It&#8217;s because we&#8217;ve been working on a complete rewrite of our <a href='http://push.superfeedr.com/'>PubSubHubbub endpoint</a>.</p>
+
+<h3 id='before'>Before</h3>
+
+<p>Up until now, our PubSubHubbub endpoint was part of our main frontend <strong>Rails</strong> app. 4 years ago, Rails was still the most advanced framework to build web applications. This frontend would then interract directly with the <em>database</em> (adding feeds, subscriptions) and put messages in a <em>queue</em> (pings) for the backend to process.</p>
+
+<p>Almost, 2 years ago, <a href='http://blog.superfeedr.com/node-superfeedr/'>we rewrote our backend using Node.js</a> and since we&#8217;ve been neglicted the frontend because often times it would mean replicating some of the logic between the 2 apps.</p>
+
+<h3 id='after'>After</h3>
+
+<p>Each of our 80 backend server is now a full blown web server (using <a href='http://expressjs.com/'>Express.js</a>) and they&#8217;re all directly listening to the subscription requests for both our hosted hubs and our default hub. Luckily (and quite timely), Linode introduced last week <a href='https://blog.linode.com/2013/11/07/nodebalancer-ssl/'>SSL load balancing</a>, so we use them to do the load balancing.</p>
+
+<h3 id='what_does_it_change'>What does it change?</h3>
+
+<p>If you&#8217;re a <a href='http://superfeedr.com/subscriber'>Superfeedr subscriber</a>, it does not change much on the short term. The new endpoint&#8217;s capabilities <a href='http://documentation.superfeedr.com/subscribers.html#webhooks'>strictly map the previous one</a> and we will keep the previous endpoint up for a couple more months. However, in the coming days and weeks we will introduce new features which are <em>only</em> available thru the new endpoint. We will also monitor our logs closely to make sure everyone has been moved to the new endpoint before we retire it!</p>
+
+<p>If you&#8217;re a <a href='http://superfeedr.com/publisher'>Superfeedr publisher</a>, your hub might have already been moved to the new endpoint has it was just a <em>DNS change</em>. It&#8217;s all completely transparent to you and your subscribers. (Some higher traffif hubs still need to be moved).</p>
+</div>
+
+<blockquote>
+  <p>Liked this post? <input type="button" onclick="(function(){var z=document.createElement('script');z.src='http://www.subtome.com/load.js';document.body.appendChild(z);})()" value="Follow this blog!" /> to get more or read the <a href="/archive.html">archive</a>.</p>
+</blockquote>
+
+
+<small class="meta">
+</small>
+
+<div id="comments">
+    <h2>Comments</h2>
+    <div id="disqus_thread">
+    </div>
+    <script type="text/javascript" src="http://disqus.com/forums/superfeedr-thoughts/embed.js"></script>
+    <noscript>
+        <a href="http://superfeedr-thoughts.disqus.com/?url=ref">View the discussion thread.</a>
+    </noscript>
+    <a href="http://disqus.com" class="dsq-brlink">blog comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+
+    </div> <!--content-->
+
+    <div id="footer">
+      <ul id="footer_navigation">
+        <li><a href="http://documentation.superfeedr.com">Docs</a></li>
+        <li><a href="https://github.com/superfeedr/documentation/issues">Support</a></li>
+        <li><a href="http://blog.superfeedr.com">Blog</a></li>
+        <li><a href="https://superfeedr.com/cost">Pricing</a></li>
+        <li><a href="https://superfeedr.com/terms">Terms</a></li>
+      </ul>
+    </div>
+    <div id="log" style="" ></div>
+  </div> <!--main_bg-->
+</div><!--wrapper-->
+</div><!--bg-->
+<script type="text/javascript">
+  var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+  document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+  <!--//--><![CDATA[//><!--
+  try {
+      var pageTracker = _gat._getTracker('UA-9285763-1');
+      pageTracker._setDomainName("superfeedr.com");
+      pageTracker._initData();
+      pageTracker._trackPageview();
+  } catch(err) {}
+  //--><!]]>
+</script>
+</body>
+</html>

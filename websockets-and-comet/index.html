@@ -1,0 +1,103 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>Superfeedr : Websockets and Comet </title>
+  <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+  <meta name="google-site-verification" content="ofroHQ3qXBS1SQfblK9-U_oduGZ975Bb3i_uP13Myao" />
+
+  <!-- Stylesheets -->
+  <link href="http://yui.yahooapis.com/3.1.1/build/cssreset/reset-min.css" media="screen" rel="stylesheet" type="text/css" />
+  <link href="http://superfeedr.com/stylesheets/superfeedr.css" media="screen" rel="stylesheet" type="text/css" />
+  <link href="http://superfeedr.com/stylesheets/print.css" media="print" rel="stylesheet" type="text/css" />
+  <link href="http://superfeedr.com/stylesheets/shjs/sh_nedit.min.css" media="screen" rel="stylesheet" type="text/css" />
+  <link href="http://superfeedr.com/stylesheets/thickbox.css" media="screen" rel="stylesheet" type="text/css" />
+  <link href="/css/blog.css" media="screen" rel="stylesheet" type="text/css" />
+  <link rel="alternate" type="application/atom+xml" title="Atom Feed" href="/atom.xml">
+
+ </head>
+
+ <body class="blog">
+   <div id="bg">
+     <div id="wrapper">
+      <div id="logo">
+       <a href="http://superfeedr.com" class="home"><img alt="Superfeedr" src="http://superfeedr.com/images/superfeedr_complete.png" /></a>
+     </div>
+     <ul id="navigation">
+      <li><a href="http://documentation.superfeedr.com" alt="RTFM">Documentation</a></li>
+      <li><a href="http://superfeedr.com/about" alt="All you wanted to know. Almost">About</a></li>
+    </ul>
+    <div class="clear"></div>
+    <div id="main_bg">
+      <div id="main_top">
+       <h1>Websockets and Comet</h1>
+     </div> <!--main_top-->
+
+     <div id="content">
+        <div id="post">
+    <h2>Websockets and Comet</h2>
+    <div style="color:#666; font-size:0.9em; margin-bottom: 20px"><img style="float:left; margin: -2px 3px 3px 0px" src="http://www.gravatar.com/avatar/b30ce50678f0e934eaa6697425c59dd7?s=20" >By <a href="http://ouvre-boite.com">Julien</a>, on 02 Dec 2010</div>
+<p>Up until now, Superfeedr mostly focused on server to server communications (even though, technically, <a href="http://documentation.superfeedr.com/subscribers.html#xmpppubsub"><span class="caps">XMPP</span></a> also works very well with clients too). Today, we&#8217;re announcing 2 server to client protocols, even though, they too, can be used for servers : <strong>websockets</strong> and <strong>comet</strong>. On both, we will push <a href="http://documentation.superfeedr.com/schema.html#json"><span class="caps">JSON</span></a> by default.</p>
+<h3>Comet</h3>
+<p>It&#8217;s no secret that most of the modern webservices that we use are now able to load data within a page. You probably heard of <a href="http://en.wikipedia.org/wiki/Ajax_(programming)">Ajax</a>, which relies on polling the server every few seconds to get any updated data, but you may also have heard of <a href="http://en.wikipedia.org/wiki/Comet_(programming)">Comet</a>, which in this case is mostly on persistent <span class="caps">HTTP</span> connection. This enables the server to keep pushing data on that <span class="caps">TCP</span> socket when more data is available for the client.<br />
+Among the most documented use cases, you will find Friendfeed&#8217;s and their infamous <a href="http://www.tornadoweb.org/">Tornado server</a>.</p>
+<p>Today, as a subscriber, you can also get Superfeedr&#8217;s content pushed to you directly using comet. Just open an <span class="caps">HTTP</span> connection, and we will push on this any content in the feeds to which you subscribed. Use your superfeedr credential for <code>HTTP Basic Authentication</code>, and we will push you the <span class="caps">JSON</span>. You can also open several connections at once, which is convenient if you need to upgrade your client without losing any data.</p>
+<script src="https://gist.github.com/726390.js?file=gistfile1.js"></script><p>As you can see the stream contains several types of messages not just the notifications. For example you can see the line that tells that this user just subscribed to a feed, and later unsubscribed. There is currently no protocol as for these streams, so we chose to adopt the <a href="http://blog.new-bamboo.co.uk/2010/2/10/json-event-based-convention-websockets">convention explained</a> by the folks at <a href="http://new-bamboo.co.uk/">new bamboo</a> : each message is built with 2 elements : a &#8216;verb&#8217; (<em>subscribe</em>, <em>unsubscribe</em>, <em>publish</em> in our case), as well as scalar which gives more details. We obviously use our <a href="http://documentation.superfeedr.com/schema.html#json"><span class="caps">JSON</span> schema</a>.</p>
+<p>Since an <span class="caps">HTTP</span> connection is still mostly one-way, there is no way to send data on this connection to subscribe to additional feeds for example. However, we also introduce a small <span class="caps">REST</span>-like <span class="caps">API</span> which allows you to subscribe to feeds or unsubscribe, based on your needs. Since we push the result of subscriptions to the stream, it&#8217;s recommended to open a stream first, so you can see whether your subscription was a success or not.</p>
+<script src="https://gist.github.com/726407.js?file=gistfile1.sh"></script><h3>Websockets</h3>
+<p>Unless you lived in a cave for the last year, you probably already heard of <a href="http://en.wikipedia.org/wiki/WebSockets">websockets</a>. They&#8217;re now supported by modern browsers, such as Chrome, Firefox, Safari, Opera&#8230; etc. As they are <strong>part of HTML5</strong>, we can certainly expect an extended support in the coming months, and we want your apps to be ready for when that happens, which is why we also release a websocket <span class="caps">API</span>. It&#8217;s actually very similar to the Comet version and uses the same conventions. It also uses <span class="caps">HTTP</span> basic header to authenticate you.</p>
+<p>The only significant difference is that websockets <em>are duplex</em>. You can receive and send traffic on the same socket! So, to subscribe to feeds, you can very simply send message on the websocket. The messages use the same convention explained a little above : <code>["subscribe", {:topic =&gt; "http://superfeedr.com/track?include=music"}]</code> will perform a subscription.</p>
+<h4>A few warnings</h4>
+<p>First of all, these 2 APIs are <em>alpha</em>, which means they will get better over time, we will add features based on user feedback. The current setup should be good enough to support enough connections for all of our users and we&#8217;re already working on the proxies which will enable us to support hundreds of thousands of concurrent connections and beyond (the <a href="http://www.kegel.com/c10k.html">famous C10K problem</a>), but we kindly ask that you take all measures on your end to support disconnections by handling them and reconnecting. Don&#8217;t forget to back-off too if you see persistent errors.</p>
+</div>
+
+<blockquote>
+  <p>Liked this post? <input type="button" onclick="(function(){var z=document.createElement('script');z.src='http://www.subtome.com/load.js';document.body.appendChild(z);})()" value="Follow this blog!" /> to get more or read the <a href="/archive.html">archive</a>.</p>
+</blockquote>
+
+
+<small class="meta">
+</small>
+
+<div id="comments">
+    <h2>Comments</h2>
+    <div id="disqus_thread">
+    </div>
+    <script type="text/javascript" src="http://disqus.com/forums/superfeedr-thoughts/embed.js"></script>
+    <noscript>
+        <a href="http://superfeedr-thoughts.disqus.com/?url=ref">View the discussion thread.</a>
+    </noscript>
+    <a href="http://disqus.com" class="dsq-brlink">blog comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+
+    </div> <!--content-->
+
+    <div id="footer">
+      <ul id="footer_navigation">
+        <li><a href="http://documentation.superfeedr.com">Docs</a></li>
+        <li><a href="https://github.com/superfeedr/documentation/issues">Support</a></li>
+        <li><a href="http://blog.superfeedr.com">Blog</a></li>
+        <li><a href="https://superfeedr.com/cost">Pricing</a></li>
+        <li><a href="https://superfeedr.com/terms">Terms</a></li>
+      </ul>
+    </div>
+    <div id="log" style="" ></div>
+  </div> <!--main_bg-->
+</div><!--wrapper-->
+</div><!--bg-->
+<script type="text/javascript">
+  var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+  document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+  <!--//--><![CDATA[//><!--
+  try {
+      var pageTracker = _gat._getTracker('UA-9285763-1');
+      pageTracker._setDomainName("superfeedr.com");
+      pageTracker._initData();
+      pageTracker._trackPageview();
+  } catch(err) {}
+  //--><!]]>
+</script>
+</body>
+</html>

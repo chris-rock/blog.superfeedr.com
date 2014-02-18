@@ -1,0 +1,108 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>Superfeedr : State of Real-Time feeds </title>
+  <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+  <meta name="google-site-verification" content="ofroHQ3qXBS1SQfblK9-U_oduGZ975Bb3i_uP13Myao" />
+
+  <!-- Stylesheets -->
+  <link href="http://yui.yahooapis.com/3.1.1/build/cssreset/reset-min.css" media="screen" rel="stylesheet" type="text/css" />
+  <link href="http://superfeedr.com/stylesheets/superfeedr.css" media="screen" rel="stylesheet" type="text/css" />
+  <link href="http://superfeedr.com/stylesheets/print.css" media="print" rel="stylesheet" type="text/css" />
+  <link href="http://superfeedr.com/stylesheets/shjs/sh_nedit.min.css" media="screen" rel="stylesheet" type="text/css" />
+  <link href="http://superfeedr.com/stylesheets/thickbox.css" media="screen" rel="stylesheet" type="text/css" />
+  <link href="/css/blog.css" media="screen" rel="stylesheet" type="text/css" />
+  <link rel="alternate" type="application/atom+xml" title="Atom Feed" href="/atom.xml">
+
+ </head>
+
+ <body class="blog">
+   <div id="bg">
+     <div id="wrapper">
+      <div id="logo">
+       <a href="http://superfeedr.com" class="home"><img alt="Superfeedr" src="http://superfeedr.com/images/superfeedr_complete.png" /></a>
+     </div>
+     <ul id="navigation">
+      <li><a href="http://documentation.superfeedr.com" alt="RTFM">Documentation</a></li>
+      <li><a href="http://superfeedr.com/about" alt="All you wanted to know. Almost">About</a></li>
+    </ul>
+    <div class="clear"></div>
+    <div id="main_bg">
+      <div id="main_top">
+       <h1>State of Real-Time feeds</h1>
+     </div> <!--main_top-->
+
+     <div id="content">
+        <div id="post">
+    <h2>State of Real-Time feeds</h2>
+    <div style="color:#666; font-size:0.9em; margin-bottom: 20px"><img style="float:left; margin: -2px 3px 3px 0px" src="http://www.gravatar.com/avatar/b30ce50678f0e934eaa6697425c59dd7?s=20" >By <a href="http://ouvre-boite.com">Julien</a>, on 27 Nov 2009</div>
+<p>As <a href="/real-time/statistics/market/state-of-real-time-feeds/">promised last month</a>, here is a small update on the <strong>real-time feeds market</strong>.</p>
+<p>First, I&#8217;d like to insist on the method we use to collect these statistics. For each feed, we always <em>try to determine what is the best way</em> to get its content and push it to our users in the <em>timeliest manner</em>.<br />
+If you were building a similar infrastructure to ours, assuming you&#8217;d support <a href="http://push.superfeedr.com/">PubSubHubbub</a>, <a href="http://blog.superfeedr.com/rsscloud/api/pubsubhubbub/RSSCloud/">RSSCloud</a> and <a href="http://blog.superfeedr.com/sup/pubsubhubbub/xmpp/real-time/SUP-over-pubsubhubb-and-xmpp/"><span class="caps">SUP</span></a> <sup class="footnote" id="fnr1"><a href="#fn1">1</a></sup>, here is the breakdown that you would get.</p>
+<p><img src="/images/nov-09.png" style="display:block; margin-left:auto; margin-right:auto;" alt="" /></p>
+<p>Compared to last month, we <strong>have three times more feeds</strong> and the proportions evolved significantly.</p>
+<p><img src="/images/oct-nov-09.png" style="display:block; margin-left:auto; margin-right:auto;" alt="" /></p>
+<p>As you can see, it&#8217;s pretty obvious that there are <strong>less and less feeds that you&#8217;ll be actively polling</strong> (still about 75% though).</p>
+<p>This is mainly due to the fact that we added <a href="http://superfeedr.com/publisher">white-label hubs</a> to our service offering.</p>
+<p>For example, since we have our <a href="http://wordpress.superfeedr.com/">unofficial hub for wordpress</a>, we subscribe to a lot of <a href="http://wordpress.superfeedr.com/">RSSCloud feeds on behalf of our users</a>.</p>
+<p>Similarly, we now host official the <a href="http://posterous.superfeedr.com/">Posterous hub</a> and <a href="http://backtype.superfeedr.com/">Backtype hub</a> (among others), which means that if you poll their feeds, you&#8217;ll use Superfeedr :) As a matter of fact, <strong>we host the hub for 48% of the hubbub-enabled feeds that our users subscribed to</strong>.</p>
+<p class="footnote" id="fn1"><a href="#fnr1"><sup>1</sup></a> We implemented many other ways of getting feed updates, including some specific APIs and other techniques.</p>
+</div>
+
+<blockquote>
+  <p>Liked this post? <input type="button" onclick="(function(){var z=document.createElement('script');z.src='http://www.subtome.com/load.js';document.body.appendChild(z);})()" value="Follow this blog!" /> to get more or read the <a href="/archive.html">archive</a>.</p>
+</blockquote>
+
+
+<small class="meta">
+  <a href='http://www.google.com/search?q=real-time+site:blog.superfeedr.com'>real-time</a>, 
+  
+  <a href='http://www.google.com/search?q=statistics+site:blog.superfeedr.com'>statistics</a>, 
+  
+  <a href='http://www.google.com/search?q=market+site:blog.superfeedr.com'>market</a>
+  
+</small>
+
+<div id="comments">
+    <h2>Comments</h2>
+    <div id="disqus_thread">
+    </div>
+    <script type="text/javascript" src="http://disqus.com/forums/superfeedr-thoughts/embed.js"></script>
+    <noscript>
+        <a href="http://superfeedr-thoughts.disqus.com/?url=ref">View the discussion thread.</a>
+    </noscript>
+    <a href="http://disqus.com" class="dsq-brlink">blog comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+
+    </div> <!--content-->
+
+    <div id="footer">
+      <ul id="footer_navigation">
+        <li><a href="http://documentation.superfeedr.com">Docs</a></li>
+        <li><a href="https://github.com/superfeedr/documentation/issues">Support</a></li>
+        <li><a href="http://blog.superfeedr.com">Blog</a></li>
+        <li><a href="https://superfeedr.com/cost">Pricing</a></li>
+        <li><a href="https://superfeedr.com/terms">Terms</a></li>
+      </ul>
+    </div>
+    <div id="log" style="" ></div>
+  </div> <!--main_bg-->
+</div><!--wrapper-->
+</div><!--bg-->
+<script type="text/javascript">
+  var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+  document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+  <!--//--><![CDATA[//><!--
+  try {
+      var pageTracker = _gat._getTracker('UA-9285763-1');
+      pageTracker._setDomainName("superfeedr.com");
+      pageTracker._initData();
+      pageTracker._trackPageview();
+  } catch(err) {}
+  //--><!]]>
+</script>
+</body>
+</html>

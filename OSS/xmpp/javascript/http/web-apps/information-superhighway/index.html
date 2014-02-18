@@ -1,0 +1,132 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>Superfeedr : Information Superhighway </title>
+  <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+  <meta name="google-site-verification" content="ofroHQ3qXBS1SQfblK9-U_oduGZ975Bb3i_uP13Myao" />
+
+  <!-- Stylesheets -->
+  <link href="http://yui.yahooapis.com/3.1.1/build/cssreset/reset-min.css" media="screen" rel="stylesheet" type="text/css" />
+  <link href="http://superfeedr.com/stylesheets/superfeedr.css" media="screen" rel="stylesheet" type="text/css" />
+  <link href="http://superfeedr.com/stylesheets/print.css" media="print" rel="stylesheet" type="text/css" />
+  <link href="http://superfeedr.com/stylesheets/shjs/sh_nedit.min.css" media="screen" rel="stylesheet" type="text/css" />
+  <link href="http://superfeedr.com/stylesheets/thickbox.css" media="screen" rel="stylesheet" type="text/css" />
+  <link href="/css/blog.css" media="screen" rel="stylesheet" type="text/css" />
+  <link rel="alternate" type="application/atom+xml" title="Atom Feed" href="/atom.xml">
+
+ </head>
+
+ <body class="blog">
+   <div id="bg">
+     <div id="wrapper">
+      <div id="logo">
+       <a href="http://superfeedr.com" class="home"><img alt="Superfeedr" src="http://superfeedr.com/images/superfeedr_complete.png" /></a>
+     </div>
+     <ul id="navigation">
+      <li><a href="http://documentation.superfeedr.com" alt="RTFM">Documentation</a></li>
+      <li><a href="http://superfeedr.com/about" alt="All you wanted to know. Almost">About</a></li>
+    </ul>
+    <div class="clear"></div>
+    <div id="main_bg">
+      <div id="main_top">
+       <h1>Information Superhighway</h1>
+     </div> <!--main_top-->
+
+     <div id="content">
+        <div id="post">
+    <h2>Information Superhighway</h2>
+    <div style="color:#666; font-size:0.9em; margin-bottom: 20px"><img style="float:left; margin: -2px 3px 3px 0px" src="http://www.gravatar.com/avatar/0120a25badc6b1e50f6890527dca7042?s=20" >By <a href="http://identi.ca/astro">Astro</a>, on 05 Nov 2009</div>
+<p><img src="../../../../../../images/superhighway.png" style="float:right; margin: 10px;width: 35%;" alt="" /> Because we provide a service to developers and businesses <strong>it is quite difficult to &#8220;show off&#8221;</strong> to people without prior knowledge of the technology. <a href="http://twitter.com/julien51">Julien</a> built our website with quite some interactivity, but it is still rather hard to understand because you&#8217;re going to see the gory protocol in detail.</p>
+<p>The well-standardized <span class="caps">XMPP</span> with its many implementations has always made it easy for developers to use us. There&#8217;s a <strong>vast amount of tools and libraries</strong> out there. That makes it easy to put together a demo consumer of Superfeedr notifications in very short time.</p>
+<p>So we want a graphical app but not restrict ourselves to one platform. The web browser, where you don&#8217;t even need to install anything, just click and everything&#8217;s in a sandbox is the solution. That&#8217;s why it has to be a webapp.</p>
+<h3>How it&#8217;s built</h3>
+<p>The nature of our service is very dynamic and content must be delivered quickly. That requires <strong>JavaScript</strong>. Despite not being affine to that language, I&#8217;ve always been intrigued how <strong><span class="caps">AJAX</span></strong>, nowadays a common web technology, can be used with a tiny glue of <a href="http://xmpp.org/extensions/xep-0124.html"><span class="caps">BOSH</span></a> to <strong>run an <span class="caps">XMPP</span> client</strong> in just your browser.</p>
+<p>I took <a href="http://code.stanziq.com/strophe/">StropheJS</a>, easened <span class="caps">XML</span> and <span class="caps">DOM</span> handling a bit with <a href="http://jquery.com/">JQuery</a>, and made a really tiny webapp: <a href="http://github.com/astro/superhighway">Notification Superhighway</a>.</p>
+<p>Log in, subscribe to feeds (or even Twitter searches), and get amazed by that millions of content producers on the <a href="http://en.wikipedia.org/wiki/Information_Superhighway">Information Superhighway</a>.</p>
+<h3>Running it yourself</h3>
+<ol>
+	<li>Pull the code :<br />
+<code>git clone git://github.com/astro/superhighway.git</code></li>
+</ol>
+<ol>
+	<li><code>cd superhighway</code></li>
+</ol>
+<ol>
+	<li>Get the StropheJs code:<br />
+<code>git submodule init</code><br />
+<code>git submodule update</code></li>
+</ol>
+<ol>
+	<li>Proxy the <code>http://localhost/http-bind/</code> to use <code>http://superfeedr.com/http-bind/</code>.  The browser&#8217;s <strong>Same Origin Policy</strong> will allow script access only to the local domain for good reason. To proxy the <span class="caps">BOSH</span> entry point I included a configuration file for <a href="http://nginx.net/">nginx</a>. <sup class="footnote" id="fnr1"><a href="#fn1">1</a></sup></li>
+</ol>
+<ol>
+	<li><code>./start.sh</code> (you may need to use <code>sudo</code>) <sup class="footnote" id="fnr2"><a href="#fn2">2</a></sup></li>
+</ol>
+<ol>
+	<li><a href="http://localhost:8080">http://localhost:8080</a> should do it :). The Interface clearly needs a little work! Please <a href="http://github.com/astro/superhighway">fork Notification SuperHighway</a> :)</li>
+</ol>
+<p class="footnote" id="fn1"><a href="#fnr1"><sup>1</sup></a> On a Mac, I suggest installing Nginx with <code>sudo port install nginx</code>.</p>
+<p class="footnote" id="fn2"><a href="#fnr2"><sup>2</sup></a> On a Mac, you will need to comment the <code>use epoll;</code> line of the nginx configuration.</p>
+</div>
+
+<blockquote>
+  <p>Liked this post? <input type="button" onclick="(function(){var z=document.createElement('script');z.src='http://www.subtome.com/load.js';document.body.appendChild(z);})()" value="Follow this blog!" /> to get more or read the <a href="/archive.html">archive</a>.</p>
+</blockquote>
+
+
+<small class="meta">
+  <a href='http://www.google.com/search?q=oss+site:blog.superfeedr.com'>oss</a>, 
+  
+  <a href='http://www.google.com/search?q=xmpp+site:blog.superfeedr.com'>xmpp</a>, 
+  
+  <a href='http://www.google.com/search?q=javascript+site:blog.superfeedr.com'>javascript</a>, 
+  
+  <a href='http://www.google.com/search?q=http+site:blog.superfeedr.com'>http</a>, 
+  
+  <a href='http://www.google.com/search?q=web-apps+site:blog.superfeedr.com'>web-apps</a>
+  
+</small>
+
+<div id="comments">
+    <h2>Comments</h2>
+    <div id="disqus_thread">
+    </div>
+    <script type="text/javascript" src="http://disqus.com/forums/superfeedr-thoughts/embed.js"></script>
+    <noscript>
+        <a href="http://superfeedr-thoughts.disqus.com/?url=ref">View the discussion thread.</a>
+    </noscript>
+    <a href="http://disqus.com" class="dsq-brlink">blog comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+
+    </div> <!--content-->
+
+    <div id="footer">
+      <ul id="footer_navigation">
+        <li><a href="http://documentation.superfeedr.com">Docs</a></li>
+        <li><a href="https://github.com/superfeedr/documentation/issues">Support</a></li>
+        <li><a href="http://blog.superfeedr.com">Blog</a></li>
+        <li><a href="https://superfeedr.com/cost">Pricing</a></li>
+        <li><a href="https://superfeedr.com/terms">Terms</a></li>
+      </ul>
+    </div>
+    <div id="log" style="" ></div>
+  </div> <!--main_bg-->
+</div><!--wrapper-->
+</div><!--bg-->
+<script type="text/javascript">
+  var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+  document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+  <!--//--><![CDATA[//><!--
+  try {
+      var pageTracker = _gat._getTracker('UA-9285763-1');
+      pageTracker._setDomainName("superfeedr.com");
+      pageTracker._initData();
+      pageTracker._trackPageview();
+  } catch(err) {}
+  //--><!]]>
+</script>
+</body>
+</html>

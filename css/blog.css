@@ -1,0 +1,46 @@
+#content h3 {
+  margin-top: 30px;
+}
+
+#content h3 a {
+  text-decoration:none;
+  color:black;
+}
+
+#content_right h2 {
+  font-size: 1.5em;
+}
+
+#content_left ul {
+    padding-left:15px;
+}
+
+#content_left li {
+    margin-left: 0px;
+    padding-left: 0px;
+    margin-bottom: 5px;
+}
+
+#license {
+    clear:both;
+}
+
+.excerpt {
+}
+
+.meta {
+    display: block;
+    border-top: 1px solid #CCC;
+    color: #CCC;
+}
+
+.footnote {
+    font-size:0.8em;
+}
+
+blockquote {
+    font-style:italic;
+    padding-left: 10px;
+    margin-left:10px;
+    border-left: 3px solid #E6E6E6;
+}

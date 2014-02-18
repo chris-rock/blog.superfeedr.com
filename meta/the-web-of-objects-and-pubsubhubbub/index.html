@@ -1,0 +1,121 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>Superfeedr : Internet of Things and PubSubHubbub </title>
+  <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+  <meta name="google-site-verification" content="ofroHQ3qXBS1SQfblK9-U_oduGZ975Bb3i_uP13Myao" />
+
+  <!-- Stylesheets -->
+  <link href="http://yui.yahooapis.com/3.1.1/build/cssreset/reset-min.css" media="screen" rel="stylesheet" type="text/css" />
+  <link href="http://superfeedr.com/stylesheets/superfeedr.css" media="screen" rel="stylesheet" type="text/css" />
+  <link href="http://superfeedr.com/stylesheets/print.css" media="print" rel="stylesheet" type="text/css" />
+  <link href="http://superfeedr.com/stylesheets/shjs/sh_nedit.min.css" media="screen" rel="stylesheet" type="text/css" />
+  <link href="http://superfeedr.com/stylesheets/thickbox.css" media="screen" rel="stylesheet" type="text/css" />
+  <link href="/css/blog.css" media="screen" rel="stylesheet" type="text/css" />
+  <link rel="alternate" type="application/atom+xml" title="Atom Feed" href="/atom.xml">
+
+ </head>
+
+ <body class="blog">
+   <div id="bg">
+     <div id="wrapper">
+      <div id="logo">
+       <a href="http://superfeedr.com" class="home"><img alt="Superfeedr" src="http://superfeedr.com/images/superfeedr_complete.png" /></a>
+     </div>
+     <ul id="navigation">
+      <li><a href="http://documentation.superfeedr.com" alt="RTFM">Documentation</a></li>
+      <li><a href="http://superfeedr.com/about" alt="All you wanted to know. Almost">About</a></li>
+    </ul>
+    <div class="clear"></div>
+    <div id="main_bg">
+      <div id="main_top">
+       <h1>Internet of Things and PubSubHubbub</h1>
+     </div> <!--main_top-->
+
+     <div id="content">
+        <div id="post">
+    <h2>Internet of Things and PubSubHubbub</h2>
+    <div style="color:#666; font-size:0.9em; margin-bottom: 20px"><img style="float:left; margin: -2px 3px 3px 0px" src="http://www.gravatar.com/avatar/b30ce50678f0e934eaa6697425c59dd7?s=20" >By <a href="http://ouvre-boite.com">Julien</a>, on 22 Jul 2010</div>
+<p>The <a href="http://en.wikipedia.org/wiki/Web_of_Things">Internet of things</a> is one that makes us dream : everything connected to the internet, talking together and making our lives easier. It&#8217;s something that I&#8217;ve been thinking to a lot lately.<br />
+This all comes from this weird dream that I made, that I would be <em>friended on Facebook by things I own</em> ; my iPhone, my pair of sunglasses&#8230; etc. After all, they&#8217;re probably <a href="http://www.facebook.com/julien.genestoux">interested in me</a> as much as my 400+ friends (Love you guys!).</p>
+<p><img src="/images/internet-of-things.jpg" style="float:left; width:300px; margin: 5px 5px 0px 0px;" alt="" />If my bed subscribed to me on <a href="http://gowalla.com/home">gowalla</a>, it would warm up before I even reach it. If my bathroom mirror was my facebook friend, it could certainly tag me every morning and make a pretty cool time lapse. We have all these <strong>awesome social services, but none of them is made for objects</strong>. This would yet be quite easy : each object would have a profile, and would have an <a href="http://activitystrea.ms/">activity stream</a>, based on what it does and to which I could also subscribe. My iPhone&#8217;s stream would be something like this :</p>
+<ul>
+	<li>Mom called</li>
+	<li>Call dropped <em><del>oups</del></em></li>
+	<li>Moved to <a href="http://www.coffeebar-usa.com/CB_HOME.html">Coffee Bar</a></li>
+	<li>Connected to Wifi</li>
+	<li>Battery down to 30% <em><del>oups</del></em></li>
+	<li>Mating with MacBook Pro, refilling</li>
+	<li>Unplugged</li>
+	<li>Playing <a href="http://www.spotify.com/int/">Spotify</a></li>
+	<li>Sound up</li>
+</ul>
+<p>You get the thing, right?</p>
+<p>Not that it&#8217;s all interesting, but still, <strong>once there is this stream, I can certainly subscribe to it</strong>&#8230; and learn a bit more about my new object friend, like for example, <em>get a notification on my laptop when its battery dies</em> while in my coat&#8217;s pocket, or even find it if it&#8217;s been stolen (wait, you can already pay for that). I can also learn a bit about myself : how much music do I listen to, and even send an email automatically to sjobs@apple.com for each dropped call! The iPhone looks easy, but imagine the same thing about my pants :</p>
+<ul>
+	<li>Being washed</li>
+	<li>Being ironed (no idea who would do that)</li>
+	<li>Worn, for 12 hours</li>
+	<li>Worn, for 10 hours</li>
+	<li>Temperature dropping</li>
+	<li>Worn, for 12 more hours</li>
+	<li>Worn 4 times: <del>gross!</del></li>
+</ul>
+<p>Now, my pants would be smart enough to know when I need to actually wash them? Even better, let&#8217;s imagine that my heating system can subscribe to my pants, so that when my pants are cold, the heating system goes on? How cool would that be (except for <a href="http://twitter.com/mjmalone/status/18974105709">those of us</a> who don&#8217;t wear pants.).<br />
+What about my car subscribing to my home on foursquare? So that when the car checkins the house, the garage door opens.</p>
+<p>We&#8217;ve been talking about home automation for decades. No idea why this didn&#8217;t really take off, but I&#8217;d bet that the fact that all these use proprietary protocols and data structure doesn&#8217;t help. Luckily, <strong>we now have a full protocol stack</strong> for all this : <a href="http://en.wikipedia.org/wiki/Atom_(standard)">Atom</a>, <a href="http://activitystrea.ms/">ActivityStreams</a>, <a href="http://www.georss.org/Main_Page">GeoRSS</a> to represent the data, <span class="caps">HTTP</span> for the communication, and <a href="http://code.google.com/p/pubsubhubbub/">PubSubHubbub</a> for the subscription mechanism. Time for a shift!</p>
+</div>
+
+<blockquote>
+  <p>Liked this post? <input type="button" onclick="(function(){var z=document.createElement('script');z.src='http://www.subtome.com/load.js';document.body.appendChild(z);})()" value="Follow this blog!" /> to get more or read the <a href="/archive.html">archive</a>.</p>
+</blockquote>
+
+
+<small class="meta">
+  <a href='http://www.google.com/search?q=meta+site:blog.superfeedr.com'>meta</a>
+  
+</small>
+
+<div id="comments">
+    <h2>Comments</h2>
+    <div id="disqus_thread">
+    </div>
+    <script type="text/javascript" src="http://disqus.com/forums/superfeedr-thoughts/embed.js"></script>
+    <noscript>
+        <a href="http://superfeedr-thoughts.disqus.com/?url=ref">View the discussion thread.</a>
+    </noscript>
+    <a href="http://disqus.com" class="dsq-brlink">blog comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+
+    </div> <!--content-->
+
+    <div id="footer">
+      <ul id="footer_navigation">
+        <li><a href="http://documentation.superfeedr.com">Docs</a></li>
+        <li><a href="https://github.com/superfeedr/documentation/issues">Support</a></li>
+        <li><a href="http://blog.superfeedr.com">Blog</a></li>
+        <li><a href="https://superfeedr.com/cost">Pricing</a></li>
+        <li><a href="https://superfeedr.com/terms">Terms</a></li>
+      </ul>
+    </div>
+    <div id="log" style="" ></div>
+  </div> <!--main_bg-->
+</div><!--wrapper-->
+</div><!--bg-->
+<script type="text/javascript">
+  var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+  document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+  <!--//--><![CDATA[//><!--
+  try {
+      var pageTracker = _gat._getTracker('UA-9285763-1');
+      pageTracker._setDomainName("superfeedr.com");
+      pageTracker._initData();
+      pageTracker._trackPageview();
+  } catch(err) {}
+  //--><!]]>
+</script>
+</body>
+</html>

@@ -1,0 +1,111 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>Superfeedr : A better web </title>
+  <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+  <meta name="google-site-verification" content="ofroHQ3qXBS1SQfblK9-U_oduGZ975Bb3i_uP13Myao" />
+
+  <!-- Stylesheets -->
+  <link href="http://yui.yahooapis.com/3.1.1/build/cssreset/reset-min.css" media="screen" rel="stylesheet" type="text/css" />
+  <link href="http://superfeedr.com/stylesheets/superfeedr.css" media="screen" rel="stylesheet" type="text/css" />
+  <link href="http://superfeedr.com/stylesheets/print.css" media="print" rel="stylesheet" type="text/css" />
+  <link href="http://superfeedr.com/stylesheets/shjs/sh_nedit.min.css" media="screen" rel="stylesheet" type="text/css" />
+  <link href="http://superfeedr.com/stylesheets/thickbox.css" media="screen" rel="stylesheet" type="text/css" />
+  <link href="/css/blog.css" media="screen" rel="stylesheet" type="text/css" />
+  <link rel="alternate" type="application/atom+xml" title="Atom Feed" href="/atom.xml">
+
+ </head>
+
+ <body class="blog">
+   <div id="bg">
+     <div id="wrapper">
+      <div id="logo">
+       <a href="http://superfeedr.com" class="home"><img alt="Superfeedr" src="http://superfeedr.com/images/superfeedr_complete.png" /></a>
+     </div>
+     <ul id="navigation">
+      <li><a href="http://documentation.superfeedr.com" alt="RTFM">Documentation</a></li>
+      <li><a href="http://superfeedr.com/about" alt="All you wanted to know. Almost">About</a></li>
+    </ul>
+    <div class="clear"></div>
+    <div id="main_bg">
+      <div id="main_top">
+       <h1>A better web</h1>
+     </div> <!--main_top-->
+
+     <div id="content">
+        <div id="post">
+    <h2>A better web</h2>
+    <div style="color:#666; font-size:0.9em; margin-bottom: 20px"><img style="float:left; margin: -2px 3px 3px 0px" src="http://www.gravatar.com/avatar/b30ce50678f0e934eaa6697425c59dd7?s=20" >By <a href="http://ouvre-boite.com">Julien</a>, on 26 Jul 2012</div>
+<p>In the last couple weeks, there&#8217;s been a lot of hubbub (again!) around <a href="https://dev.twitter.com/blog/delivering-consistent-twitter-experience">Twitter&#8217;s latest move</a> with its ecosystem. Twitter is more and more of a media company and less and less of a communication company Generally, <em>on Twitter you&#8217;re interracting more and more with twitter itself and less and less with your friends</em>. People claim that this decision is driven by the fact that Twitter&#8217;s business model is ad based.</p>
+<p>As any business move, this leaves a void: a twitter-like tool aimed at communication only, one that would not be ad-based, which ideally be open-source so a company doesn&#8217;t sit between us and our friends. You&#8217;ve probably read a lot about that. Follow <a href="http://daltoncaldwell.com/">Dalton Caldwell</a> and <a href="http://scripting.com/">Dave Winer</a> blogs for more on that.</p>
+<h3>An Open Twitter?</h3>
+<p>As much as I&#8217;d love to see and use these new tools, I&#8217;m afraid there is still a long way to go, and even when the tools are there, it&#8217;s likely that my friends will be slow to move to it, just because, for now at least, Twitter, Facebook or other &#8216;closed&#8217; platforms just fit what they need. I too, will stay there, because when it comes to social networks, what matters to me the most is the &#8216;social&#8217; aspect, not the software one.</p>
+<p>To me, an <strong>open twitter is not the goal</strong>. The goal is a better open web. One on which I can chose which tools I use, without forcing my friends to do the same decision (they should not even know care). An open web is also a web on which I can chose what phone I use, without impacting my social network decision (and the other way around).</p>
+<p>To get there, we need to either force the closed platforms to open up, or to just add a layer above or below them that would achieve this, without changing my use of them.</p>
+<h3>Opening Up</h3>
+<p>Ditch the <span class="caps">API</span>, switch to multi-laterrally agreed upon protocols. Use similar data representation, and communication tools to transmit data from one another.</p>
+<ul>
+	<li><a href="http://en.wikipedia.org/wiki/Atom_(standard)"><span class="caps">RSS</span>/Atom feeds</a> have been very widely adopted and are a very good model for timelines, activity streams and other tweet lists. Many many platform already have them (including Twitter and Facebook: they just need to promote them a bit more&#8230;).</li>
+</ul>
+<ul>
+	<li>The &#8216;Subscribe&#8217; pattern exists in the form of <a href="https://code.google.com/p/pubsubhubbub/">PubSubHubbub</a>. However, we miss the ease of the &#8216;Follow&#8217; buttons offered by these social network. I have great hopes that <a href="http://webintents.org/">WebIntents</a> will be able to solve that problem very elegantly.</li>
+</ul>
+<p>Technically speaking, that&#8217;s all we&#8217;d need I believe, and since many amazing platforms have already completely implemented that stack, like <a href="http://status.net/">Status.net</a>, <a href="http://www.tumblr.com/">Tumblr</a>, <a href="http://wordpress.org/">Wordpress</a>, <a href="https://flattr.com/">Flattr</a>&#8230; the benefit will be instantaneous.<br />
+It&#8217;s probably little work for the existing closed platforms to implement and I sincerely hope that getting them to adopt these protocols will be easier than moving hundreds of milions of users away from them.</p>
+<h3>Sitting on top</h3>
+<p>You may say I&#8217;m a dreamer, since I believe we will soon be able to follow our Facebook friends on Twitter, or our Google+ circles on Twitter. But I think we, hackers, can <em>show them the way</em>. They tend to ignore it, but all these closed networks are built on top of an completely open platform: <span class="caps">HTTP</span>, <span class="caps">HTML</span>, Javascript&#8230; Better yet, they&#8217;re accessible thru an amazing hacking box: the browser, which means that we could use our browsers as &#8216;trojan&#8217; horses. This is what we did with the <a href="https://github.com/julien51/indie-butler-app">indie butler</a>.</p>
+<p>The browser can just &#8216;hijack&#8217; our interractions with these closed networks, back up the data locally, and <a href="https://github.com/julien51/indie-butler-relay">serve it</a> from there. It could also alter my browser&#8217;s behavior, so that when I go to facebook.com, it shows me what my friends on twitter.com tweeted, in the Facebook format (or the other way around).</p>
+<p>We created the butler during the <a href="http://indiewebcamp.com/">IndieWebCamp</a>. It was an amazing eye opening event and you should attend that in the future if you&#8217;re even remotely interested in making the web better. The Butler is still extremely early stage, and we will improve it in the next couple weeks. I hope you get the idea of how it works!</p>
+</div>
+
+<blockquote>
+  <p>Liked this post? <input type="button" onclick="(function(){var z=document.createElement('script');z.src='http://www.subtome.com/load.js';document.body.appendChild(z);})()" value="Follow this blog!" /> to get more or read the <a href="/archive.html">archive</a>.</p>
+</blockquote>
+
+
+<small class="meta">
+</small>
+
+<div id="comments">
+    <h2>Comments</h2>
+    <div id="disqus_thread">
+    </div>
+    <script type="text/javascript" src="http://disqus.com/forums/superfeedr-thoughts/embed.js"></script>
+    <noscript>
+        <a href="http://superfeedr-thoughts.disqus.com/?url=ref">View the discussion thread.</a>
+    </noscript>
+    <a href="http://disqus.com" class="dsq-brlink">blog comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+
+    </div> <!--content-->
+
+    <div id="footer">
+      <ul id="footer_navigation">
+        <li><a href="http://documentation.superfeedr.com">Docs</a></li>
+        <li><a href="https://github.com/superfeedr/documentation/issues">Support</a></li>
+        <li><a href="http://blog.superfeedr.com">Blog</a></li>
+        <li><a href="https://superfeedr.com/cost">Pricing</a></li>
+        <li><a href="https://superfeedr.com/terms">Terms</a></li>
+      </ul>
+    </div>
+    <div id="log" style="" ></div>
+  </div> <!--main_bg-->
+</div><!--wrapper-->
+</div><!--bg-->
+<script type="text/javascript">
+  var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+  document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+  <!--//--><![CDATA[//><!--
+  try {
+      var pageTracker = _gat._getTracker('UA-9285763-1');
+      pageTracker._setDomainName("superfeedr.com");
+      pageTracker._initData();
+      pageTracker._trackPageview();
+  } catch(err) {}
+  //--><!]]>
+</script>
+</body>
+</html>

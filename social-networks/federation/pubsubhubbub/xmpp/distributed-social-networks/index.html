@@ -1,0 +1,105 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>Superfeedr : Distributed and Federated Social Networks </title>
+  <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+  <meta name="google-site-verification" content="ofroHQ3qXBS1SQfblK9-U_oduGZ975Bb3i_uP13Myao" />
+
+  <!-- Stylesheets -->
+  <link href="http://yui.yahooapis.com/3.1.1/build/cssreset/reset-min.css" media="screen" rel="stylesheet" type="text/css" />
+  <link href="http://superfeedr.com/stylesheets/superfeedr.css" media="screen" rel="stylesheet" type="text/css" />
+  <link href="http://superfeedr.com/stylesheets/print.css" media="print" rel="stylesheet" type="text/css" />
+  <link href="http://superfeedr.com/stylesheets/shjs/sh_nedit.min.css" media="screen" rel="stylesheet" type="text/css" />
+  <link href="http://superfeedr.com/stylesheets/thickbox.css" media="screen" rel="stylesheet" type="text/css" />
+  <link href="/css/blog.css" media="screen" rel="stylesheet" type="text/css" />
+  <link rel="alternate" type="application/atom+xml" title="Atom Feed" href="/atom.xml">
+
+ </head>
+
+ <body class="blog">
+   <div id="bg">
+     <div id="wrapper">
+      <div id="logo">
+       <a href="http://superfeedr.com" class="home"><img alt="Superfeedr" src="http://superfeedr.com/images/superfeedr_complete.png" /></a>
+     </div>
+     <ul id="navigation">
+      <li><a href="http://documentation.superfeedr.com" alt="RTFM">Documentation</a></li>
+      <li><a href="http://superfeedr.com/about" alt="All you wanted to know. Almost">About</a></li>
+    </ul>
+    <div class="clear"></div>
+    <div id="main_bg">
+      <div id="main_top">
+       <h1>Distributed and Federated Social Networks</h1>
+     </div> <!--main_top-->
+
+     <div id="content">
+        <div id="post">
+    <h2>Distributed and Federated Social Networks</h2>
+    <div style="color:#666; font-size:0.9em; margin-bottom: 20px"><img style="float:left; margin: -2px 3px 3px 0px" src="http://www.gravatar.com/avatar/b30ce50678f0e934eaa6697425c59dd7?s=20" >By <a href="http://ouvre-boite.com">Julien</a>, on 21 Dec 2009</div>
+<p>There <a href="http://staynalive.com/articles/2009/12/19/developers-its-time-to-open-up-twitters-api/">is</a> <a href="http://code-bear.com/bearlog/2009/12/20/responding-to-jesses-call-to-open-twitters-api/">a lot</a> of debate around on <a href="http://groups.google.com/group/opentwitter">OpenTwitter</a>, <a href="http://bit.ly/4voQKK">OpenFriendFeed</a> <a href="http://bit.ly/8J9SIv">OpenFacebook</a>.  these days. The <a href="http://www.avc.com/a_vc/2009/12/open-apis-and-open-standards.html">de-facto standard</a> which is now Twitter&#8217;s <span class="caps">API</span> is a good news. Yet, social Networks have 2 big features : <strong>publish content</strong> (it seems that Twitter&#8217;s <span class="caps">API</span> is the reference now), and <strong>consume content</strong> from your friends. This second part seems much harder and I think <strong>PubSubHubbub</strong> and <strong><span class="caps">XMPP</span></strong> can provide this <span class="caps">API</span>.</p>
+<p>Whatever the social network, user profiles usually have a link (Atom or <span class="caps">RSS</span>) which represents a user&#8217;s stream of activities. Whether it&#8217;s <a href="http://www.flickr.com/photos/juliengenestoux">Flickr</a>, <a href="http://delicious.com/julien51">Delicious</a>, <a href="http://twitter.com/julien51">Twitter</a>, or even your blog (yes, it&#8217;s a social network in a way), <em>all our online activities are represented as feeds</em>.</p>
+<p>The next step is to make these feeds &#8220;real-time&#8221; so that the consuming applications shouldn&#8217;t need to poll thousands of feeds or services. <em>To consume my friends information, I shouldn&#8217;t even need to be part of the network on which they publish</em>. <strong>PubSubHubbub enables that</strong>.</p>
+<p>I like consuming my friend&#8217;s feed via Facebook. Yet, a lot of my friend&#8217;s content is not there : their tweets, the pictures they post on Flickr, etc&#8230; and some of my friends are not even on Facebook.</p>
+<p>I wish somebody (<a href="http://tweetdeck.com/">Tweetdeck</a>, <a href="http://seesmic.com/">Seesmic</a>, <a href="http://brizzly.com/">Brizzly</a>&#8230; can you hear me?) would have a <strong>built-in PubSubHubbub subscriber</strong>. Then they would allow me to paste one of my friend&#8217;s profile page on <a href="http://www.last.fm/user/julien51">Last.fm</a> or Foursquare (or allow me to select directly pages on specific services). From that page, they would <em>auto-discover the feed</em>, and <em>then its hub and subscribe to it</em>. Finally, when my friends update their social network (provided that this one uses PubSubHubbub to make its feeds real-time, but <a href="http://superfeedr.com/publisher">we can help</a>), I would receive instantly the update into my <strong>Social Network consuming app</strong>.</p>
+<p>When publishing my content, I shouldn&#8217;t have to publish it on 36 different services just to make sure all my friends will get it. It should go wherever my friends will consume it!</p>
+</div>
+
+<blockquote>
+  <p>Liked this post? <input type="button" onclick="(function(){var z=document.createElement('script');z.src='http://www.subtome.com/load.js';document.body.appendChild(z);})()" value="Follow this blog!" /> to get more or read the <a href="/archive.html">archive</a>.</p>
+</blockquote>
+
+
+<small class="meta">
+  <a href='http://www.google.com/search?q=social-networks+site:blog.superfeedr.com'>social-networks</a>, 
+  
+  <a href='http://www.google.com/search?q=federation+site:blog.superfeedr.com'>federation</a>, 
+  
+  <a href='http://www.google.com/search?q=pubsubhubbub+site:blog.superfeedr.com'>pubsubhubbub</a>, 
+  
+  <a href='http://www.google.com/search?q=xmpp+site:blog.superfeedr.com'>xmpp</a>
+  
+</small>
+
+<div id="comments">
+    <h2>Comments</h2>
+    <div id="disqus_thread">
+    </div>
+    <script type="text/javascript" src="http://disqus.com/forums/superfeedr-thoughts/embed.js"></script>
+    <noscript>
+        <a href="http://superfeedr-thoughts.disqus.com/?url=ref">View the discussion thread.</a>
+    </noscript>
+    <a href="http://disqus.com" class="dsq-brlink">blog comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+
+    </div> <!--content-->
+
+    <div id="footer">
+      <ul id="footer_navigation">
+        <li><a href="http://documentation.superfeedr.com">Docs</a></li>
+        <li><a href="https://github.com/superfeedr/documentation/issues">Support</a></li>
+        <li><a href="http://blog.superfeedr.com">Blog</a></li>
+        <li><a href="https://superfeedr.com/cost">Pricing</a></li>
+        <li><a href="https://superfeedr.com/terms">Terms</a></li>
+      </ul>
+    </div>
+    <div id="log" style="" ></div>
+  </div> <!--main_bg-->
+</div><!--wrapper-->
+</div><!--bg-->
+<script type="text/javascript">
+  var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+  document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+  <!--//--><![CDATA[//><!--
+  try {
+      var pageTracker = _gat._getTracker('UA-9285763-1');
+      pageTracker._setDomainName("superfeedr.com");
+      pageTracker._initData();
+      pageTracker._trackPageview();
+  } catch(err) {}
+  //--><!]]>
+</script>
+</body>
+</html>

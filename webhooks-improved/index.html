@@ -1,0 +1,132 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>Superfeedr : PubSubHubbub is webhooks with benefits </title>
+  <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+  <meta name="google-site-verification" content="ofroHQ3qXBS1SQfblK9-U_oduGZ975Bb3i_uP13Myao" />
+
+  <!-- Stylesheets -->
+  <link href="http://yui.yahooapis.com/3.1.1/build/cssreset/reset-min.css" media="screen" rel="stylesheet" type="text/css" />
+  <link href="http://superfeedr.com/stylesheets/superfeedr.css" media="screen" rel="stylesheet" type="text/css" />
+  <link href="http://superfeedr.com/stylesheets/print.css" media="print" rel="stylesheet" type="text/css" />
+  <link href="http://superfeedr.com/stylesheets/shjs/sh_nedit.min.css" media="screen" rel="stylesheet" type="text/css" />
+  <link href="http://superfeedr.com/stylesheets/thickbox.css" media="screen" rel="stylesheet" type="text/css" />
+  <link href="/css/blog.css" media="screen" rel="stylesheet" type="text/css" />
+  <link rel="alternate" type="application/atom+xml" title="Atom Feed" href="/atom.xml">
+
+ </head>
+
+ <body class="blog">
+   <div id="bg">
+     <div id="wrapper">
+      <div id="logo">
+       <a href="http://superfeedr.com" class="home"><img alt="Superfeedr" src="http://superfeedr.com/images/superfeedr_complete.png" /></a>
+     </div>
+     <ul id="navigation">
+      <li><a href="http://documentation.superfeedr.com" alt="RTFM">Documentation</a></li>
+      <li><a href="http://superfeedr.com/about" alt="All you wanted to know. Almost">About</a></li>
+    </ul>
+    <div class="clear"></div>
+    <div id="main_bg">
+      <div id="main_top">
+       <h1>PubSubHubbub is webhooks with benefits</h1>
+     </div> <!--main_top-->
+
+     <div id="content">
+        <div id="post">
+    <h2>PubSubHubbub is webhooks with benefits</h2>
+    <div style="color:#666; font-size:0.9em; margin-bottom: 20px"><img style="float:left; margin: -2px 3px 3px 0px" src="http://www.gravatar.com/avatar/b30ce50678f0e934eaa6697425c59dd7?s=20" >By <a href="http://ouvre-boite.com">Julien</a>, on 28 Dec 2013</div>
+<p><a href='http://en.wikipedia.org/wiki/Webhook'>Webhooks</a> provide a very elegant solution to the <em>polling problem</em>, and many popular APIs such as <a href='http://developer.github.com/v3/repos/hooks/'>Github</a>, <a href='http://apidocs.mailchimp.com/webhooks/'>Mailchimp</a>, <a href='http://instagram.com/developer/realtime/#'>Instagram</a> or even <a href='http://docs.shopify.com/manual/settings/notifications/webhooks'>Shopify</a> provide such hooks.</p>
+
+<p>However, we will see that they also have a bunch of limitations which are elegantly solved by <a href='https://en.wikipedia.org/wiki/PubSubHubbub'>PubSubHubbub</a> and we want to encourage people with Webhook systems to consider these problems and maybe implement PubSubHubbub on top of them.</p>
+
+<p><em>Note: Even though PubSubHubbub was initially designed for RSS and Atom, <a href='https://superfeedr-misc.s3.amazonaws.com/pubsubhubbub-core-0.4.html'>its latest iteration</a> is now completely agnostic as to what data is exchanged, making it very suitable for JSON resouces</em></p>
+
+<h3 id='automation'>Automation</h3>
+
+<p>Most webhooks patterns will require the developer to <em>manually</em> enter the callback on a specific interface. In practice it means that it&#8217;s quite hard to automate (using a script) the addition or removal of a webhook.</p>
+
+<p>Even though some services may have an API to add a callback, it&#8217;s specific to each of them.</p>
+
+<p>PubSubHubbub provides a simple REST API, using a what we call a hub url (an API endpoint). Send a simple POST request to either set a hook: <code>hub.mode=subscribe</code> or remove it: <code>hub.mode=unsubscribe</code> along with the resource (<code>hub.topic</code>) to which you want to hook (<code>hub.callback</code>) and the webhook to use.</p>
+
+<h3 id='discovery'>Discovery</h3>
+
+<p>Now, even if an API allows for automation of addition and removal of a hook, you&#8217;ll still need to find what&#8217;s the resource to which you can subscribe, and what&#8217;s the endpoint (the hub) to which you need to send these requests. This is where <strong>discovery</strong> comes handy.</p>
+
+<p>The discovery pattern is actually quite common and defines how to find &#8216;linked&#8217; resources. For example, using HTML, you can find the <a href='http://en.wikipedia.org/wiki/Favicon'>favicon</a> of a page using the <code>&lt;link&gt;</code> pattern.</p>
+
+<p>PubSubHubbub provides a similar discovery pattern which relies on the <a href='http://www.w3.org/wiki/LinkHeader'>Link HTTP header</a>. It&#8217;s a simple mechanism which allows any resource to point to the subscription endpoint, which we call <strong>hub</strong> in PuSH. Since we use the HTTP headers, it obviously works for any type of HTTP accessible ressource (from JSON to images&#8230; etc).</p>
+
+<h3 id='dialback'>Dialback</h3>
+
+<p>Most webhook mechanism are subject to some kind of <em>denial of service attack</em>. In practice, nothing prevents a malicious user from entering any url in a webhook form, so that the API will be the one sending POST request to the webhook upon updates. If the updates are frequent enough, it&#8217;s possible to harm the recipient of all these notifications.</p>
+
+<p>It&#8217;s also possible to imagine a webhook that communicates back with the API again, triggering more webhooks&#8230; and generating loops which can be hamrful for the API.</p>
+
+<p>An easy workaround to such threats is to perform a dialback. When the API gets a new webhook, it could call it and <em>expect</em> a specific result. If the condition is met, then the hook can be saved, and if not, it should be dropped. That&#8217;s what PubSubHubbub does with its <a href='https://superfeedr-misc.s3.amazonaws.com/pubsubhubbub-core-0.4.html#verifysub'>verification of intent</a> mechanism.</p>
+
+<p>Using such a pattern also removes the need for user accounts when implementing a webhook system for simple applications with no user account logic.</p>
+
+<h3 id='authenticated_delivery'>Authenticated delivery</h3>
+
+<p>Another security threat when dealing with webhooks is to make sure that the <em>service calling the webhook is the service with which this webhook had been registered</em>. Of course, it is recommanded to use <strong>obfuscated</strong> -hard to guess- urls for your webhooks, but that&#8217;s not secure and if someone eventually guesses the url, there is a significant risk of receiving <strong>forged</strong> data.</p>
+
+<p>PubSubHubbub solves that thru the use of a secret exchanged upon subscription (using SSL!). The secret is then used to compute and <a href='http://en.wikipedia.org/wiki/Hash-based_message_authentication_code'>HMAC signature</a> passed along for delivery and the recipient should check that that provided signature is the same as the computed one and drop the data if they differ.</p>
+
+<h3 id='reusing_code'>Reusing code</h3>
+
+<p><strong>PubSubHubbub is just a simple layer on top of webhooks</strong> which makes a lot of aspects easier and more secure. It provides simple and standard mechanisms which can be implemented in re-usable code.</p>
+</div>
+
+<blockquote>
+  <p>Liked this post? <input type="button" onclick="(function(){var z=document.createElement('script');z.src='http://www.subtome.com/load.js';document.body.appendChild(z);})()" value="Follow this blog!" /> to get more or read the <a href="/archive.html">archive</a>.</p>
+</blockquote>
+
+
+<small class="meta">
+</small>
+
+<div id="comments">
+    <h2>Comments</h2>
+    <div id="disqus_thread">
+    </div>
+    <script type="text/javascript" src="http://disqus.com/forums/superfeedr-thoughts/embed.js"></script>
+    <noscript>
+        <a href="http://superfeedr-thoughts.disqus.com/?url=ref">View the discussion thread.</a>
+    </noscript>
+    <a href="http://disqus.com" class="dsq-brlink">blog comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+
+    </div> <!--content-->
+
+    <div id="footer">
+      <ul id="footer_navigation">
+        <li><a href="http://documentation.superfeedr.com">Docs</a></li>
+        <li><a href="https://github.com/superfeedr/documentation/issues">Support</a></li>
+        <li><a href="http://blog.superfeedr.com">Blog</a></li>
+        <li><a href="https://superfeedr.com/cost">Pricing</a></li>
+        <li><a href="https://superfeedr.com/terms">Terms</a></li>
+      </ul>
+    </div>
+    <div id="log" style="" ></div>
+  </div> <!--main_bg-->
+</div><!--wrapper-->
+</div><!--bg-->
+<script type="text/javascript">
+  var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+  document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+  <!--//--><![CDATA[//><!--
+  try {
+      var pageTracker = _gat._getTracker('UA-9285763-1');
+      pageTracker._setDomainName("superfeedr.com");
+      pageTracker._initData();
+      pageTracker._trackPageview();
+  } catch(err) {}
+  //--><!]]>
+</script>
+</body>
+</html>

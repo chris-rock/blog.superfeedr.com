@@ -1,0 +1,97 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>Superfeedr : JSON PubSubHubbub Notifications </title>
+  <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+  <meta name="google-site-verification" content="ofroHQ3qXBS1SQfblK9-U_oduGZ975Bb3i_uP13Myao" />
+
+  <!-- Stylesheets -->
+  <link href="http://yui.yahooapis.com/3.1.1/build/cssreset/reset-min.css" media="screen" rel="stylesheet" type="text/css" />
+  <link href="http://superfeedr.com/stylesheets/superfeedr.css" media="screen" rel="stylesheet" type="text/css" />
+  <link href="http://superfeedr.com/stylesheets/print.css" media="print" rel="stylesheet" type="text/css" />
+  <link href="http://superfeedr.com/stylesheets/shjs/sh_nedit.min.css" media="screen" rel="stylesheet" type="text/css" />
+  <link href="http://superfeedr.com/stylesheets/thickbox.css" media="screen" rel="stylesheet" type="text/css" />
+  <link href="/css/blog.css" media="screen" rel="stylesheet" type="text/css" />
+  <link rel="alternate" type="application/atom+xml" title="Atom Feed" href="/atom.xml">
+
+ </head>
+
+ <body class="blog">
+   <div id="bg">
+     <div id="wrapper">
+      <div id="logo">
+       <a href="http://superfeedr.com" class="home"><img alt="Superfeedr" src="http://superfeedr.com/images/superfeedr_complete.png" /></a>
+     </div>
+     <ul id="navigation">
+      <li><a href="http://documentation.superfeedr.com" alt="RTFM">Documentation</a></li>
+      <li><a href="http://superfeedr.com/about" alt="All you wanted to know. Almost">About</a></li>
+    </ul>
+    <div class="clear"></div>
+    <div id="main_bg">
+      <div id="main_top">
+       <h1>JSON PubSubHubbub Notifications</h1>
+     </div> <!--main_top-->
+
+     <div id="content">
+        <div id="post">
+    <h2>JSON PubSubHubbub Notifications</h2>
+    <div style="color:#666; font-size:0.9em; margin-bottom: 20px"><img style="float:left; margin: -2px 3px 3px 0px" src="http://www.gravatar.com/avatar/b30ce50678f0e934eaa6697425c59dd7?s=20" >By <a href="http://ouvre-boite.com">Julien</a>, on 08 Nov 2010</div>
+<p>At Superfeedr, our biggest focus is to <strong>make <span class="caps">RSS</span>/Atom feeds consumption much easier</strong> than what it was, just a year ago. Of course, the &#8220;transportation&#8221; part of it is a big issue. Polling was the only way up to a few months ago. It&#8217;s now less and less the case and pushing the <a href="http://superfeedr.com/publisher">PubSubHubbub protocol for publishers</a> is a way to solve this pain. <em>Another pain is to parse the <span class="caps">XML</span></em>, not only because there are multiple flavors of it : <span class="caps">RSS</span>, Atom, and all their versions and sub-namespaces, but also because of all the invalid feeds that we have out there in the wild. <strong>Normalization to Atom is our way to fix this</strong>.</p>
+<p>However, for many people, <em>even clean Atom doesn&#8217;t cut it</em>. It&#8217;s still <span class="caps">XML</span> and, even though there are a lot of libraries that make parsing easy in almost any language, many people are still struggling with it. From there we had 2 solutions. The first one is tell people that <span class="caps">XML</span> is like violence : if it doesn&#8217;t solve their problems, it&#8217;s because they don&#8217;t use it enough. Or, consider pushing them the data in another format, while keeping the same schema.</p>
+<p><span class="caps">JSON</span> is the new cool kid. It&#8217;s not nearly as rich as <span class="caps">XML</span>, but it&#8217;s also not nearly as complex. If you&#8217;d like more on this debate, feel free to read <a href="http://stackoverflow.com/questions/3536893/what-are-the-pros-and-cons-of-xml-and-json">this StackOverflow thread</a>. From today, Superfeedr is also able to send you the data that we got from feeds in a <span class="caps">JSON</span> format.</p>
+<p>We tried to keep this <span class="caps">JSON</span> format consistent with the <span class="caps">JSON</span> version of ActivityStreams, and also tried to be compatible with the OSync format. Here is a sample right below. <small>Please note that not all fields may be present in the actual notifications</small> :</p>
+<script src="https://gist.github.com/667892.js?file=superfeedr.json"></script><p>Now, as everybody knows <span class="caps">XMPP</span> relies on <span class="caps">XML</span>, and it just felt really weird to send <span class="caps">JSON</span> payloads inside <span class="caps">XML</span> to people because they would struggle parsing <span class="caps">XML</span>, so it&#8217;s currently limited to the <a href="http://documentation.superfeedr.com/subscribers.html#webhooks">PubSubHubbub <span class="caps">API</span></a>. Rather than extending PubSubHubbub with another extra param, we re-used <a href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html">HTTP&#8217;s Accept Header</a>. When you subscribe, just add a <span class="caps">HTTP</span> header to your subscription with the <span class="caps">JSON</span> mime-type : <code>Accept: application/json</code>. We will then push you a <span class="caps">JSON</span> version of the feeds.</p>
+<p>This feature is still mostly experimental, and we&#8217;re expecting a lot of feedback and comments to improve it in the coming weeks.</p>
+</div>
+
+<blockquote>
+  <p>Liked this post? <input type="button" onclick="(function(){var z=document.createElement('script');z.src='http://www.subtome.com/load.js';document.body.appendChild(z);})()" value="Follow this blog!" /> to get more or read the <a href="/archive.html">archive</a>.</p>
+</blockquote>
+
+
+<small class="meta">
+</small>
+
+<div id="comments">
+    <h2>Comments</h2>
+    <div id="disqus_thread">
+    </div>
+    <script type="text/javascript" src="http://disqus.com/forums/superfeedr-thoughts/embed.js"></script>
+    <noscript>
+        <a href="http://superfeedr-thoughts.disqus.com/?url=ref">View the discussion thread.</a>
+    </noscript>
+    <a href="http://disqus.com" class="dsq-brlink">blog comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+
+    </div> <!--content-->
+
+    <div id="footer">
+      <ul id="footer_navigation">
+        <li><a href="http://documentation.superfeedr.com">Docs</a></li>
+        <li><a href="https://github.com/superfeedr/documentation/issues">Support</a></li>
+        <li><a href="http://blog.superfeedr.com">Blog</a></li>
+        <li><a href="https://superfeedr.com/cost">Pricing</a></li>
+        <li><a href="https://superfeedr.com/terms">Terms</a></li>
+      </ul>
+    </div>
+    <div id="log" style="" ></div>
+  </div> <!--main_bg-->
+</div><!--wrapper-->
+</div><!--bg-->
+<script type="text/javascript">
+  var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+  document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+  <!--//--><![CDATA[//><!--
+  try {
+      var pageTracker = _gat._getTracker('UA-9285763-1');
+      pageTracker._setDomainName("superfeedr.com");
+      pageTracker._initData();
+      pageTracker._trackPageview();
+  } catch(err) {}
+  //--><!]]>
+</script>
+</body>
+</html>

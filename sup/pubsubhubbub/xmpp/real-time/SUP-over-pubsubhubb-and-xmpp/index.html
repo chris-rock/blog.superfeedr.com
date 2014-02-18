@@ -1,0 +1,103 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>Superfeedr : SUP over PubSubHubbub and XMPP </title>
+  <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+  <meta name="google-site-verification" content="ofroHQ3qXBS1SQfblK9-U_oduGZ975Bb3i_uP13Myao" />
+
+  <!-- Stylesheets -->
+  <link href="http://yui.yahooapis.com/3.1.1/build/cssreset/reset-min.css" media="screen" rel="stylesheet" type="text/css" />
+  <link href="http://superfeedr.com/stylesheets/superfeedr.css" media="screen" rel="stylesheet" type="text/css" />
+  <link href="http://superfeedr.com/stylesheets/print.css" media="print" rel="stylesheet" type="text/css" />
+  <link href="http://superfeedr.com/stylesheets/shjs/sh_nedit.min.css" media="screen" rel="stylesheet" type="text/css" />
+  <link href="http://superfeedr.com/stylesheets/thickbox.css" media="screen" rel="stylesheet" type="text/css" />
+  <link href="/css/blog.css" media="screen" rel="stylesheet" type="text/css" />
+  <link rel="alternate" type="application/atom+xml" title="Atom Feed" href="/atom.xml">
+
+ </head>
+
+ <body class="blog">
+   <div id="bg">
+     <div id="wrapper">
+      <div id="logo">
+       <a href="http://superfeedr.com" class="home"><img alt="Superfeedr" src="http://superfeedr.com/images/superfeedr_complete.png" /></a>
+     </div>
+     <ul id="navigation">
+      <li><a href="http://documentation.superfeedr.com" alt="RTFM">Documentation</a></li>
+      <li><a href="http://superfeedr.com/about" alt="All you wanted to know. Almost">About</a></li>
+    </ul>
+    <div class="clear"></div>
+    <div id="main_bg">
+      <div id="main_top">
+       <h1>SUP over PubSubHubbub and XMPP</h1>
+     </div> <!--main_top-->
+
+     <div id="content">
+        <div id="post">
+    <h2>SUP over PubSubHubbub and XMPP</h2>
+    <div style="color:#666; font-size:0.9em; margin-bottom: 20px"><img style="float:left; margin: -2px 3px 3px 0px" src="http://www.gravatar.com/avatar/b30ce50678f0e934eaa6697425c59dd7?s=20" >By <a href="http://ouvre-boite.com">Julien</a>, on 12 Nov 2009</div>
+<p>The <a href="http://code.google.com/p/simpleupdateprotocol/">Simple Update Protocol</a> is one of the <em>very first protocols that was built to help feed polling</em>. It makes it easy to find the <strong>most appropriate time to fetch a feed</strong>.</p>
+<p><img src="http://i.friendfeed.com/p-5d0e55aafb6a4caebe266f733dd84772-large-1" style="float:left; padding-right:20px;" alt="" />Created by the <a href="http://friendfeed.com/">FriendFeed</a> team, the idea is, for a publisher, to keep track of all the feeds that have been updated in a <a href="http://friendfeed.com/api/sup.json?pretty=1">sup file</a>. Then, a subscriber instead of querying the feed over and over again, just have to query this sup file. If a poller is just polling one feed, that&#8217;s not better, but if you&#8217;re tracking 1000 feeds, instead of polling them all, you just need to poll that specific <span class="caps">SUP</span> file.</p>
+<p>One of the issues is that <strong>it&#8217;s not immediate</strong>, these <span class="caps">SUP</span> feed have a &#8220;period&#8221; and contain all the feeds that have been updated in that given period. The standard is 60sec though, so it shouldn&#8217;t be too &#8220;late&#8221;! Another issue is that these <span class="caps">SUP</span> <strong>can contain a <span class="caps">LOT</span> of feeds</strong>, so if you don&#8217;t have an very fast and efficient way to compare all the entries in this file to see if you&#8217;re actually tracking a specific feed, <em>it may be quite &#8220;complex&#8221; to be sure to get all the updates</em>.</p>
+<p>Anyway, I have no idea why I&#8217;m telling you this, because, as a matter of fact, <strong>you don&#8217;t need to implement <span class="caps">SUP</span></strong>, because Superfeedr does it for you. Give us a <span class="caps">SUP</span> enabled feed (from <a href="http://www.backtype.com/">BackType</a>, <a href="http://disqus.com/overview/">Disqus</a>, <a href="http://friendfeed.com/">Friendfeed</a>, <a href="http://12seconds.tv/">12seconds.tv</a>&#8230; etc), and <strong>we&#8217;ll fetch the right <span class="caps">SUP</span> file and you&#8217;ll get your content in a &#8220;close to real-time&#8221; fashion, via PubSubHubbub or <span class="caps">XMPP</span></strong>, exactly like we did for <a href="http://blog.superfeedr.com/PubSubHubbub/api/rsscloud/RSSCloud/">RSSCloud</a>!</p>
+</div>
+
+<blockquote>
+  <p>Liked this post? <input type="button" onclick="(function(){var z=document.createElement('script');z.src='http://www.subtome.com/load.js';document.body.appendChild(z);})()" value="Follow this blog!" /> to get more or read the <a href="/archive.html">archive</a>.</p>
+</blockquote>
+
+
+<small class="meta">
+  <a href='http://www.google.com/search?q=sup+site:blog.superfeedr.com'>sup</a>, 
+  
+  <a href='http://www.google.com/search?q=pubsubhubbub+site:blog.superfeedr.com'>pubsubhubbub</a>, 
+  
+  <a href='http://www.google.com/search?q=xmpp+site:blog.superfeedr.com'>xmpp</a>, 
+  
+  <a href='http://www.google.com/search?q=real-time+site:blog.superfeedr.com'>real-time</a>
+  
+</small>
+
+<div id="comments">
+    <h2>Comments</h2>
+    <div id="disqus_thread">
+    </div>
+    <script type="text/javascript" src="http://disqus.com/forums/superfeedr-thoughts/embed.js"></script>
+    <noscript>
+        <a href="http://superfeedr-thoughts.disqus.com/?url=ref">View the discussion thread.</a>
+    </noscript>
+    <a href="http://disqus.com" class="dsq-brlink">blog comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+
+    </div> <!--content-->
+
+    <div id="footer">
+      <ul id="footer_navigation">
+        <li><a href="http://documentation.superfeedr.com">Docs</a></li>
+        <li><a href="https://github.com/superfeedr/documentation/issues">Support</a></li>
+        <li><a href="http://blog.superfeedr.com">Blog</a></li>
+        <li><a href="https://superfeedr.com/cost">Pricing</a></li>
+        <li><a href="https://superfeedr.com/terms">Terms</a></li>
+      </ul>
+    </div>
+    <div id="log" style="" ></div>
+  </div> <!--main_bg-->
+</div><!--wrapper-->
+</div><!--bg-->
+<script type="text/javascript">
+  var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+  document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+  <!--//--><![CDATA[//><!--
+  try {
+      var pageTracker = _gat._getTracker('UA-9285763-1');
+      pageTracker._setDomainName("superfeedr.com");
+      pageTracker._initData();
+      pageTracker._trackPageview();
+  } catch(err) {}
+  //--><!]]>
+</script>
+</body>
+</html>

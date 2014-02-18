@@ -1,0 +1,117 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>Superfeedr : Unicorn </title>
+  <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+  <meta name="google-site-verification" content="ofroHQ3qXBS1SQfblK9-U_oduGZ975Bb3i_uP13Myao" />
+
+  <!-- Stylesheets -->
+  <link href="http://yui.yahooapis.com/3.1.1/build/cssreset/reset-min.css" media="screen" rel="stylesheet" type="text/css" />
+  <link href="http://superfeedr.com/stylesheets/superfeedr.css" media="screen" rel="stylesheet" type="text/css" />
+  <link href="http://superfeedr.com/stylesheets/print.css" media="print" rel="stylesheet" type="text/css" />
+  <link href="http://superfeedr.com/stylesheets/shjs/sh_nedit.min.css" media="screen" rel="stylesheet" type="text/css" />
+  <link href="http://superfeedr.com/stylesheets/thickbox.css" media="screen" rel="stylesheet" type="text/css" />
+  <link href="/css/blog.css" media="screen" rel="stylesheet" type="text/css" />
+  <link rel="alternate" type="application/atom+xml" title="Atom Feed" href="/atom.xml">
+
+ </head>
+
+ <body class="blog">
+   <div id="bg">
+     <div id="wrapper">
+      <div id="logo">
+       <a href="http://superfeedr.com" class="home"><img alt="Superfeedr" src="http://superfeedr.com/images/superfeedr_complete.png" /></a>
+     </div>
+     <ul id="navigation">
+      <li><a href="http://documentation.superfeedr.com" alt="RTFM">Documentation</a></li>
+      <li><a href="http://superfeedr.com/about" alt="All you wanted to know. Almost">About</a></li>
+    </ul>
+    <div class="clear"></div>
+    <div id="main_bg">
+      <div id="main_top">
+       <h1>Unicorn</h1>
+     </div> <!--main_top-->
+
+     <div id="content">
+        <div id="post">
+    <h2>Unicorn</h2>
+    <div style="color:#666; font-size:0.9em; margin-bottom: 20px"><img style="float:left; margin: -2px 3px 3px 0px" src="http://www.gravatar.com/avatar/b30ce50678f0e934eaa6697425c59dd7?s=20" >By <a href="http://ouvre-boite.com">Julien</a>, on 29 Mar 2010</div>
+<p><img src="http://github.com/images/error/angry_unicorn.png" style="float:left; padding:10px;" alt="" /></p>
+<p>In the past few weeks, our web server have really been pushed to limits that we weren&#8217;t expecting to reach so quickly. We&#8217;re now receiving between <strong>150 and 300 requests</strong> per second. Some of them are <a href="http://documentation.superfeedr.com/subscribers.html#webhooks">PubSubHubbub subscriptions</a>, but the bulk of it is pings that we receive for the various hubs that we host.</p>
+<p>This brought a whole lot of issues in the past weeks. Issues that we decided to address by <strong>splitting the web server and the app server</strong>. Up until now, we were using <a href="http://www.modrails.com/">Passenger</a> and <a href="http://nginx.org/">Nginx</a>. We now use the new cool kid in the field: <a href="http://unicorn.bogomips.org/">Unicorn</a> to serve the app.</p>
+<p>The migration was easy : we set up a new server from the ground, and, since we host our <span class="caps">DNS</span> server, we just changed the <span class="caps">DNS</span> to the IP of this new server. The old one is still &#8220;on&#8221; for a week, after which we will turn it off.</p>
+<h3>Recipe</h3>
+<p>A 2GB server, with Ubuntu. A base of <a href="http://www.rubyenterpriseedition.com/">Ruby Enterprise Edition</a>, as for most of our Ruby programs. Nginx as the web server, and, Unicorn to serve the Rails app.</p>
+<p>Settings were quite easy too. We mostly copied what was available in the <a href="http://unicorn.bogomips.org/Unicorn/Configurator.html">Unicorn doc</a>. Here is for the NginX :<br />
+<script src="http://gist.github.com/347898.js?file=gistfile1.txt"></script><br />
+Note that we have similar settings for <code>https</code> (port 443).</p>
+<p>We then added the <code>unicorn.rb</code> file to our git repo for the web app. Again, we <a href="http://unicorn.bogomips.org/examples/unicorn.conf.rb">copied them from the doc</a>. Here it is:<br />
+<script src="http://gist.github.com/347907.js?file=gistfile1.rb"></script></p>
+<p>As you can see, we disconnect the master unicorn process from MySQL and Mongo before forking, and we connect them (as well as Redis and the Queue) after forking, so they can be used directly by the worker processes.</p>
+<p>Finally, we added a small <code>init.d</code> script to allow easier control of the unicorn processes :<br />
+<script src="http://gist.github.com/347910.js?file=gistfile1.sh"></script></p>
+<p>On a site note, I rewrote the <a href="http://rubygems.org/gems/bosh">Bosh gem</a>. <a href="http://xmpp.org/extensions/xep-0124.html">Bosh</a> is the magic which allows to communicate with an <span class="caps">XMPP</span> server via <span class="caps">HTTP</span>. This gem allows to pre-bind the <span class="caps">XMPP</span> connection (and obfuscate the credentials) for faster handling in the browser, with <a href="http://code.stanziq.com/strophe/">StropheJs</a>, for example. The existing <a href="http://github.com/skyfallsin/ruby_bosh">RubyBOSH</a> worked fine but used <a href="http://hpricot.com/">Hpricot</a> and &#8220;RestClient&#8221;;http://rdoc.info/projects/archiloque/rest-client, while our web app already had dependencies for <a href="http://nokogiri.org/">Nokogiri</a> and <a href="http://github.com/pauldix/typhoeus">Typhoeus</a>. It&#8217;s always good to <em>reduce the memory footprint by removing un-neeede dependencies</em>.</p>
+<p>We have a few more things to fine tune, for our server seems to be much more at ease now :) A small <a href="http://httpd.apache.org/docs/2.0/programs/ab.html">ab</a> benchmark shows us that the new settings as an average response time 20% shorter than with Nginx+Passenger. At the same time, the load on the web server was divided by 2.</p>
+<p>One of the great benefits of that, is that we can already prepare the moment where we&#8217;ll use 2 (or more) instances of unicorn running on different hosts, with Nginx in front of them all. if you want to read more about Unicorn, the <a href="http://github.com/blog/517-unicorn">Github article</a> by <a href="http://github.com/defunkt">@defunkt</a> is probably one of the most complete :)</p>
+<p>Ah, and yes, we got rid of the stripes. Unicorns don&#8217;t have stripes.</p>
+</div>
+
+<blockquote>
+  <p>Liked this post? <input type="button" onclick="(function(){var z=document.createElement('script');z.src='http://www.subtome.com/load.js';document.body.appendChild(z);})()" value="Follow this blog!" /> to get more or read the <a href="/archive.html">archive</a>.</p>
+</blockquote>
+
+
+<small class="meta">
+  <a href='http://www.google.com/search?q=webapp+site:blog.superfeedr.com'>webapp</a>, 
+  
+  <a href='http://www.google.com/search?q=pubsubhubbub+site:blog.superfeedr.com'>pubsubhubbub</a>, 
+  
+  <a href='http://www.google.com/search?q=architecture+site:blog.superfeedr.com'>architecture</a>, 
+  
+  <a href='http://www.google.com/search?q=nnicorn+site:blog.superfeedr.com'>nnicorn</a>
+  
+</small>
+
+<div id="comments">
+    <h2>Comments</h2>
+    <div id="disqus_thread">
+    </div>
+    <script type="text/javascript" src="http://disqus.com/forums/superfeedr-thoughts/embed.js"></script>
+    <noscript>
+        <a href="http://superfeedr-thoughts.disqus.com/?url=ref">View the discussion thread.</a>
+    </noscript>
+    <a href="http://disqus.com" class="dsq-brlink">blog comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+
+    </div> <!--content-->
+
+    <div id="footer">
+      <ul id="footer_navigation">
+        <li><a href="http://documentation.superfeedr.com">Docs</a></li>
+        <li><a href="https://github.com/superfeedr/documentation/issues">Support</a></li>
+        <li><a href="http://blog.superfeedr.com">Blog</a></li>
+        <li><a href="https://superfeedr.com/cost">Pricing</a></li>
+        <li><a href="https://superfeedr.com/terms">Terms</a></li>
+      </ul>
+    </div>
+    <div id="log" style="" ></div>
+  </div> <!--main_bg-->
+</div><!--wrapper-->
+</div><!--bg-->
+<script type="text/javascript">
+  var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+  document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+  <!--//--><![CDATA[//><!--
+  try {
+      var pageTracker = _gat._getTracker('UA-9285763-1');
+      pageTracker._setDomainName("superfeedr.com");
+      pageTracker._initData();
+      pageTracker._trackPageview();
+  } catch(err) {}
+  //--><!]]>
+</script>
+</body>
+</html>

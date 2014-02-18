@@ -1,0 +1,116 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>Superfeedr : Node XMPP Server </title>
+  <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+  <meta name="google-site-verification" content="ofroHQ3qXBS1SQfblK9-U_oduGZ975Bb3i_uP13Myao" />
+
+  <!-- Stylesheets -->
+  <link href="http://yui.yahooapis.com/3.1.1/build/cssreset/reset-min.css" media="screen" rel="stylesheet" type="text/css" />
+  <link href="http://superfeedr.com/stylesheets/superfeedr.css" media="screen" rel="stylesheet" type="text/css" />
+  <link href="http://superfeedr.com/stylesheets/print.css" media="print" rel="stylesheet" type="text/css" />
+  <link href="http://superfeedr.com/stylesheets/shjs/sh_nedit.min.css" media="screen" rel="stylesheet" type="text/css" />
+  <link href="http://superfeedr.com/stylesheets/thickbox.css" media="screen" rel="stylesheet" type="text/css" />
+  <link href="/css/blog.css" media="screen" rel="stylesheet" type="text/css" />
+  <link rel="alternate" type="application/atom+xml" title="Atom Feed" href="/atom.xml">
+
+ </head>
+
+ <body class="blog">
+   <div id="bg">
+     <div id="wrapper">
+      <div id="logo">
+       <a href="http://superfeedr.com" class="home"><img alt="Superfeedr" src="http://superfeedr.com/images/superfeedr_complete.png" /></a>
+     </div>
+     <ul id="navigation">
+      <li><a href="http://documentation.superfeedr.com" alt="RTFM">Documentation</a></li>
+      <li><a href="http://superfeedr.com/about" alt="All you wanted to know. Almost">About</a></li>
+    </ul>
+    <div class="clear"></div>
+    <div id="main_bg">
+      <div id="main_top">
+       <h1>Node XMPP Server</h1>
+     </div> <!--main_top-->
+
+     <div id="content">
+        <div id="post">
+    <h2>Node XMPP Server</h2>
+    <div style="color:#666; font-size:0.9em; margin-bottom: 20px"><img style="float:left; margin: -2px 3px 3px 0px" src="http://www.gravatar.com/avatar/b30ce50678f0e934eaa6697425c59dd7?s=20" >By <a href="http://ouvre-boite.com">Julien</a>, on 26 Aug 2011</div>
+<p>At Superfeedr, we&#8217;ve always been <strong>great fans of node.js</strong>. We believe the ability to use the <em>same language on both servers and clients</em> will breed a whole new generation of web developers that can do amazing work on both ends. Last year already, we released node.js code a couple hours ahead of <a href="http://nodeknockout.com/">NodeKO</a>, and this year, we&#8217;re doing it again.</p>
+<h3>A node KO treat</h3>
+<p><img src="http://nodejs.org/logos/nodejs.png" style="float:left; margin: 5px;" alt="" /></p>
+<p>In the context of the <a href="http://msgboy.com">msgboy</a> (request your invite now!), we had to setup a new <span class="caps">XMPP</span> server. After fighting with <a href="http://www.ejabberd.im/">ejabberd</a>, we installed <a href="http://prosody.im/">Prosody</a>, but we also quickly concluded that we would need a lot of customization, as well as the ability to tweak our server(s) to fit our exact needs.</p>
+<p>Since <a href="http://spaceboyz.net/~astro/">astro</a> had been doing an <strong>amazing work</strong> with his <a href="https://github.com/astro/node-xmpp">node-xmpp</a> library to build <em>Client</em>, <em>Components</em> and even <em>Server to Server</em> modules, the logical next step was to try to build a <em>Client to Server</em> module so that we could have a full blown server. That&#8217;s what we worked on the past couple days, and <a href="https://github.com/superfeedr/node-xmpp">it&#8217;s now on Github</a>!</p>
+<blockquote>
+<p>Beware though&#8230; as it&#8217;s extremely early and some key features are not yet supported. Our biggest challenge is trying to fix a weird <span class="caps">TLS</span> bug. Please help if you can!</p>
+</blockquote>
+<h3>Let&#8217;s get dirty</h3>
+<p>If you&#8217;re brave enough and want to get started, install our branch of node-xmpp from source. You should then be able to run a server by typing<br />
+<code>$ node examples/c2s.js</code></p>
+<p>Now, take your favorite <span class="caps">XMPP</span> client (we used Psi, but you need to make sure it will accept to transmit <span class="caps">PLAIN</span> text passwords over an unencrypted connection) and connect to the server as user@zipline.local. Use <code>password</code> for the password.</p>
+<p>Now, that was <del>relatively</del> easy, and quite useless so far, as you could do that with any <span class="caps">XMPP</span> server out there. The real interest of this one is that we wanted to give full control back to the developer to customize their server as much as they needed. Take a look at the <code>examples/c2s.js</code> file for the code that runs this specific server:</p>
+<ul>
+	<li>Auth is simple: the c2s module will just callback with a username and a password. Your code should then decide whether you want to authorize or not connection, based on your database, or any other piece of application that you want.</li>
+</ul>
+<ul>
+	<li>You can define modules supported by your server from the most popular XEPs, using <code>node-xmpp</code>&#8217;s mixins. The modules should be at the heart of any implementations, as we want to keep the c2s code itself very bare.</li>
+</ul>
+<ul>
+	<li>There are currently 4 events that you can listen to on the C2S module itself : <code>connect, disconnect, authenticate, stanza</code>, which are relatively self explanatory.  The <code>connect</code> event should be used to register mixins to user connections. The <code>stanza</code> event should probably be left empty (unlike in the example), as all meaningful stanzas should probably be treated in mixins.</li>
+</ul>
+<h3>Clustering!</h3>
+<p>Also, you get all the JS magic that lets you rewrite any code without much hassle. One of the key aspects of most <span class="caps">XMPP</span> servers is their -in-ability to be deployed in clusters to handle more users. For those who want to dive in that direction, Redis&#8217;s PubSub provides an elegant solution. Combining this with some sharding on the jids should probably go a long way! You can see in the basic example below that we rewrote the routing mechanism to use Redis and run multiple instances of the same server in a cluster.</p>
+<script src="https://gist.github.com/1174490.js?file=cluster.js"></script>
+</div>
+
+<blockquote>
+  <p>Liked this post? <input type="button" onclick="(function(){var z=document.createElement('script');z.src='http://www.subtome.com/load.js';document.body.appendChild(z);})()" value="Follow this blog!" /> to get more or read the <a href="/archive.html">archive</a>.</p>
+</blockquote>
+
+
+<small class="meta">
+</small>
+
+<div id="comments">
+    <h2>Comments</h2>
+    <div id="disqus_thread">
+    </div>
+    <script type="text/javascript" src="http://disqus.com/forums/superfeedr-thoughts/embed.js"></script>
+    <noscript>
+        <a href="http://superfeedr-thoughts.disqus.com/?url=ref">View the discussion thread.</a>
+    </noscript>
+    <a href="http://disqus.com" class="dsq-brlink">blog comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+
+    </div> <!--content-->
+
+    <div id="footer">
+      <ul id="footer_navigation">
+        <li><a href="http://documentation.superfeedr.com">Docs</a></li>
+        <li><a href="https://github.com/superfeedr/documentation/issues">Support</a></li>
+        <li><a href="http://blog.superfeedr.com">Blog</a></li>
+        <li><a href="https://superfeedr.com/cost">Pricing</a></li>
+        <li><a href="https://superfeedr.com/terms">Terms</a></li>
+      </ul>
+    </div>
+    <div id="log" style="" ></div>
+  </div> <!--main_bg-->
+</div><!--wrapper-->
+</div><!--bg-->
+<script type="text/javascript">
+  var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+  document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+  <!--//--><![CDATA[//><!--
+  try {
+      var pageTracker = _gat._getTracker('UA-9285763-1');
+      pageTracker._setDomainName("superfeedr.com");
+      pageTracker._initData();
+      pageTracker._trackPageview();
+  } catch(err) {}
+  //--><!]]>
+</script>
+</body>
+</html>

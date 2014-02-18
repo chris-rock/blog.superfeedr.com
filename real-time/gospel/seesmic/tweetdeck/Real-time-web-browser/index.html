@@ -1,0 +1,111 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>Superfeedr : Real-Time web browsers </title>
+  <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+  <meta name="google-site-verification" content="ofroHQ3qXBS1SQfblK9-U_oduGZ975Bb3i_uP13Myao" />
+
+  <!-- Stylesheets -->
+  <link href="http://yui.yahooapis.com/3.1.1/build/cssreset/reset-min.css" media="screen" rel="stylesheet" type="text/css" />
+  <link href="http://superfeedr.com/stylesheets/superfeedr.css" media="screen" rel="stylesheet" type="text/css" />
+  <link href="http://superfeedr.com/stylesheets/print.css" media="print" rel="stylesheet" type="text/css" />
+  <link href="http://superfeedr.com/stylesheets/shjs/sh_nedit.min.css" media="screen" rel="stylesheet" type="text/css" />
+  <link href="http://superfeedr.com/stylesheets/thickbox.css" media="screen" rel="stylesheet" type="text/css" />
+  <link href="/css/blog.css" media="screen" rel="stylesheet" type="text/css" />
+  <link rel="alternate" type="application/atom+xml" title="Atom Feed" href="/atom.xml">
+
+ </head>
+
+ <body class="blog">
+   <div id="bg">
+     <div id="wrapper">
+      <div id="logo">
+       <a href="http://superfeedr.com" class="home"><img alt="Superfeedr" src="http://superfeedr.com/images/superfeedr_complete.png" /></a>
+     </div>
+     <ul id="navigation">
+      <li><a href="http://documentation.superfeedr.com" alt="RTFM">Documentation</a></li>
+      <li><a href="http://superfeedr.com/about" alt="All you wanted to know. Almost">About</a></li>
+    </ul>
+    <div class="clear"></div>
+    <div id="main_bg">
+      <div id="main_top">
+       <h1>Real-Time web browsers</h1>
+     </div> <!--main_top-->
+
+     <div id="content">
+        <div id="post">
+    <h2>Real-Time web browsers</h2>
+    <div style="color:#666; font-size:0.9em; margin-bottom: 20px"><img style="float:left; margin: -2px 3px 3px 0px" src="http://www.gravatar.com/avatar/b30ce50678f0e934eaa6697425c59dd7?s=20" >By <a href="http://ouvre-boite.com">Julien</a>, on 08 Oct 2009</div>
+<p><img src="http://www.devx.com/assets/articlefigs/6939.gif" style="float:right;margin:3px;" alt="" /><br />
+The <a href="http://blog.superfeedr.com/gospel/real-time/time-vs-space/">web was geographical</a> (<a href="http://www.arcticstartup.com/2009/09/11/the-web-at-a-new-crossroads/">document-based</a>) until very recently and it is now evolving faster and faster to add a &#8220;time&#8221; dimension. Back in the days, <a href="http://en.wikipedia.org/wiki/Mosaic_(web_browser)">Mosaic</a> was the very first tool to actually browse these sites from a site to another. Unfortunately, <strong>all these browsers were built to deal with documents, not with a stream</strong>. The best proof of that is the presence of a &#8220;reload&#8221; button!</p>
+<p><a href="http://twitter.com">Twitter</a> and <a href="http://facebook.com">facebook</a> are definitely making real-time web mainstream, but they are just &#8220;content&#8221; producers, <strong>we need the browsers to consume that content</strong>. And before the browsers, <em>we need the protocols</em> (I&#8217;ll talk about that later!).</p>
+<p>There are many tools that start to look like this <strong>real-time browser</strong> : <a href="http://seesmic.com">Seesmic</a> is paving the way, <a href="http://tweetdeck.com/beta/">Tweetdeck</a> is another example, but <a href="http://growl.info/">Growl</a> also presents some very interesting features. iPhone applications like <a href="http://appnotifications.com/">AppNotifications</a> can also be considered as real-time web browsers.</p>
+<p>Here is the set of functionalities that I&#8217;d like this stream-browser to implement :</p>
+<ul>
+	<li><strong>Stream-agnostic</strong> : Mosaic could display <em>any</em> web site&#8230; not just and handful of them. Seesmic should be able to receive content from <em>any</em> stream, not just Twitter or Facebook. <em>I want my <span class="caps">RSS</span> feeds</em>, I want my emails, I even want Google news&#8230; etc.</li>
+	<li><strong>Context-Aware</strong> : I want the stream to follow me on the desktop, on my phone, or even by fax (yeah!). If I am on the laptop, it should show the message there, if I am watching TV, it should show it there, and if it&#8217;s 3AM, please, do not notify me.</li>
+	<li><strong>History</strong> : I want to be able to travel back in time.</li>
+	<li><strong>Re-Stream (share)</strong> : exactly like the Re-Tweet functionality on Twitter. The Real-time browser must not be the &#8216;end&#8217; of the stream : data must flow from there to my friends, to other services that I use&#8230; etc.</li>
+</ul>
+<p>I know all that sounds quite ambitious, but we&#8217;re really not too far from there. All the bricks are ready actually, we just need some glue between them.</p>
+</div>
+
+<blockquote>
+  <p>Liked this post? <input type="button" onclick="(function(){var z=document.createElement('script');z.src='http://www.subtome.com/load.js';document.body.appendChild(z);})()" value="Follow this blog!" /> to get more or read the <a href="/archive.html">archive</a>.</p>
+</blockquote>
+
+
+<small class="meta">
+  <a href='http://www.google.com/search?q=real-time+site:blog.superfeedr.com'>real-time</a>, 
+  
+  <a href='http://www.google.com/search?q=gospel+site:blog.superfeedr.com'>gospel</a>, 
+  
+  <a href='http://www.google.com/search?q=seesmic+site:blog.superfeedr.com'>seesmic</a>, 
+  
+  <a href='http://www.google.com/search?q=tweetdeck+site:blog.superfeedr.com'>tweetdeck</a>
+  
+</small>
+
+<div id="comments">
+    <h2>Comments</h2>
+    <div id="disqus_thread">
+    </div>
+    <script type="text/javascript" src="http://disqus.com/forums/superfeedr-thoughts/embed.js"></script>
+    <noscript>
+        <a href="http://superfeedr-thoughts.disqus.com/?url=ref">View the discussion thread.</a>
+    </noscript>
+    <a href="http://disqus.com" class="dsq-brlink">blog comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+
+    </div> <!--content-->
+
+    <div id="footer">
+      <ul id="footer_navigation">
+        <li><a href="http://documentation.superfeedr.com">Docs</a></li>
+        <li><a href="https://github.com/superfeedr/documentation/issues">Support</a></li>
+        <li><a href="http://blog.superfeedr.com">Blog</a></li>
+        <li><a href="https://superfeedr.com/cost">Pricing</a></li>
+        <li><a href="https://superfeedr.com/terms">Terms</a></li>
+      </ul>
+    </div>
+    <div id="log" style="" ></div>
+  </div> <!--main_bg-->
+</div><!--wrapper-->
+</div><!--bg-->
+<script type="text/javascript">
+  var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+  document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+  <!--//--><![CDATA[//><!--
+  try {
+      var pageTracker = _gat._getTracker('UA-9285763-1');
+      pageTracker._setDomainName("superfeedr.com");
+      pageTracker._initData();
+      pageTracker._trackPageview();
+  } catch(err) {}
+  //--><!]]>
+</script>
+</body>
+</html>

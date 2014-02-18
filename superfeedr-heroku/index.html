@@ -1,0 +1,106 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>Superfeedr : Superfeedr Heroku </title>
+  <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+  <meta name="google-site-verification" content="ofroHQ3qXBS1SQfblK9-U_oduGZ975Bb3i_uP13Myao" />
+
+  <!-- Stylesheets -->
+  <link href="http://yui.yahooapis.com/3.1.1/build/cssreset/reset-min.css" media="screen" rel="stylesheet" type="text/css" />
+  <link href="http://superfeedr.com/stylesheets/superfeedr.css" media="screen" rel="stylesheet" type="text/css" />
+  <link href="http://superfeedr.com/stylesheets/print.css" media="print" rel="stylesheet" type="text/css" />
+  <link href="http://superfeedr.com/stylesheets/shjs/sh_nedit.min.css" media="screen" rel="stylesheet" type="text/css" />
+  <link href="http://superfeedr.com/stylesheets/thickbox.css" media="screen" rel="stylesheet" type="text/css" />
+  <link href="/css/blog.css" media="screen" rel="stylesheet" type="text/css" />
+  <link rel="alternate" type="application/atom+xml" title="Atom Feed" href="/atom.xml">
+
+ </head>
+
+ <body class="blog">
+   <div id="bg">
+     <div id="wrapper">
+      <div id="logo">
+       <a href="http://superfeedr.com" class="home"><img alt="Superfeedr" src="http://superfeedr.com/images/superfeedr_complete.png" /></a>
+     </div>
+     <ul id="navigation">
+      <li><a href="http://documentation.superfeedr.com" alt="RTFM">Documentation</a></li>
+      <li><a href="http://superfeedr.com/about" alt="All you wanted to know. Almost">About</a></li>
+    </ul>
+    <div class="clear"></div>
+    <div id="main_bg">
+      <div id="main_top">
+       <h1>Superfeedr Heroku</h1>
+     </div> <!--main_top-->
+
+     <div id="content">
+        <div id="post">
+    <h2>Superfeedr Heroku</h2>
+    <div style="color:#666; font-size:0.9em; margin-bottom: 20px"><img style="float:left; margin: -2px 3px 3px 0px" src="http://www.gravatar.com/avatar/b30ce50678f0e934eaa6697425c59dd7?s=20" >By <a href="http://ouvre-boite.com">Julien</a>, on 12 Apr 2012</div>
+<p>For the past few months, one of our projects involved working on an Heroku addon. Today it reached public beta. In a nutshell, it allows for anyone using Heroku to <strong>integrate</strong> with all of Superfeedr&#8217;s features with minimal effort: all the provisioning, integration and even billing is managed thru Heroku.</p>
+<h2>Integrating</h2>
+<p><img src="/images/heroku.png" style="float: right; margin: 5px;" alt="" /></p>
+<p>The first step is to <em>add</em> the Superfeedr addon to your existing application. Like for most Heroku addon, type this in your application&#8217;s repository:</p>
+<p><code>heroku addons:add superfeedr</code></p>
+<p>The next step is the most important step: picking up the right <span class="caps">API</span> to use:</p>
+<ul>
+	<li>The <a href="http://documentation.superfeedr.com/subscribers.html#xmpppubsub"><span class="caps">XMPP</span> PubSub</a> may require you to run an extra Dyno (process), and <span class="caps">XMPP</span> may not have good libraries for your language of choice.</li>
+	<li>The <a href="http://documentation.superfeedr.com/subscribers.html#webhooks">PubSubHubbub</a> <span class="caps">API</span> uses webhooks, which means that your development machine will need to be &#8216;accessible&#8217; from outside the firewall.</li>
+</ul>
+<p>Then, you can start implementing! When making calls to Superfeedr, make sure you use <code>SUPERFEEDR_LOGIN</code> and <code>SUPERFEEDR_PASSWORD</code> as your credentials. (you can also set these environment variables to your local development machine)</p>
+<h2>Billing</h2>
+<p>For now, using the <a href="https://addons.heroku.com/superfeedr">Superfeedr heroku addon</a> is free, but we will soon introduce plans. These plans will obviously include a <strong>free version</strong>, but they will be based on the number of feeds (we exclude track feeds though), rather than the number of entries. This has been a rather frequent request for superfeedr and we may use Heroku as a sandbox for a new superfeedr pricing model.</p>
+<p>If you&#8217;re looking at sample applications, check this <a href="https://github.com/superfeedr/superfeedr-node-sample">node.js example</a> <em>which uses XMPP_, <a href="https://github.com/superfeedr/superpipes">Superpipes</a>, or this <a href="https://github.com/superfeedr/rack-superfeedr/blob/master/examples/sinatra">Sinatra application</a></em>app.rb, which uses PubSubHubbub.</p>
+<p>Happy coding!</p>
+</div>
+
+<blockquote>
+  <p>Liked this post? <input type="button" onclick="(function(){var z=document.createElement('script');z.src='http://www.subtome.com/load.js';document.body.appendChild(z);})()" value="Follow this blog!" /> to get more or read the <a href="/archive.html">archive</a>.</p>
+</blockquote>
+
+
+<small class="meta">
+</small>
+
+<div id="comments">
+    <h2>Comments</h2>
+    <div id="disqus_thread">
+    </div>
+    <script type="text/javascript" src="http://disqus.com/forums/superfeedr-thoughts/embed.js"></script>
+    <noscript>
+        <a href="http://superfeedr-thoughts.disqus.com/?url=ref">View the discussion thread.</a>
+    </noscript>
+    <a href="http://disqus.com" class="dsq-brlink">blog comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+
+    </div> <!--content-->
+
+    <div id="footer">
+      <ul id="footer_navigation">
+        <li><a href="http://documentation.superfeedr.com">Docs</a></li>
+        <li><a href="https://github.com/superfeedr/documentation/issues">Support</a></li>
+        <li><a href="http://blog.superfeedr.com">Blog</a></li>
+        <li><a href="https://superfeedr.com/cost">Pricing</a></li>
+        <li><a href="https://superfeedr.com/terms">Terms</a></li>
+      </ul>
+    </div>
+    <div id="log" style="" ></div>
+  </div> <!--main_bg-->
+</div><!--wrapper-->
+</div><!--bg-->
+<script type="text/javascript">
+  var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+  document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+  <!--//--><![CDATA[//><!--
+  try {
+      var pageTracker = _gat._getTracker('UA-9285763-1');
+      pageTracker._setDomainName("superfeedr.com");
+      pageTracker._initData();
+      pageTracker._trackPageview();
+  } catch(err) {}
+  //--><!]]>
+</script>
+</body>
+</html>

@@ -1,0 +1,130 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>Superfeedr : A Hub for Twitter </title>
+  <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+  <meta name="google-site-verification" content="ofroHQ3qXBS1SQfblK9-U_oduGZ975Bb3i_uP13Myao" />
+
+  <!-- Stylesheets -->
+  <link href="http://yui.yahooapis.com/3.1.1/build/cssreset/reset-min.css" media="screen" rel="stylesheet" type="text/css" />
+  <link href="http://superfeedr.com/stylesheets/superfeedr.css" media="screen" rel="stylesheet" type="text/css" />
+  <link href="http://superfeedr.com/stylesheets/print.css" media="print" rel="stylesheet" type="text/css" />
+  <link href="http://superfeedr.com/stylesheets/shjs/sh_nedit.min.css" media="screen" rel="stylesheet" type="text/css" />
+  <link href="http://superfeedr.com/stylesheets/thickbox.css" media="screen" rel="stylesheet" type="text/css" />
+  <link href="/css/blog.css" media="screen" rel="stylesheet" type="text/css" />
+  <link rel="alternate" type="application/atom+xml" title="Atom Feed" href="/atom.xml">
+
+ </head>
+
+ <body class="blog">
+   <div id="bg">
+     <div id="wrapper">
+      <div id="logo">
+       <a href="http://superfeedr.com" class="home"><img alt="Superfeedr" src="http://superfeedr.com/images/superfeedr_complete.png" /></a>
+     </div>
+     <ul id="navigation">
+      <li><a href="http://documentation.superfeedr.com" alt="RTFM">Documentation</a></li>
+      <li><a href="http://superfeedr.com/about" alt="All you wanted to know. Almost">About</a></li>
+    </ul>
+    <div class="clear"></div>
+    <div id="main_bg">
+      <div id="main_top">
+       <h1>A Hub for Twitter</h1>
+     </div> <!--main_top-->
+
+     <div id="content">
+        <div id="post">
+    <h2>A Hub for Twitter</h2>
+    <div style="color:#666; font-size:0.9em; margin-bottom: 20px"><img style="float:left; margin: -2px 3px 3px 0px" src="http://www.gravatar.com/avatar/b30ce50678f0e934eaa6697425c59dd7?s=20" >By <a href="http://ouvre-boite.com">Julien</a>, on 03 Mar 2010</div>
+<p>If you claim to be some kind of social app but don&#8217;t use <strong>PubSubHubbub</strong>, I think you&#8217;re missing out the opportunity to support a <strong>de-facto standard for service to service communication</strong>.</p>
+<p>On the other hand, if you&#8217;re a <strong>realtime feed standard</strong> that is not used by <a href="http://twitter.com/">Twitter</a>, <em>you&#8217;re also missing something</em>.</p>
+<p>Based on these simple facts, I think Twitter needs to have a <a href="http://push.superfeedr.com/">PubSubHubbub</a> hub. They recently announced that more and more apps are <a href="http://blog.twitter.com/2010/03/enabling-rush-of-innovation.html">getting their firehose</a>, this is great and shows us that <strong>they want their data out</strong> (hey, <a href="http://facebook.com/">Facebook</a>, did you hear that?). However, a few conversations with both <a href="http://twitter.com/jkalucki">John</a> and <a href="http://twitter.com/Rsarver">Ryan</a> showed me that they weren&#8217;t so keen of doing so. <strong>Sad</strong>.</p>
+<p>To prove them wrong, we started a <a href="http://bit.ly/hub4twitter">little poll 2 days ago</a>. The goal was to show Twitter that people would use this hub, and that, with it, the consumption of Twitter data will eventually grow over time.</p>
+<p>Here are the results (obviously, it&#8217;s never too late to answer) :</p>
+<p><img src="http://chart.apis.google.com/chart?cht=p&amp;chs=230x100&amp;chco=ff9900&amp;chl=Yes%20%5B45%5D%7CNo%20%5B2%5D&amp;chd=e%3A9QCu" style="float:right;" alt="" /></p>
+<h4>Would you use a Twitter PubSubHubbub hub if it was available?<br />
+Yes		45	96%<br />
+No		2	4%</h4>
+<p>I think this is the most important question here :) One could argue that the people who responded are also more tempted to say they would use it, than not. A legit question that somebody raised is that it would probably not work behind the firewall. I agree with that, but <em>I also think that most apps who are behind firewalls use the regular <span class="caps">REST</span> <span class="caps">API</span></em>.</p>
+<p><img src="http://chart.apis.google.com/chart?cht=p&amp;chs=230x100&amp;chco=0000e0&amp;chl=Yes%20%5B21%5D%7CNo%20%5B26%5D&amp;chd=e%3AcljZ" style="float:right;" alt="" /></p>
+<h4>Do you currently use the Twitter Streaming <span class="caps">API</span>?<br />
+Yes		21	45%<br />
+No		26	55%</h4>
+<p>This is interesting to compare with the previous question. <strong>Almost everybody said they would use a PubSubHubbub hub, but less than half currently use the streaming <span class="caps">API</span></strong>. This means that the streaming <span class="caps">API</span> is not fulfilling their needs, while a hub would.</p>
+<p><img src="http://chart.apis.google.com/chart?cht=p&amp;chs=230x100&amp;chco=dcca02&amp;chl=Yes%20%5B45%5D%7CNo%20%5B2%5D&amp;chd=e%3A9QCu" style="float:right;" alt="" /></p>
+<h4>Do you think a hub would increase your Twitter data consumption?<br />
+Yes		45	96%<br />
+No		2	4%</h4>
+<p>Again, that, I think, proves that a hub would be better suited for the data consumption for many applications. Also, I think that Twitter genuinely wants the data to &#8220;get out&#8221;. This proves that <em>this goal would be achieved</em>.</p>
+<p><img src="http://chart.apis.google.com/chart?cht=p&amp;chs=230x100&amp;chco=00d000&amp;chl=Yes%20%5B30%5D%7CNo%20%5B17%5D&amp;chd=e%3Ao1XJ" style="float:right;" alt="" /></p>
+<h4>Have you already implemented PubSubHubbub?<br />
+Yes		30	64%<br />
+No		17	36%</h4>
+<p>A key concern when <em>implementing an <span class="caps">API</span> is the speed of adoption</em>. The streaming <span class="caps">API</span> has been out for a few months, but is still not so widely used, if Twitter had a hub, a lot of people would be able to start using it from day 1, because they already implemented the protocol on their ends.</p>
+<p><img src="http://chart.apis.google.com/chart?cht=bhs&amp;chs=345x90&amp;chbh=24%2C6&amp;chco=df5353%7Cd00000&amp;chxt=x%2Cy&amp;chxl=0%3A%7C0%7C8%7C16%7C24%7C32%7C40%7C48%7C1%3A%7CTrack%20(search%20feeds)%7CFollow%20(user%20feeds)&amp;chxs=0%2C000000%2C12%2C0%2Clt%7C1%2C000000%2C12%2C1%2Clt&amp;chds=0%2C48&amp;chd=t%3A42%2C39" style="float:right;" alt="" /></p>
+<p>I <strong>will send the detail results to both John and Ryan</strong>, as well as the list of people who responded (in a <span class="caps">BCC</span> email), so anybody can start the conversation from there.</p>
+<p>Twitter will make the decision on whether they want to support that or not. It&#8217;s obvious that if they do, I&#8217;d rather see that happen via a <a href="http://push.superfeedr.com/">Superfeedr hub</a>. However, I think it&#8217;s still great for <strong>PubSubHubbub</strong> and the internets in general if Twitter decides to go down this route, but without us.</p>
+<p>Like always, I&#8217;m here to help anyway.</p>
+</div>
+
+<blockquote>
+  <p>Liked this post? <input type="button" onclick="(function(){var z=document.createElement('script');z.src='http://www.subtome.com/load.js';document.body.appendChild(z);})()" value="Follow this blog!" /> to get more or read the <a href="/archive.html">archive</a>.</p>
+</blockquote>
+
+
+<small class="meta">
+  <a href='http://www.google.com/search?q=pubsubhubbub+site:blog.superfeedr.com'>pubsubhubbub</a>, 
+  
+  <a href='http://www.google.com/search?q=twitter+site:blog.superfeedr.com'>twitter</a>, 
+  
+  <a href='http://www.google.com/search?q=api+site:blog.superfeedr.com'>api</a>, 
+  
+  <a href='http://www.google.com/search?q=feeds+site:blog.superfeedr.com'>feeds</a>, 
+  
+  <a href='http://www.google.com/search?q=streaming+site:blog.superfeedr.com'>streaming</a>
+  
+</small>
+
+<div id="comments">
+    <h2>Comments</h2>
+    <div id="disqus_thread">
+    </div>
+    <script type="text/javascript" src="http://disqus.com/forums/superfeedr-thoughts/embed.js"></script>
+    <noscript>
+        <a href="http://superfeedr-thoughts.disqus.com/?url=ref">View the discussion thread.</a>
+    </noscript>
+    <a href="http://disqus.com" class="dsq-brlink">blog comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+
+    </div> <!--content-->
+
+    <div id="footer">
+      <ul id="footer_navigation">
+        <li><a href="http://documentation.superfeedr.com">Docs</a></li>
+        <li><a href="https://github.com/superfeedr/documentation/issues">Support</a></li>
+        <li><a href="http://blog.superfeedr.com">Blog</a></li>
+        <li><a href="https://superfeedr.com/cost">Pricing</a></li>
+        <li><a href="https://superfeedr.com/terms">Terms</a></li>
+      </ul>
+    </div>
+    <div id="log" style="" ></div>
+  </div> <!--main_bg-->
+</div><!--wrapper-->
+</div><!--bg-->
+<script type="text/javascript">
+  var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+  document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+  <!--//--><![CDATA[//><!--
+  try {
+      var pageTracker = _gat._getTracker('UA-9285763-1');
+      pageTracker._setDomainName("superfeedr.com");
+      pageTracker._initData();
+      pageTracker._trackPageview();
+  } catch(err) {}
+  //--><!]]>
+</script>
+</body>
+</html>

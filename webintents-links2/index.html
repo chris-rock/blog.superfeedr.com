@@ -1,0 +1,149 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>Superfeedr : WebIntents are links 2.0 </title>
+  <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+  <meta name="google-site-verification" content="ofroHQ3qXBS1SQfblK9-U_oduGZ975Bb3i_uP13Myao" />
+
+  <!-- Stylesheets -->
+  <link href="http://yui.yahooapis.com/3.1.1/build/cssreset/reset-min.css" media="screen" rel="stylesheet" type="text/css" />
+  <link href="http://superfeedr.com/stylesheets/superfeedr.css" media="screen" rel="stylesheet" type="text/css" />
+  <link href="http://superfeedr.com/stylesheets/print.css" media="print" rel="stylesheet" type="text/css" />
+  <link href="http://superfeedr.com/stylesheets/shjs/sh_nedit.min.css" media="screen" rel="stylesheet" type="text/css" />
+  <link href="http://superfeedr.com/stylesheets/thickbox.css" media="screen" rel="stylesheet" type="text/css" />
+  <link href="/css/blog.css" media="screen" rel="stylesheet" type="text/css" />
+  <link rel="alternate" type="application/atom+xml" title="Atom Feed" href="/atom.xml">
+
+ </head>
+
+ <body class="blog">
+   <div id="bg">
+     <div id="wrapper">
+      <div id="logo">
+       <a href="http://superfeedr.com" class="home"><img alt="Superfeedr" src="http://superfeedr.com/images/superfeedr_complete.png" /></a>
+     </div>
+     <ul id="navigation">
+      <li><a href="http://documentation.superfeedr.com" alt="RTFM">Documentation</a></li>
+      <li><a href="http://superfeedr.com/about" alt="All you wanted to know. Almost">About</a></li>
+    </ul>
+    <div class="clear"></div>
+    <div id="main_bg">
+      <div id="main_top">
+       <h1>WebIntents are links 2.0</h1>
+     </div> <!--main_top-->
+
+     <div id="content">
+        <div id="post">
+    <h2>WebIntents are links 2.0</h2>
+    <div style="color:#666; font-size:0.9em; margin-bottom: 20px"><img style="float:left; margin: -2px 3px 3px 0px" src="http://www.gravatar.com/avatar/b30ce50678f0e934eaa6697425c59dd7?s=20" >By <a href="http://ouvre-boite.com">Julien</a>, on 29 May 2012</div>
+<p>You may have heard of <a href="http://webintents.org/">WebIntents</a>. At least, <a href="http://blog.superfeedr.com/webintents/">here</a>.<br />
+We&#8217;re proud to say that <a href="http://www.msgboy.com/">msgboy</a> now supports WebIntents completely: it triggers intents (sharing stories), and handles them (subscribing).</p>
+<h3>Sharing Stories</h3>
+<p><em>Sharing stories</em> is a key feature of many readers. People just don&#8217;t read for themselves only. Up until now, Msgboy offered our users the ability to share stories on Twitter and Facebook. This is good because these are obviously very popular outlets. Yet, some people use Google+, Status.net, Kippt and who knows what other services! In the future too, these services will likely not be as popular and some new ones will appear. We do not want to couple Msgboy too much with any specific service: <strong>WebIntents is the solution</strong>!</p>
+<p><img src="/images/sharing.png" style="width:90%;" alt="" /></p>
+<blockquote>
+<p>In short, webintents aims at binding to actions, rather than services.</p>
+</blockquote>
+<p>Code-wise, that&#8217;s quite simple:<br />
+<script src="https://gist.github.com/2827860.js?file=webintents.html"></script></p>
+<p>If you&#8217;re using Chrome, try it by yourself: <button onclick="share();">Share This Page</button></p>
+<script>
+function share() {
+    try {
+        var intent = new WebKitIntent("http://webintents.org/share", "text/uri-list", window.location.toString());
+        var onSuccess = function(data) {
+            // Successful sharing
+        };
+        var onError = function(data) {
+            // User canceled sharing
+        };
+        window.navigator.webkitStartActivity(intent, onSuccess, onError);
+    }
+    catch(ReferenceError) {
+        window.alert("Dang, your browser doesn't seem to support Webintents yet :(")
+    }
+}
+</script><p>Currently, only Chrome applications can register as intent handlers. If you do not have any Chrome app that is able to handle this <em>Share</em> intent, you will be offered a couple choices from the <a href="https://chrome.google.com/webstore">Chrome WebStore</a>.</p>
+<p><img src="/images/picking.png" style="width:90%;" alt="" /></p>
+<p>Pick your favorite app, and share using it!</p>
+<h3>Subscribing</h3>
+<p>Now, Msgboy is also an app that can registers the <strong>subscribe intent</strong>. You probably know the twitter &#8216;follow&#8217; buttons, or the facebook &#8216;subscribe&#8217; buttons. With WebIntents, you can now have a generic &#8216;Subscribe&#8217; button, one that works with whatever service your users like and love, be it Twitter, Facebook, Msgboy or other apps!</p>
+<blockquote>
+<p>Another huge benefit of this button is that it doesn&#8217;t secretly sniffs all your analytics or track your users wherever they go on the web.</p>
+</blockquote>
+<p>If your web application has a Chrome application, you can register the intent by adding the following to the extension&#8217;s manifest file:<br />
+<script src="https://gist.github.com/2828171.js?file=manifest.json"></script></p>
+<script>
+function subscribe() {
+    try {
+        var intent = new WebKitIntent("http://webintents.org/subscribe", "application/atom+xml", "http://blog.superfeedr.com/atom.xml");
+        var onSuccess = function(data) {
+            // Successful sharing
+        };
+        var onError = function(data) {
+            // User canceled sharing
+        };
+        window.navigator.webkitStartActivity(intent, onSuccess, onError);
+    }
+    catch(ReferenceError) {
+        window.alert("Dang, your browser doesn't seem to support Webintents yet :(")
+    }
+}
+</script><p>Now, when people click on a <button onclick="subscribe();">Subscribe</button>, they&#8217;ll be able to use <a href="http://www.msgboy.com/">Msgboy</a> (or any installed app that registered the Subscribe intent) to achieve that. That&#8217;s quite elegant, isn&#8217;t it?</p>
+<p>In terms of implementation, when the user clicks on the button, he will be redirected to the <code>href</code> value, which can then handle the intent on behalf of the user.</p>
+<h4>One More things</h4>
+<p>Intent registering applications can also register a <code>view</code> intent, which will be called by default to represent a specific Mime-Type. For example, Msgboy registers the view intent on the <code>application/xml+atom</code> and <code>application/xml+rss</code>, so that, if you have <a href="http://www.msgboy.com/">msgboy</a> installed, you can use it to <a href="/atom.xml">view a feed&#8217;s content</a>, and maybe subscribe to it.</p>
+<p>We sincerely hope WebIntents become <strong>ubiquitous</strong>, supported by all <strike>modern</strike> browsers, as well as by all web application makers. They&#8217;re <strong>links 2.0</strong>, and the faster we get there, the better for the web!</p>
+</div>
+
+<blockquote>
+  <p>Liked this post? <input type="button" onclick="(function(){var z=document.createElement('script');z.src='http://www.subtome.com/load.js';document.body.appendChild(z);})()" value="Follow this blog!" /> to get more or read the <a href="/archive.html">archive</a>.</p>
+</blockquote>
+
+
+<small class="meta">
+</small>
+
+<div id="comments">
+    <h2>Comments</h2>
+    <div id="disqus_thread">
+    </div>
+    <script type="text/javascript" src="http://disqus.com/forums/superfeedr-thoughts/embed.js"></script>
+    <noscript>
+        <a href="http://superfeedr-thoughts.disqus.com/?url=ref">View the discussion thread.</a>
+    </noscript>
+    <a href="http://disqus.com" class="dsq-brlink">blog comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+
+    </div> <!--content-->
+
+    <div id="footer">
+      <ul id="footer_navigation">
+        <li><a href="http://documentation.superfeedr.com">Docs</a></li>
+        <li><a href="https://github.com/superfeedr/documentation/issues">Support</a></li>
+        <li><a href="http://blog.superfeedr.com">Blog</a></li>
+        <li><a href="https://superfeedr.com/cost">Pricing</a></li>
+        <li><a href="https://superfeedr.com/terms">Terms</a></li>
+      </ul>
+    </div>
+    <div id="log" style="" ></div>
+  </div> <!--main_bg-->
+</div><!--wrapper-->
+</div><!--bg-->
+<script type="text/javascript">
+  var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+  document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+  <!--//--><![CDATA[//><!--
+  try {
+      var pageTracker = _gat._getTracker('UA-9285763-1');
+      pageTracker._setDomainName("superfeedr.com");
+      pageTracker._initData();
+      pageTracker._trackPageview();
+  } catch(err) {}
+  //--><!]]>
+</script>
+</body>
+</html>

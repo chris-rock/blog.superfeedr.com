@@ -1,0 +1,103 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>Superfeedr : Federating PubSubHubbub </title>
+  <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+  <meta name="google-site-verification" content="ofroHQ3qXBS1SQfblK9-U_oduGZ975Bb3i_uP13Myao" />
+
+  <!-- Stylesheets -->
+  <link href="http://yui.yahooapis.com/3.1.1/build/cssreset/reset-min.css" media="screen" rel="stylesheet" type="text/css" />
+  <link href="http://superfeedr.com/stylesheets/superfeedr.css" media="screen" rel="stylesheet" type="text/css" />
+  <link href="http://superfeedr.com/stylesheets/print.css" media="print" rel="stylesheet" type="text/css" />
+  <link href="http://superfeedr.com/stylesheets/shjs/sh_nedit.min.css" media="screen" rel="stylesheet" type="text/css" />
+  <link href="http://superfeedr.com/stylesheets/thickbox.css" media="screen" rel="stylesheet" type="text/css" />
+  <link href="/css/blog.css" media="screen" rel="stylesheet" type="text/css" />
+  <link rel="alternate" type="application/atom+xml" title="Atom Feed" href="/atom.xml">
+
+ </head>
+
+ <body class="blog">
+   <div id="bg">
+     <div id="wrapper">
+      <div id="logo">
+       <a href="http://superfeedr.com" class="home"><img alt="Superfeedr" src="http://superfeedr.com/images/superfeedr_complete.png" /></a>
+     </div>
+     <ul id="navigation">
+      <li><a href="http://documentation.superfeedr.com" alt="RTFM">Documentation</a></li>
+      <li><a href="http://superfeedr.com/about" alt="All you wanted to know. Almost">About</a></li>
+    </ul>
+    <div class="clear"></div>
+    <div id="main_bg">
+      <div id="main_top">
+       <h1>Federating PubSubHubbub</h1>
+     </div> <!--main_top-->
+
+     <div id="content">
+        <div id="post">
+    <h2>Federating PubSubHubbub</h2>
+    <div style="color:#666; font-size:0.9em; margin-bottom: 20px"><img style="float:left; margin: -2px 3px 3px 0px" src="http://www.gravatar.com/avatar/b30ce50678f0e934eaa6697425c59dd7?s=20" >By <a href="http://ouvre-boite.com">Julien</a>, on 12 Jul 2009</div>
+<p>PubSubHubbub has been the <a href="http://search.twitter.com/search?q=PubSubhubbub">RealTime web celebrity</a> in the past few days. <a href="http://adsenseforfeeds.blogspot.com/2009/07/whats-all-hubbub-about-pubsubhubbub.html">Google announced</a> their support for Feedburner and Blogger, and that&#8217;s great to see the interest growing.</p>
+<p>We decided a few weeks ago that <a href="http://blog.superfeedr.com/api/http/pubsubhubbub/pubsubhubbub/">PubSubHubbub would be our <span class="caps">HTTP</span> <span class="caps">API</span></a> and it&#8217;s been a great choice for us as many developers have started to work on language specific libraries to interact with hubs.</p>
+<p>Today, we&#8217;re announcing that <strong>not only we&#8217;re a hub, but we&#8217;re also a subscriber</strong>. In other terms, it means that whenever a feed indicates a hub, Superfeedr will subscribe to this hub to get updates from it in real-time. That is a great addition to <a href="http://superfeedr.com/technology">our set of helpers</a> and it will hopefully help us <em>improve yet again our detection time</em> of new entries.</p>
+<p><a href="http://docs.google.com/present/view?id=ajd8t6gk4mh2_34dvbpchfs"><img src="/images/federated_pubsubhubbub.png" alt="" /></a></p>
+<p>At a broader level, it is <a href="http://www.scripting.com/stories/2009/07/11/morePubsubhubbubFeedback.html">interesting to compare</a> PubSubHubbub with previous initiatives, and, as far as I know, PubSubHubbub is the first one to actually enable easily this &#8220;federation&#8221; structure (similar to what <a href="http://xmpp.org/rfcs/rfc3920.html"><span class="caps">XMPP</span> offers</a>), where <em>subscribers can select their favorite hubs</em> and <em>hubs can communicate together</em> to provide updates to all their users.</p>
+<p>It makes the PubSubHubbub &#8220;network&#8221; even more decentralized and scalable/fault-resistant. For those into <a href="http://en.wikipedia.org/wiki/Graph_%28mathematics%29">graph theory</a>, you will immediately see the benefit of such an architecture : virtually ubiquitous new data publication, as long as there is a (not too long) path from any node to any other node!</p>
+</div>
+
+<blockquote>
+  <p>Liked this post? <input type="button" onclick="(function(){var z=document.createElement('script');z.src='http://www.subtome.com/load.js';document.body.appendChild(z);})()" value="Follow this blog!" /> to get more or read the <a href="/archive.html">archive</a>.</p>
+</blockquote>
+
+
+<small class="meta">
+  <a href='http://www.google.com/search?q=pubsubhubbub+site:blog.superfeedr.com'>pubsubhubbub</a>, 
+  
+  <a href='http://www.google.com/search?q=api+site:blog.superfeedr.com'>api</a>, 
+  
+  <a href='http://www.google.com/search?q=federation+site:blog.superfeedr.com'>federation</a>
+  
+</small>
+
+<div id="comments">
+    <h2>Comments</h2>
+    <div id="disqus_thread">
+    </div>
+    <script type="text/javascript" src="http://disqus.com/forums/superfeedr-thoughts/embed.js"></script>
+    <noscript>
+        <a href="http://superfeedr-thoughts.disqus.com/?url=ref">View the discussion thread.</a>
+    </noscript>
+    <a href="http://disqus.com" class="dsq-brlink">blog comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+
+    </div> <!--content-->
+
+    <div id="footer">
+      <ul id="footer_navigation">
+        <li><a href="http://documentation.superfeedr.com">Docs</a></li>
+        <li><a href="https://github.com/superfeedr/documentation/issues">Support</a></li>
+        <li><a href="http://blog.superfeedr.com">Blog</a></li>
+        <li><a href="https://superfeedr.com/cost">Pricing</a></li>
+        <li><a href="https://superfeedr.com/terms">Terms</a></li>
+      </ul>
+    </div>
+    <div id="log" style="" ></div>
+  </div> <!--main_bg-->
+</div><!--wrapper-->
+</div><!--bg-->
+<script type="text/javascript">
+  var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+  document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+  <!--//--><![CDATA[//><!--
+  try {
+      var pageTracker = _gat._getTracker('UA-9285763-1');
+      pageTracker._setDomainName("superfeedr.com");
+      pageTracker._initData();
+      pageTracker._trackPageview();
+  } catch(err) {}
+  //--><!]]>
+</script>
+</body>
+</html>

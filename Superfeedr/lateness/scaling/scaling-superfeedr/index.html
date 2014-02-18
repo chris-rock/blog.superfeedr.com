@@ -1,0 +1,112 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>Superfeedr : Scaling Superfeedr </title>
+  <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+  <meta name="google-site-verification" content="ofroHQ3qXBS1SQfblK9-U_oduGZ975Bb3i_uP13Myao" />
+
+  <!-- Stylesheets -->
+  <link href="http://yui.yahooapis.com/3.1.1/build/cssreset/reset-min.css" media="screen" rel="stylesheet" type="text/css" />
+  <link href="http://superfeedr.com/stylesheets/superfeedr.css" media="screen" rel="stylesheet" type="text/css" />
+  <link href="http://superfeedr.com/stylesheets/print.css" media="print" rel="stylesheet" type="text/css" />
+  <link href="http://superfeedr.com/stylesheets/shjs/sh_nedit.min.css" media="screen" rel="stylesheet" type="text/css" />
+  <link href="http://superfeedr.com/stylesheets/thickbox.css" media="screen" rel="stylesheet" type="text/css" />
+  <link href="/css/blog.css" media="screen" rel="stylesheet" type="text/css" />
+  <link rel="alternate" type="application/atom+xml" title="Atom Feed" href="/atom.xml">
+
+ </head>
+
+ <body class="blog">
+   <div id="bg">
+     <div id="wrapper">
+      <div id="logo">
+       <a href="http://superfeedr.com" class="home"><img alt="Superfeedr" src="http://superfeedr.com/images/superfeedr_complete.png" /></a>
+     </div>
+     <ul id="navigation">
+      <li><a href="http://documentation.superfeedr.com" alt="RTFM">Documentation</a></li>
+      <li><a href="http://superfeedr.com/about" alt="All you wanted to know. Almost">About</a></li>
+    </ul>
+    <div class="clear"></div>
+    <div id="main_bg">
+      <div id="main_top">
+       <h1>Scaling Superfeedr</h1>
+     </div> <!--main_top-->
+
+     <div id="content">
+        <div id="post">
+    <h2>Scaling Superfeedr</h2>
+    <div style="color:#666; font-size:0.9em; margin-bottom: 20px"><img style="float:left; margin: -2px 3px 3px 0px" src="http://www.gravatar.com/avatar/b30ce50678f0e934eaa6697425c59dd7?s=20" >By <a href="http://ouvre-boite.com">Julien</a>, on 06 Jan 2010</div>
+<p>I&#8217;d like to start this post by <strong>wishing everybody a wonderful 2010 year, and a great 2nd decade of this millennium</strong>.</p>
+<p>We will remember these early days are pretty hectic, here at Superfeedr. As a matter of facts <em>our users keep feeding us with more and more feeds</em> (+20% in a week!). It&#8217;s great, except that it <strong>makes little issues much bigger</strong>. And we&#8217;re currently fighting hard (like 16hours a day) to improve our scheduling algorithm.</p>
+<p>The difficulty that we have is that we need to deal with a lot of pings, telling us that a given feed has been updated. Technically, at the moment when we receive a ping, we need to fetch the feed and push that to our subscribers, which means that <em>we&#8217;re already late to deal with this feed</em>.</p>
+<p>So, at any time, we know <em>how many feeds are late</em>. Also, we need to fetch all of our feeds at least every 15 minutes, which roughly tells us <em>how late we are on average for each feed</em>.</p>
+<p>Right now, we&#8217;re at about 10% of late feeds, which means that, on average, we&#8217;re 1.5 minutes late on pings. Yes, it&#8217;s much higher than acceptable and we&#8217;re working on that &#8211; but it reached 50% earlier today :( -</p>
+<p>Contrary to many services out there, Superfeedr has to scale &#8220;internally&#8221;. Most of web apps and web services usually work like this :</p>
+<ol>
+	<li>A user sends a query</li>
+	<li>the application processes that query</li>
+	<li>the application returns the response.</li>
+</ol>
+<p>It&#8217;s not always easy to scale all the time, but at least <strong>it&#8217;s a fairly known science</strong>. Adding cache to skip the 2nd step is the most obvious thing and it can do miracles :)</p>
+<p>Unfortunately for us, that is not how Superfeedr works. Of course, like I mentioned we deal with incoming pings, but we also have to deal with polling for a lot of feeds (even the pinged feeds, as a failover), which means that as opposed to almost every web service out there, <strong>we do not act upon user input</strong>. The good news is that we can probably have a bigger query &#8594; response time. The bad news is that caching<sup class="footnote" id="fnr1"><a href="#fn1">1</a></sup> is useless!</p>
+<p>As a matter of fact, our biggest problem is to <strong>distribute all our data-processing smoothly and evenly across our whole infrastructure</strong> so that we always have a capacity utilization of 100%. And that&#8217;s what I&#8217;ll be spending the next hours and days on :)</p>
+<p class="footnote" id="fn1"><a href="#fnr1"><sup>1</sup></a> And caching is evil for real-time stuff :)</p>
+</div>
+
+<blockquote>
+  <p>Liked this post? <input type="button" onclick="(function(){var z=document.createElement('script');z.src='http://www.subtome.com/load.js';document.body.appendChild(z);})()" value="Follow this blog!" /> to get more or read the <a href="/archive.html">archive</a>.</p>
+</blockquote>
+
+
+<small class="meta">
+  <a href='http://www.google.com/search?q=superfeedr+site:blog.superfeedr.com'>superfeedr</a>, 
+  
+  <a href='http://www.google.com/search?q=lateness+site:blog.superfeedr.com'>lateness</a>, 
+  
+  <a href='http://www.google.com/search?q=scaling+site:blog.superfeedr.com'>scaling</a>
+  
+</small>
+
+<div id="comments">
+    <h2>Comments</h2>
+    <div id="disqus_thread">
+    </div>
+    <script type="text/javascript" src="http://disqus.com/forums/superfeedr-thoughts/embed.js"></script>
+    <noscript>
+        <a href="http://superfeedr-thoughts.disqus.com/?url=ref">View the discussion thread.</a>
+    </noscript>
+    <a href="http://disqus.com" class="dsq-brlink">blog comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+
+    </div> <!--content-->
+
+    <div id="footer">
+      <ul id="footer_navigation">
+        <li><a href="http://documentation.superfeedr.com">Docs</a></li>
+        <li><a href="https://github.com/superfeedr/documentation/issues">Support</a></li>
+        <li><a href="http://blog.superfeedr.com">Blog</a></li>
+        <li><a href="https://superfeedr.com/cost">Pricing</a></li>
+        <li><a href="https://superfeedr.com/terms">Terms</a></li>
+      </ul>
+    </div>
+    <div id="log" style="" ></div>
+  </div> <!--main_bg-->
+</div><!--wrapper-->
+</div><!--bg-->
+<script type="text/javascript">
+  var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+  document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+  <!--//--><![CDATA[//><!--
+  try {
+      var pageTracker = _gat._getTracker('UA-9285763-1');
+      pageTracker._setDomainName("superfeedr.com");
+      pageTracker._initData();
+      pageTracker._trackPageview();
+  } catch(err) {}
+  //--><!]]>
+</script>
+</body>
+</html>

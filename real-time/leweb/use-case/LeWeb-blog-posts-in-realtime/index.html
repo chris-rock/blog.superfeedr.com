@@ -1,0 +1,111 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>Superfeedr : LeWeb's Official Bloggers in RealTime </title>
+  <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+  <meta name="google-site-verification" content="ofroHQ3qXBS1SQfblK9-U_oduGZ975Bb3i_uP13Myao" />
+
+  <!-- Stylesheets -->
+  <link href="http://yui.yahooapis.com/3.1.1/build/cssreset/reset-min.css" media="screen" rel="stylesheet" type="text/css" />
+  <link href="http://superfeedr.com/stylesheets/superfeedr.css" media="screen" rel="stylesheet" type="text/css" />
+  <link href="http://superfeedr.com/stylesheets/print.css" media="print" rel="stylesheet" type="text/css" />
+  <link href="http://superfeedr.com/stylesheets/shjs/sh_nedit.min.css" media="screen" rel="stylesheet" type="text/css" />
+  <link href="http://superfeedr.com/stylesheets/thickbox.css" media="screen" rel="stylesheet" type="text/css" />
+  <link href="/css/blog.css" media="screen" rel="stylesheet" type="text/css" />
+  <link rel="alternate" type="application/atom+xml" title="Atom Feed" href="/atom.xml">
+
+ </head>
+
+ <body class="blog">
+   <div id="bg">
+     <div id="wrapper">
+      <div id="logo">
+       <a href="http://superfeedr.com" class="home"><img alt="Superfeedr" src="http://superfeedr.com/images/superfeedr_complete.png" /></a>
+     </div>
+     <ul id="navigation">
+      <li><a href="http://documentation.superfeedr.com" alt="RTFM">Documentation</a></li>
+      <li><a href="http://superfeedr.com/about" alt="All you wanted to know. Almost">About</a></li>
+    </ul>
+    <div class="clear"></div>
+    <div id="main_bg">
+      <div id="main_top">
+       <h1>LeWeb's Official Bloggers in RealTime</h1>
+     </div> <!--main_top-->
+
+     <div id="content">
+        <div id="post">
+    <h2>LeWeb's Official Bloggers in RealTime</h2>
+    <div style="color:#666; font-size:0.9em; margin-bottom: 20px"><img style="float:left; margin: -2px 3px 3px 0px" src="http://www.gravatar.com/avatar/b30ce50678f0e934eaa6697425c59dd7?s=20" >By <a href="http://ouvre-boite.com">Julien</a>, on 08 Dec 2009</div>
+<p><img src="http://www.leweb.net/sites/all/themes/leweb-leweb/logo.png" style="float:left;margin:0px 10px 10px 0px;" alt="" />When we&#8217;ve been selected to be part of <a href="http://www.leweb.net/">LeWeb&#8217;s competition</a> this year, we thought it was a great opportunity for us to <strong>demo Superfeedr with a simple use case</strong> : <em>how can we agregate all the content published by the Official Bloggers in real-time on the main LeWeb&#8217;s site?</em></p>
+<h3>How-to</h3>
+<p><img src="http://blog.cirtex.com/wp-content/uploads/2009/01/drupal.jpg" style="float:right;margin:0px 10px 10px 0px;width:20%;" alt="" />LeWeb&#8217;s site uses Drupal. The idea was to automatically push notifications from Superfeedr to Drupal so that whenever one of the official bloggers published an article, it is immediately linked (with a small excerpt) on the main <a href="http://www.leweb.net/blogs/">LeWeb site</a>.</p>
+<p><a href="http://drupal.org/">Drupal</a> doesn&#8217;t seem to have a PubSubHubbub subscriber library (yet?<sup class="footnote" id="fnr1"><a href="#fn1">1</a></sup>). However it has an <span class="caps">XML</span>-<span class="caps">RPC</span> interface. The goal was then to translate PubSubHubbub notifications into <span class="caps">XML</span>-<span class="caps">RPC</span>. For that I created a very simple <a href="http://code.google.com/appengine/">Google App Engine</a> application. It basically handles notifications and turn them into <span class="caps">XML</span>-<span class="caps">RPC</span> calls. <em>20 lines of code.</em></p>
+<p>To make it a little nicer, I <strong>extracted</strong> a few information from the <a href="http://documentation.superfeedr.com/schema.html#entry">standard entry schema</a> : author name and link, as well as categories. With the <strong>categories</strong>, I did some filtering to make sure we only publish stories that either mention LeWeb or explictly declare that as a tag.</p>
+<h3>Result</h3>
+<p>In <em>less than 2 hours</em> (litteraly), I was able to create a <em><a href="http://www.leweb.net/blogs/">pretty good republishing platform</a></em>:</p>
+<ul>
+	<li><strong>No polling at all</strong> by drupal</li>
+	<li>Guarantee to have <strong>real-time content</strong></li>
+	<li><strong>Standard schema</strong> that allows content <strong>filtering</strong> and extraction of specific fields</li>
+</ul>
+<p><strong>LeWeb starts tomorow</strong> and I can&#8217;t wait to see you there! <strong>Stop by our booth</strong> : we have stickers and a few new features to show you!</p>
+<p class="footnote" id="fn1"><a href="#fnr1"><sup>1</sup></a> If you&#8217;re a Drupal/<span class="caps">PHP</span> developer, get in touch : I&#8217;m sure such a module is much needed and should replace the aging &#8220;feeds&#8221; module.</p>
+</div>
+
+<blockquote>
+  <p>Liked this post? <input type="button" onclick="(function(){var z=document.createElement('script');z.src='http://www.subtome.com/load.js';document.body.appendChild(z);})()" value="Follow this blog!" /> to get more or read the <a href="/archive.html">archive</a>.</p>
+</blockquote>
+
+
+<small class="meta">
+  <a href='http://www.google.com/search?q=real-time+site:blog.superfeedr.com'>real-time</a>, 
+  
+  <a href='http://www.google.com/search?q=leweb+site:blog.superfeedr.com'>leweb</a>, 
+  
+  <a href='http://www.google.com/search?q=use-case+site:blog.superfeedr.com'>use-case</a>
+  
+</small>
+
+<div id="comments">
+    <h2>Comments</h2>
+    <div id="disqus_thread">
+    </div>
+    <script type="text/javascript" src="http://disqus.com/forums/superfeedr-thoughts/embed.js"></script>
+    <noscript>
+        <a href="http://superfeedr-thoughts.disqus.com/?url=ref">View the discussion thread.</a>
+    </noscript>
+    <a href="http://disqus.com" class="dsq-brlink">blog comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+
+    </div> <!--content-->
+
+    <div id="footer">
+      <ul id="footer_navigation">
+        <li><a href="http://documentation.superfeedr.com">Docs</a></li>
+        <li><a href="https://github.com/superfeedr/documentation/issues">Support</a></li>
+        <li><a href="http://blog.superfeedr.com">Blog</a></li>
+        <li><a href="https://superfeedr.com/cost">Pricing</a></li>
+        <li><a href="https://superfeedr.com/terms">Terms</a></li>
+      </ul>
+    </div>
+    <div id="log" style="" ></div>
+  </div> <!--main_bg-->
+</div><!--wrapper-->
+</div><!--bg-->
+<script type="text/javascript">
+  var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+  document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+  <!--//--><![CDATA[//><!--
+  try {
+      var pageTracker = _gat._getTracker('UA-9285763-1');
+      pageTracker._setDomainName("superfeedr.com");
+      pageTracker._initData();
+      pageTracker._trackPageview();
+  } catch(err) {}
+  //--><!]]>
+</script>
+</body>
+</html>

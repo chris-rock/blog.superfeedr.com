@@ -1,0 +1,112 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>Superfeedr : Track </title>
+  <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+  <meta name="google-site-verification" content="ofroHQ3qXBS1SQfblK9-U_oduGZ975Bb3i_uP13Myao" />
+
+  <!-- Stylesheets -->
+  <link href="http://yui.yahooapis.com/3.1.1/build/cssreset/reset-min.css" media="screen" rel="stylesheet" type="text/css" />
+  <link href="http://superfeedr.com/stylesheets/superfeedr.css" media="screen" rel="stylesheet" type="text/css" />
+  <link href="http://superfeedr.com/stylesheets/print.css" media="print" rel="stylesheet" type="text/css" />
+  <link href="http://superfeedr.com/stylesheets/shjs/sh_nedit.min.css" media="screen" rel="stylesheet" type="text/css" />
+  <link href="http://superfeedr.com/stylesheets/thickbox.css" media="screen" rel="stylesheet" type="text/css" />
+  <link href="/css/blog.css" media="screen" rel="stylesheet" type="text/css" />
+  <link rel="alternate" type="application/atom+xml" title="Atom Feed" href="/atom.xml">
+
+ </head>
+
+ <body class="blog">
+   <div id="bg">
+     <div id="wrapper">
+      <div id="logo">
+       <a href="http://superfeedr.com" class="home"><img alt="Superfeedr" src="http://superfeedr.com/images/superfeedr_complete.png" /></a>
+     </div>
+     <ul id="navigation">
+      <li><a href="http://documentation.superfeedr.com" alt="RTFM">Documentation</a></li>
+      <li><a href="http://superfeedr.com/about" alt="All you wanted to know. Almost">About</a></li>
+    </ul>
+    <div class="clear"></div>
+    <div id="main_bg">
+      <div id="main_top">
+       <h1>Track</h1>
+     </div> <!--main_top-->
+
+     <div id="content">
+        <div id="post">
+    <h2>Track</h2>
+    <div style="color:#666; font-size:0.9em; margin-bottom: 20px"><img style="float:left; margin: -2px 3px 3px 0px" src="http://www.gravatar.com/avatar/b30ce50678f0e934eaa6697425c59dd7?s=20" >By <a href="http://ouvre-boite.com">Julien</a>, on 01 Jul 2010</div>
+<blockquote>
+  <p>Our Track <span class="caps">API</span> evolved over time&#8230; Please make sure you refer to the <a href="http://documentation.superfeedr.com/misc.html#track">track documentation</a> for the current status</p>
+</blockquote>
+<p>Ever wondered how you could subscribe to keywords, instead of actual feeds? It&#8217;s already <em>great to get pushed content from thousands of <span class="caps">RSS</span> feeds</em>, but sometimes, you want to know all about your company&#8217;s name, all about movie that&#8217;s just been released. A long long long time ago, <a href="http://twitter.com/">Twitter</a> had its <a href="http://blog.twitter.com/2007/09/tracking-twitter.html">own track</a>. It was basically Twitter search inside your twitter stream, so that the results which matched your searches would be pushed to you, like tweets from your friends.</p>
+<p>Today, there is <strong>Superfeedr&#8217;s track</strong>. It&#8217;s a <strong>simple way to get all the Atom entries matching a given keyword pushed to your app</strong>.</p>
+<p>Once again, we hide all the complexity from you, and you can use the exact same <span class="caps">API</span> calls that you&#8217;re used too, whether it&#8217;s with the <a href="http://documentation.superfeedr.com/subscribers.html#xmpppubsub"><span class="caps">XMPP</span> PubSub</a> endpoint or the <a href="http://documentation.superfeedr.com/subscribers.html#webhooks">PubSubHubbub</a> protocol. Are you tracking music as a keyword? subscribe to <code>http://superfeedr.com/track?include=music</code>. And yes, it works with any keyword like this : http://superfeedr.com/track?include=<code>&lt;keyword&gt;</code>.</p>
+<p>Looking for a few apps that were built in less than 24 hours with Track? <a href="http://www.rssfall.com/sf/">RSSFall</a> by <a href="http://twitter.com/jalada">@jalada</a> allows you to specify the keywords you want to track! Try out <em>soccer</em>, <em>worldcup</em>, <em>iphone</em>.. etc :) Want the results into your IM client? Check <a href="http://harperreed.org/">Harper&#8217;s</a> <a href="http://www.supertrackr.com/">SuperTrackr</a>, just add @supertrackr@appspot.com@ to your contacts if you use gtalk, then, enter <code>/track music</code> and start dancing! Finally, <a href="http://twitter.com/matijarijavec">@matijarijavec</a> even built a mashup with <a href="http://superfeedr.labs.domenca.com/">Twitter&#8217;s trending words</a>, pretty awesome for a few hours of work!</p>
+<p>The results are taken from the more than 2M feeds that Superfeedr filters in realtime, as soon as the entries are published. These feeds include the feeds from the publishers who designated Superfeedr as their PubSubHubbub hub, like <a href="http://hubbub.api.typepad.com/">Six Apart</a>, <a href="http://tumblr.superfeedr.com/">Tumblr</a>, <a href="http://posterous.superfeedr.com/">Posterous</a>, <a href="http://gowalla.superfeedr.com/">Gowalla</a>, <a href="http://huffingtonpost.superfeedr.com/">Huffington Post</a>, <a href="http://gawker.superfeedr.com/">Gawker Media</a> and more than 800 other big and small publishers, as well as the data from thousands of subscribers who offloaded their feed polling to Superfeedr.</p>
+<p>We want more feeds! If you&#8217;re a publisher, <a href="http://superfeedr.com/publisher">start using us a a hub</a>, and if your app polls feeds, stop doing it, it&#8217;s dangerous, <a href="http://superfeedr.com/subscriber">have us push them to you</a>.</p>
+<p>Today we&#8217;re also launching our paid service for developers subscribing to feeds via Superfeedr&#8217;s default hub. Everyone will receive 25,000 free notifications to get started when developing with our infrastructure. We&#8217;ve come a long way in the past few months and while we&#8217;re still not perfect <strong>plan to make it even better with this support</strong>. Additional notifications start at only $0.0002 per entry which we guarantee will be cheaper than building it yourself!</p>
+<p><strong>One last thing!</strong><br />
+As you&#8217;ve probably seen, <a href="http://superfeedr.com/">the website&#8217;s design</a> is changing&#8230; at least now it&#8217;s done by someone whose work is to design websites! Please bear with us as we put a little more paint here and there, but again, it&#8217;s moving in the right direction.</p>
+<p>As always, your feedback is much much appreciated!</p>
+</div>
+
+<blockquote>
+  <p>Liked this post? <input type="button" onclick="(function(){var z=document.createElement('script');z.src='http://www.subtome.com/load.js';document.body.appendChild(z);})()" value="Follow this blog!" /> to get more or read the <a href="/archive.html">archive</a>.</p>
+</blockquote>
+
+
+<small class="meta">
+  <a href='http://www.google.com/search?q=track+site:blog.superfeedr.com'>track</a>, 
+  
+  <a href='http://www.google.com/search?q=filter+site:blog.superfeedr.com'>filter</a>, 
+  
+  <a href='http://www.google.com/search?q=xmpp+site:blog.superfeedr.com'>xmpp</a>, 
+  
+  <a href='http://www.google.com/search?q=pubsubhubbub+site:blog.superfeedr.com'>pubsubhubbub</a>
+  
+</small>
+
+<div id="comments">
+    <h2>Comments</h2>
+    <div id="disqus_thread">
+    </div>
+    <script type="text/javascript" src="http://disqus.com/forums/superfeedr-thoughts/embed.js"></script>
+    <noscript>
+        <a href="http://superfeedr-thoughts.disqus.com/?url=ref">View the discussion thread.</a>
+    </noscript>
+    <a href="http://disqus.com" class="dsq-brlink">blog comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+
+    </div> <!--content-->
+
+    <div id="footer">
+      <ul id="footer_navigation">
+        <li><a href="http://documentation.superfeedr.com">Docs</a></li>
+        <li><a href="https://github.com/superfeedr/documentation/issues">Support</a></li>
+        <li><a href="http://blog.superfeedr.com">Blog</a></li>
+        <li><a href="https://superfeedr.com/cost">Pricing</a></li>
+        <li><a href="https://superfeedr.com/terms">Terms</a></li>
+      </ul>
+    </div>
+    <div id="log" style="" ></div>
+  </div> <!--main_bg-->
+</div><!--wrapper-->
+</div><!--bg-->
+<script type="text/javascript">
+  var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+  document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+  <!--//--><![CDATA[//><!--
+  try {
+      var pageTracker = _gat._getTracker('UA-9285763-1');
+      pageTracker._setDomainName("superfeedr.com");
+      pageTracker._initData();
+      pageTracker._trackPageview();
+  } catch(err) {}
+  //--><!]]>
+</script>
+</body>
+</html>

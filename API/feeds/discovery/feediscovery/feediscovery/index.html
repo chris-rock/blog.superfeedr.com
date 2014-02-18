@@ -1,0 +1,113 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>Superfeedr : Feediscovery </title>
+  <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+  <meta name="google-site-verification" content="ofroHQ3qXBS1SQfblK9-U_oduGZ975Bb3i_uP13Myao" />
+
+  <!-- Stylesheets -->
+  <link href="http://yui.yahooapis.com/3.1.1/build/cssreset/reset-min.css" media="screen" rel="stylesheet" type="text/css" />
+  <link href="http://superfeedr.com/stylesheets/superfeedr.css" media="screen" rel="stylesheet" type="text/css" />
+  <link href="http://superfeedr.com/stylesheets/print.css" media="print" rel="stylesheet" type="text/css" />
+  <link href="http://superfeedr.com/stylesheets/shjs/sh_nedit.min.css" media="screen" rel="stylesheet" type="text/css" />
+  <link href="http://superfeedr.com/stylesheets/thickbox.css" media="screen" rel="stylesheet" type="text/css" />
+  <link href="/css/blog.css" media="screen" rel="stylesheet" type="text/css" />
+  <link rel="alternate" type="application/atom+xml" title="Atom Feed" href="/atom.xml">
+
+ </head>
+
+ <body class="blog">
+   <div id="bg">
+     <div id="wrapper">
+      <div id="logo">
+       <a href="http://superfeedr.com" class="home"><img alt="Superfeedr" src="http://superfeedr.com/images/superfeedr_complete.png" /></a>
+     </div>
+     <ul id="navigation">
+      <li><a href="http://documentation.superfeedr.com" alt="RTFM">Documentation</a></li>
+      <li><a href="http://superfeedr.com/about" alt="All you wanted to know. Almost">About</a></li>
+    </ul>
+    <div class="clear"></div>
+    <div id="main_bg">
+      <div id="main_top">
+       <h1>Feediscovery</h1>
+     </div> <!--main_top-->
+
+     <div id="content">
+        <div id="post">
+    <h2>Feediscovery</h2>
+    <div style="color:#666; font-size:0.9em; margin-bottom: 20px"><img style="float:left; margin: -2px 3px 3px 0px" src="http://www.gravatar.com/avatar/b30ce50678f0e934eaa6697425c59dd7?s=20" >By <a href="http://ouvre-boite.com">Julien</a>, on 16 Dec 2009</div>
+<p>At <a href="http://superfeedr.com">Superfeedr</a>, we believe <em>we have to do one thing only in the best way it can be done</em>: <strong>make feeds real-time</strong>.</p>
+<p>There are a ton of small feature requests that our users ask for and that aren&#8217;t part of this grand scheme. One of the most common ones is <strong>feed discovery</strong>.</p>
+<p>A lot of apps that are built using Superfeedr allow their users to type in any site url. Since Superfeedr only deals with feeds, it means that these apps have to</p>
+<ul>
+	<li>Download this specific page,</li>
+	<li>Parse the <span class="caps">HTML</span></li>
+	<li>Extract the <code>&lt;link&gt;</code> tags to get the corresponding feed(s) urls.</li>
+</ul>
+<p>It&#8217;s definitely <strong>not a very hard thing to do</strong>, yet, there is* absolutely no reason that everybody should write the same code over and over* for that basic purpose. Obviously, you could use great libraries such as <a href="http://axiombox.com/feedbag">feedbag</a>, yet, these libraries are language-centric (Ruby in this case).</p>
+<p>We built <a href="http://feediscovery.appspot.com/">feediscovery</a> : a simple &#8211; in the cloud! &#8211; <strong>feed discovery <span class="caps">API</span></strong>. To use it, send a <code>GET</code> request to http://feediscovery.appspot.com/ with the <code>url</code> parameter from which you&#8217;d like to extract feeds from. The app should return a small json string of the feed(s) information (href, title, rel, type).</p>
+<h4>Example:</h4>
+<p><code>GET http://feediscovery.appspot.com/?url=http://blog.superfeedr.com</code><br />
+&#8594; <code>{"href":"http://blog.superfeedr.com/atom.xml","title":"Superfeedr' thoughts","rel":"alternate","type":"application/atom+xml"}</code></p>
+<p>We truly believe <strong>web apps are soon to become the next base-component</strong>, and will, in many cases, replace libraries, gems, packages, modules.</p>
+</div>
+
+<blockquote>
+  <p>Liked this post? <input type="button" onclick="(function(){var z=document.createElement('script');z.src='http://www.subtome.com/load.js';document.body.appendChild(z);})()" value="Follow this blog!" /> to get more or read the <a href="/archive.html">archive</a>.</p>
+</blockquote>
+
+
+<small class="meta">
+  <a href='http://www.google.com/search?q=api+site:blog.superfeedr.com'>api</a>, 
+  
+  <a href='http://www.google.com/search?q=feeds+site:blog.superfeedr.com'>feeds</a>, 
+  
+  <a href='http://www.google.com/search?q=discovery+site:blog.superfeedr.com'>discovery</a>, 
+  
+  <a href='http://www.google.com/search?q=feediscovery+site:blog.superfeedr.com'>feediscovery</a>
+  
+</small>
+
+<div id="comments">
+    <h2>Comments</h2>
+    <div id="disqus_thread">
+    </div>
+    <script type="text/javascript" src="http://disqus.com/forums/superfeedr-thoughts/embed.js"></script>
+    <noscript>
+        <a href="http://superfeedr-thoughts.disqus.com/?url=ref">View the discussion thread.</a>
+    </noscript>
+    <a href="http://disqus.com" class="dsq-brlink">blog comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+
+    </div> <!--content-->
+
+    <div id="footer">
+      <ul id="footer_navigation">
+        <li><a href="http://documentation.superfeedr.com">Docs</a></li>
+        <li><a href="https://github.com/superfeedr/documentation/issues">Support</a></li>
+        <li><a href="http://blog.superfeedr.com">Blog</a></li>
+        <li><a href="https://superfeedr.com/cost">Pricing</a></li>
+        <li><a href="https://superfeedr.com/terms">Terms</a></li>
+      </ul>
+    </div>
+    <div id="log" style="" ></div>
+  </div> <!--main_bg-->
+</div><!--wrapper-->
+</div><!--bg-->
+<script type="text/javascript">
+  var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+  document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+  <!--//--><![CDATA[//><!--
+  try {
+      var pageTracker = _gat._getTracker('UA-9285763-1');
+      pageTracker._setDomainName("superfeedr.com");
+      pageTracker._initData();
+      pageTracker._trackPageview();
+  } catch(err) {}
+  //--><!]]>
+</script>
+</body>
+</html>

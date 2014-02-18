@@ -1,0 +1,104 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>Superfeedr : A Perl Wrapper </title>
+  <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+  <meta name="google-site-verification" content="ofroHQ3qXBS1SQfblK9-U_oduGZ975Bb3i_uP13Myao" />
+
+  <!-- Stylesheets -->
+  <link href="http://yui.yahooapis.com/3.1.1/build/cssreset/reset-min.css" media="screen" rel="stylesheet" type="text/css" />
+  <link href="http://superfeedr.com/stylesheets/superfeedr.css" media="screen" rel="stylesheet" type="text/css" />
+  <link href="http://superfeedr.com/stylesheets/print.css" media="print" rel="stylesheet" type="text/css" />
+  <link href="http://superfeedr.com/stylesheets/shjs/sh_nedit.min.css" media="screen" rel="stylesheet" type="text/css" />
+  <link href="http://superfeedr.com/stylesheets/thickbox.css" media="screen" rel="stylesheet" type="text/css" />
+  <link href="/css/blog.css" media="screen" rel="stylesheet" type="text/css" />
+  <link rel="alternate" type="application/atom+xml" title="Atom Feed" href="/atom.xml">
+
+ </head>
+
+ <body class="blog">
+   <div id="bg">
+     <div id="wrapper">
+      <div id="logo">
+       <a href="http://superfeedr.com" class="home"><img alt="Superfeedr" src="http://superfeedr.com/images/superfeedr_complete.png" /></a>
+     </div>
+     <ul id="navigation">
+      <li><a href="http://documentation.superfeedr.com" alt="RTFM">Documentation</a></li>
+      <li><a href="http://superfeedr.com/about" alt="All you wanted to know. Almost">About</a></li>
+    </ul>
+    <div class="clear"></div>
+    <div id="main_bg">
+      <div id="main_top">
+       <h1>A Perl Wrapper</h1>
+     </div> <!--main_top-->
+
+     <div id="content">
+        <div id="post">
+    <h2>A Perl Wrapper</h2>
+    <div style="color:#666; font-size:0.9em; margin-bottom: 20px"><img style="float:left; margin: -2px 3px 3px 0px" src="http://www.gravatar.com/avatar/b30ce50678f0e934eaa6697425c59dd7?s=20" >By <a href="http://ouvre-boite.com">Julien</a>, on 26 Jul 2009</div>
+<p>Thanks to our friend <a href="http://blog.cyberion.net/">Yann</a>, we now have a <a href="http://github.com/superfeedr/superfeedr-perl/tree/master">Perl wrapper for the Superfeedr <span class="caps">API</span></a> (here is <a href="http://github.com/yannk/perl-anyevent-superfeedr/tree/master">yann&#8217;s repo</a> if you want faster updates).</p>
+<p><img src="http://http.cdnlayer.com/itke/blogs.dir/8/files/2008/02/perl.jpg" style="float:left; width: 30%; margin: 10px;" alt="" /></p>
+<p>What I like with Yann&#8217;s wrapper is that it has a <em>callback</em> that users can implement to return the new feeds to <em>subscribe to in a asynchronous fashion</em>.</p>
+<p>So, for example, when you need to add a feed to superfeedr, you can save it in your database, and then, implement the callback so that it returns that feed. Any feed that will be returned will be subscribed to. One of the great advantages is that it shouldn&#8217;t affect your service performance, since the subscription is then asynchronous.</p>
+<p>Yann will soon put that <a href="http://search.cpan.org/perldoc?AnyEvent::Superfeedr">wrapper on <span class="caps">CPAN</span></a> (not yet there, though), but as with any of our other wrappers, <strong>you can of course fork it and improve it (or add doc, tests, examples)</strong> ;)</p>
+<p>PS: You need to use <a href="http://github.com/yannk/perl-anyevent-xmpp/">his version of AnyEvent::<span class="caps">XMPP</span></a> to fix a <a href="http://github.com/yannk/perl-anyevent-xmpp/commit/dff1b3a3addf0cf44eb0c023990c4ef9fec3ddbd">weird defect</a> in the way this lib handles xmpp-urls.</p>
+<p>Thank you <a href="http://blog.cyberion.net/">Yann</a> ! We owe you dinner!</p>
+</div>
+
+<blockquote>
+  <p>Liked this post? <input type="button" onclick="(function(){var z=document.createElement('script');z.src='http://www.subtome.com/load.js';document.body.appendChild(z);})()" value="Follow this blog!" /> to get more or read the <a href="/archive.html">archive</a>.</p>
+</blockquote>
+
+
+<small class="meta">
+  <a href='http://www.google.com/search?q=api+site:blog.superfeedr.com'>api</a>, 
+  
+  <a href='http://www.google.com/search?q=perl+site:blog.superfeedr.com'>perl</a>, 
+  
+  <a href='http://www.google.com/search?q=xmpp+site:blog.superfeedr.com'>xmpp</a>
+  
+</small>
+
+<div id="comments">
+    <h2>Comments</h2>
+    <div id="disqus_thread">
+    </div>
+    <script type="text/javascript" src="http://disqus.com/forums/superfeedr-thoughts/embed.js"></script>
+    <noscript>
+        <a href="http://superfeedr-thoughts.disqus.com/?url=ref">View the discussion thread.</a>
+    </noscript>
+    <a href="http://disqus.com" class="dsq-brlink">blog comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+
+    </div> <!--content-->
+
+    <div id="footer">
+      <ul id="footer_navigation">
+        <li><a href="http://documentation.superfeedr.com">Docs</a></li>
+        <li><a href="https://github.com/superfeedr/documentation/issues">Support</a></li>
+        <li><a href="http://blog.superfeedr.com">Blog</a></li>
+        <li><a href="https://superfeedr.com/cost">Pricing</a></li>
+        <li><a href="https://superfeedr.com/terms">Terms</a></li>
+      </ul>
+    </div>
+    <div id="log" style="" ></div>
+  </div> <!--main_bg-->
+</div><!--wrapper-->
+</div><!--bg-->
+<script type="text/javascript">
+  var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+  document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+  <!--//--><![CDATA[//><!--
+  try {
+      var pageTracker = _gat._getTracker('UA-9285763-1');
+      pageTracker._setDomainName("superfeedr.com");
+      pageTracker._initData();
+      pageTracker._trackPageview();
+  } catch(err) {}
+  //--><!]]>
+</script>
+</body>
+</html>

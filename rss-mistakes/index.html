@@ -1,0 +1,132 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>Superfeedr : RSS: let's not do the same mistakes </title>
+  <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+  <meta name="google-site-verification" content="ofroHQ3qXBS1SQfblK9-U_oduGZ975Bb3i_uP13Myao" />
+
+  <!-- Stylesheets -->
+  <link href="http://yui.yahooapis.com/3.1.1/build/cssreset/reset-min.css" media="screen" rel="stylesheet" type="text/css" />
+  <link href="http://superfeedr.com/stylesheets/superfeedr.css" media="screen" rel="stylesheet" type="text/css" />
+  <link href="http://superfeedr.com/stylesheets/print.css" media="print" rel="stylesheet" type="text/css" />
+  <link href="http://superfeedr.com/stylesheets/shjs/sh_nedit.min.css" media="screen" rel="stylesheet" type="text/css" />
+  <link href="http://superfeedr.com/stylesheets/thickbox.css" media="screen" rel="stylesheet" type="text/css" />
+  <link href="/css/blog.css" media="screen" rel="stylesheet" type="text/css" />
+  <link rel="alternate" type="application/atom+xml" title="Atom Feed" href="/atom.xml">
+
+ </head>
+
+ <body class="blog">
+   <div id="bg">
+     <div id="wrapper">
+      <div id="logo">
+       <a href="http://superfeedr.com" class="home"><img alt="Superfeedr" src="http://superfeedr.com/images/superfeedr_complete.png" /></a>
+     </div>
+     <ul id="navigation">
+      <li><a href="http://documentation.superfeedr.com" alt="RTFM">Documentation</a></li>
+      <li><a href="http://superfeedr.com/about" alt="All you wanted to know. Almost">About</a></li>
+    </ul>
+    <div class="clear"></div>
+    <div id="main_bg">
+      <div id="main_top">
+       <h1>RSS: let's not do the same mistakes</h1>
+     </div> <!--main_top-->
+
+     <div id="content">
+        <div id="post">
+    <h2>RSS: let's not do the same mistakes</h2>
+    <div style="color:#666; font-size:0.9em; margin-bottom: 20px"><img style="float:left; margin: -2px 3px 3px 0px" src="http://www.gravatar.com/avatar/b30ce50678f0e934eaa6697425c59dd7?s=20" >By <a href="http://ouvre-boite.com">Julien</a>, on 17 Jul 2013</div>
+<p>With Google Reader gone and the recent privacy scandals, millions of faithful readers are now looking for alternatives <strong>to follow</strong> content. Meanwhile, hundreds of thousands of publishers are anxious about gaining subscribers - and control over the subscriptions which have been delegated to Twitter, Facebook or Google+. Luckily, dozens of new readers have been announced or launched.</p>
+
+<h3 id='copycats_wont_grow_the_pie'>Copycats won&#8217;t grow the pie</h3>
+
+<p>RSS is dead has been the motto of several tech publications (none of whom actually deleted their feeds&#8230; but that&#8217;s another story!). The truth is these people were right in the sense that RSS has seen <em>very little innovation</em>, because one player was incredibly dominant and no-one could really distinguish from it. Now, that player is gone, but if we only use new readers who provide the same experience, we&#8217;re probably not going to see this ecosystem explode again.</p>
+
+<p>Yet, there are so many ways to consume feeds: <em>Email subscriptions</em> have been massively pushed by Wordpress for example, <a href='https://ifttt.com/recipes/search?q=RSS'>RSS recipes on IFTTT</a> also provide innovative alternatives. Did you know that <a href='https://flipboard.com/'>Flipboard</a> also relies heavily on RSS to show you content in a beautiful magazine format?</p>
+
+<p>These are non-google-reader-like experiences: let&#8217;s get more of these to make the e<strong>cosystem stronger and more resilient</strong>.</p>
+
+<h3 id='subscribing_is_hard'>Subscribing is hard</h3>
+
+<p>Most popular blogs have links to both a Twitter account and an RSS feed. Say I want to subscribe using both tools:</p>
+
+<ul>
+<li>
+<p>For Twitter, it&#8217;s as easy as clicking the Twitter icon and hitting the follow button: done.</p>
+</li>
+
+<li>
+<p>For RSS, I have first to &#8220;guess&#8221; (or rather hope) that there is a feed, since browsers now hide the infamous orange icon. I can then select the url of that tab and copy it. Then, open a new tab, go to the reader I chose to use and paste the url. Hopefully, that reader is smart enough to actually find the feed url from this page&#8217;s url. If not, I&#8217;m screwed anyway and I&#8217;ll have to look into the HTML code of the page!</p>
+</li>
+</ul>
+
+<p>The latter is <strong>too complex</strong>. Once you factor in that many people have no idea what a feed is, what a url is, or even how to open a new tab. (which is evident after <a href='http://www.youtube.com/watch?v=o4MwTvtyrUQ'>you&#8217;ve seen this</a>), it&#8217;s quickly clear that only nerds can be expected to use feed readers in their current form.</p>
+
+<p>What if we could provide a simple <em>follow</em> button that does the hard job of getting the right content and smartly sending it to their favorite feed-reading tool? We would probably see more adoption for readers, more subscribers to blogs or news sites, and a generally <strong>more informed internet</strong>.</p>
+
+<p>As a matter of fact, this button exists, and it&#8217;s called <a href='https://www.subtome.com/#/'>SubToMe</a>. It&#8217;s easy to install and works with most feed readers in a very simple and elegant way. If you have a blog, give it a try! (you can click on it at the bottom of this post too!)</p>
+
+<h3 id='polling_xml_sucks'>Polling XML sucks</h3>
+
+<p>Finally, (and this is the nerdiest part!), we can improve the way feed readers get content for their subscribers.</p>
+
+<p>The &#8220;level 0&#8221; solution is to periodically <em>fetch each feed, parse it, diff it and hopefully find something new</em>. This is a huge waste of resources for the publishers and the subscribers as updates are not that frequent for most sites anyway. Unfortunately, decreasing the frequency also means a delay in content and is not acceptable either.</p>
+
+<p>Open web solutions exist, like <a href='http://en.wikipedia.org/wiki/PubSubHubbub'>PubSubHubbub</a> or <a href='https://en.wikipedia.org/wiki/RSS_Cloud'>RSSCloud</a>: they just allow for updates to be pushed from the publisher to the subscriber in an elegant way without wasting resources.</p>
+
+<p>The cherry on the cake? <a href='http://blog.superfeedr.com/pubsubhubbub-0-4/'>PubSubHubbub evolved</a> and is now able to work with any kind of data (not just RSS or Atom), <strong>opening the door to a JSON based syndication format</strong>. Of course, this will only happen if all publishers (big and small) agree on a common format to avoid the waste of creating custom consuming application for each of them.</p>
+
+<p>Do you see other traps for the RSS ecosystem?</p>
+</div>
+
+<blockquote>
+  <p>Liked this post? <input type="button" onclick="(function(){var z=document.createElement('script');z.src='http://www.subtome.com/load.js';document.body.appendChild(z);})()" value="Follow this blog!" /> to get more or read the <a href="/archive.html">archive</a>.</p>
+</blockquote>
+
+
+<small class="meta">
+</small>
+
+<div id="comments">
+    <h2>Comments</h2>
+    <div id="disqus_thread">
+    </div>
+    <script type="text/javascript" src="http://disqus.com/forums/superfeedr-thoughts/embed.js"></script>
+    <noscript>
+        <a href="http://superfeedr-thoughts.disqus.com/?url=ref">View the discussion thread.</a>
+    </noscript>
+    <a href="http://disqus.com" class="dsq-brlink">blog comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+
+    </div> <!--content-->
+
+    <div id="footer">
+      <ul id="footer_navigation">
+        <li><a href="http://documentation.superfeedr.com">Docs</a></li>
+        <li><a href="https://github.com/superfeedr/documentation/issues">Support</a></li>
+        <li><a href="http://blog.superfeedr.com">Blog</a></li>
+        <li><a href="https://superfeedr.com/cost">Pricing</a></li>
+        <li><a href="https://superfeedr.com/terms">Terms</a></li>
+      </ul>
+    </div>
+    <div id="log" style="" ></div>
+  </div> <!--main_bg-->
+</div><!--wrapper-->
+</div><!--bg-->
+<script type="text/javascript">
+  var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+  document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+  <!--//--><![CDATA[//><!--
+  try {
+      var pageTracker = _gat._getTracker('UA-9285763-1');
+      pageTracker._setDomainName("superfeedr.com");
+      pageTracker._initData();
+      pageTracker._trackPageview();
+  } catch(err) {}
+  //--><!]]>
+</script>
+</body>
+</html>

@@ -1,0 +1,109 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>Superfeedr : HTTP Headers </title>
+  <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+  <meta name="google-site-verification" content="ofroHQ3qXBS1SQfblK9-U_oduGZ975Bb3i_uP13Myao" />
+
+  <!-- Stylesheets -->
+  <link href="http://yui.yahooapis.com/3.1.1/build/cssreset/reset-min.css" media="screen" rel="stylesheet" type="text/css" />
+  <link href="http://superfeedr.com/stylesheets/superfeedr.css" media="screen" rel="stylesheet" type="text/css" />
+  <link href="http://superfeedr.com/stylesheets/print.css" media="print" rel="stylesheet" type="text/css" />
+  <link href="http://superfeedr.com/stylesheets/shjs/sh_nedit.min.css" media="screen" rel="stylesheet" type="text/css" />
+  <link href="http://superfeedr.com/stylesheets/thickbox.css" media="screen" rel="stylesheet" type="text/css" />
+  <link href="/css/blog.css" media="screen" rel="stylesheet" type="text/css" />
+  <link rel="alternate" type="application/atom+xml" title="Atom Feed" href="/atom.xml">
+
+ </head>
+
+ <body class="blog">
+   <div id="bg">
+     <div id="wrapper">
+      <div id="logo">
+       <a href="http://superfeedr.com" class="home"><img alt="Superfeedr" src="http://superfeedr.com/images/superfeedr_complete.png" /></a>
+     </div>
+     <ul id="navigation">
+      <li><a href="http://documentation.superfeedr.com" alt="RTFM">Documentation</a></li>
+      <li><a href="http://superfeedr.com/about" alt="All you wanted to know. Almost">About</a></li>
+    </ul>
+    <div class="clear"></div>
+    <div id="main_bg">
+      <div id="main_top">
+       <h1>HTTP Headers</h1>
+     </div> <!--main_top-->
+
+     <div id="content">
+        <div id="post">
+    <h2>HTTP Headers</h2>
+    <div style="color:#666; font-size:0.9em; margin-bottom: 20px"><img style="float:left; margin: -2px 3px 3px 0px" src="http://www.gravatar.com/avatar/b30ce50678f0e934eaa6697425c59dd7?s=20" >By <a href="http://ouvre-boite.com">Julien</a>, on 20 Jul 2011</div>
+<p>It&#8217;s one of the small tricks we&#8217;re the proudest of, but it&#8217;s also a well hidden gem, so I&#8217;d like to take a couple seconds to introduce you to the <span class="caps">HTTP</span> headers we send on PubSubHubbub notifications.</p>
+<p>On PubSubHubbub notifications, the body of the <span class="caps">POST</span> request contains the feed&#8217;s new entries. The only way to send additional data is then to use the <span class="caps">HTTP</span> headers. Here is a list of some of the headers we send, with their meaning!</p>
+<h2>Content-Type</h2>
+<p>This is not custom to Superfeedr, but you should give it special care, as it tells you want kind of content is being pushed to you. As Superfeedr supports any kind of arbitrary format, you want to make sure you can handle them. Sometimes, you will subscribe to what you think is an <span class="caps">RSS</span> feed, but which, unfortunately, we can&#8217;t parse (the feed has been deleted and redirects to another <span class="caps">HTML</span> page&#8230;). In this case, we will use the Content-Type header to indicate that the content is not a feed.</p>
+<h2>X-Superfeedr-Credits</h2>
+<p>This, I think is the most interesting one. It gives you your Superfeedr credit balance. It&#8217;s quite convenient to track your usage of credits, so you know at any point what&#8217;s your rate.<br />
+It&#8217;s also an easy way for you to make sure that we do not &#8220;cheat&#8221; and take more credits than we ought to. You just have to check that the balance decreases by one between 2 notifications.<br />
+Finally, it&#8217;s a simple way for you to make sure you haven&#8217;t missed any notification, as, again, this value should keep decreasing by 1. If it doesn&#8217;t, then you have missed a notification.</p>
+<h2>X-PubSubHubbub-Callback</h2>
+<p>This is the callback url to which we have sent the notification. It&#8217;s pretty useful in the cases where you want to unsubscribe, as you don&#8217;t have to look up things on your end to know what callback url you used.</p>
+<h2>X-PubSubHubbub-Topic</h2>
+<p>As with the X-PubSubHubbub-Callback, it includes the topic to which you&#8217;ve subscribed, which, once again is very useful for you to subscribe/unsubscribe.<br />
+It&#8217;s very useful when urls are redirected as Superfeedr follows the redirects.</p>
+<h2>X-Superfeedr-PubSubHubbub-Expire</h2>
+<p>This is the expiration date for the subscriptions. Please note that we use &#8216;soft&#8217; expiration dates and you may see dates that are in the past here. However, you should <em>always</em> make sure that these dates are actually in the future, so that we will always send notifications.</p>
+<h2>X-Superfeedr-Retried</h2>
+<p>That field will indicate that we had to retry when sending you a notification. It&#8217;s quite useful to know that the reachability of your callback url as decreased. Generally, if you see too many requests with this header, you want to check the performance of your servers.</p>
+<p>There are a couple of other headers, that you want to check as well, but I&#8217;ll let you discover these =)</p>
+</div>
+
+<blockquote>
+  <p>Liked this post? <input type="button" onclick="(function(){var z=document.createElement('script');z.src='http://www.subtome.com/load.js';document.body.appendChild(z);})()" value="Follow this blog!" /> to get more or read the <a href="/archive.html">archive</a>.</p>
+</blockquote>
+
+
+<small class="meta">
+</small>
+
+<div id="comments">
+    <h2>Comments</h2>
+    <div id="disqus_thread">
+    </div>
+    <script type="text/javascript" src="http://disqus.com/forums/superfeedr-thoughts/embed.js"></script>
+    <noscript>
+        <a href="http://superfeedr-thoughts.disqus.com/?url=ref">View the discussion thread.</a>
+    </noscript>
+    <a href="http://disqus.com" class="dsq-brlink">blog comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+
+    </div> <!--content-->
+
+    <div id="footer">
+      <ul id="footer_navigation">
+        <li><a href="http://documentation.superfeedr.com">Docs</a></li>
+        <li><a href="https://github.com/superfeedr/documentation/issues">Support</a></li>
+        <li><a href="http://blog.superfeedr.com">Blog</a></li>
+        <li><a href="https://superfeedr.com/cost">Pricing</a></li>
+        <li><a href="https://superfeedr.com/terms">Terms</a></li>
+      </ul>
+    </div>
+    <div id="log" style="" ></div>
+  </div> <!--main_bg-->
+</div><!--wrapper-->
+</div><!--bg-->
+<script type="text/javascript">
+  var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+  document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+  <!--//--><![CDATA[//><!--
+  try {
+      var pageTracker = _gat._getTracker('UA-9285763-1');
+      pageTracker._setDomainName("superfeedr.com");
+      pageTracker._initData();
+      pageTracker._trackPageview();
+  } catch(err) {}
+  //--><!]]>
+</script>
+</body>
+</html>

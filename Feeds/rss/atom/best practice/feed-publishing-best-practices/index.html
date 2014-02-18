@@ -1,0 +1,115 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>Superfeedr : 10 Feed Publishing Best Practices </title>
+  <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+  <meta name="google-site-verification" content="ofroHQ3qXBS1SQfblK9-U_oduGZ975Bb3i_uP13Myao" />
+
+  <!-- Stylesheets -->
+  <link href="http://yui.yahooapis.com/3.1.1/build/cssreset/reset-min.css" media="screen" rel="stylesheet" type="text/css" />
+  <link href="http://superfeedr.com/stylesheets/superfeedr.css" media="screen" rel="stylesheet" type="text/css" />
+  <link href="http://superfeedr.com/stylesheets/print.css" media="print" rel="stylesheet" type="text/css" />
+  <link href="http://superfeedr.com/stylesheets/shjs/sh_nedit.min.css" media="screen" rel="stylesheet" type="text/css" />
+  <link href="http://superfeedr.com/stylesheets/thickbox.css" media="screen" rel="stylesheet" type="text/css" />
+  <link href="/css/blog.css" media="screen" rel="stylesheet" type="text/css" />
+  <link rel="alternate" type="application/atom+xml" title="Atom Feed" href="/atom.xml">
+
+ </head>
+
+ <body class="blog">
+   <div id="bg">
+     <div id="wrapper">
+      <div id="logo">
+       <a href="http://superfeedr.com" class="home"><img alt="Superfeedr" src="http://superfeedr.com/images/superfeedr_complete.png" /></a>
+     </div>
+     <ul id="navigation">
+      <li><a href="http://documentation.superfeedr.com" alt="RTFM">Documentation</a></li>
+      <li><a href="http://superfeedr.com/about" alt="All you wanted to know. Almost">About</a></li>
+    </ul>
+    <div class="clear"></div>
+    <div id="main_bg">
+      <div id="main_top">
+       <h1>10 Feed Publishing Best Practices</h1>
+     </div> <!--main_top-->
+
+     <div id="content">
+        <div id="post">
+    <h2>10 Feed Publishing Best Practices</h2>
+    <div style="color:#666; font-size:0.9em; margin-bottom: 20px"><img style="float:left; margin: -2px 3px 3px 0px" src="http://www.gravatar.com/avatar/b30ce50678f0e934eaa6697425c59dd7?s=20" >By <a href="http://ouvre-boite.com">Julien</a>, on 27 Jan 2010</div>
+<p>Working with publishers and polling hundreds of thousands of feed has taught us a few lessons and best practices for people who publish <span class="caps">RSS</span> or Atom feeds. You might disagree with some of them, so please, let us know in the comments.</p>
+<p>I want to emphasize that these best practices are <em>technical</em>, not business related.</p>
+<ol>
+	<li><strong>Don&#8217;t use <span class="caps">RSS</span> and <span class="caps">ATOM</span></strong>. There is no good feed parser that doesn&#8217;t accept both. Providing one will make subscribers life much easier :)</li>
+	<li>Make sure your feeds are <strong>valid</strong>.</li>
+	<li>Use <strong>unique identifiers</strong> for entries : <code>&lt;guid&gt;</code> in <span class="caps">RSS</span> and <code>&lt;id&gt;</code> in <span class="caps">ATOM</span></li>
+	<li><strong>Don&#8217;t use feed caching</strong> if you can&#8217;t explicitly expire the cache. In other words, don&#8217;t use time based caches. <em>Corollary : use Feedburner only if you use pingshot</em>.</li>
+	<li>Make sure your <strong>date format is valid</strong> : <code>ISO8601</code> is the one you should choose.</li>
+	<li>Add the feeds <strong>discovery</strong> in your <span class="caps">HTML</span> pages. Most modern browsers (Chrome : <span class="caps">WTF</span>?!) will be able to detect that and show your visitors that the page references a feed. It will also help feed readers to auto-extract feeds.</li>
+	<li>Make sure you&#8217;re <strong>RESTful</strong> in your feeds discovery. If you&#8217;re in a resource page, show feeds that relate to that resource. Make sure a given feed is accessible at a given url only.</li>
+	<li>Use the &#8220;de-facto&#8221; standard in terms of <strong>calendar : Roman</strong>. The subscribing app may convert to other calendar, based on the user&#8217;s settings.</li>
+	<li>Keep the <strong>feed urls simple</strong>. Do some <span class="caps">URL</span> rewriting.</li>
+	<li>It&#8217;s ok to have only <code>&lt;summary&gt;</code> instead of the full <code>&lt;content&gt;</code> (it&#8217;s a business decision) : but don&#8217;t show it as full content if it&#8217;s just a summary.</li>
+	<li><strong>Special Bonus</strong> : publish feeds in realtime. <a href="http://superfeedr.com/publisher">We can help</a>.</li>
+</ol>
+<p>Thoughts?</p>
+</div>
+
+<blockquote>
+  <p>Liked this post? <input type="button" onclick="(function(){var z=document.createElement('script');z.src='http://www.subtome.com/load.js';document.body.appendChild(z);})()" value="Follow this blog!" /> to get more or read the <a href="/archive.html">archive</a>.</p>
+</blockquote>
+
+
+<small class="meta">
+  <a href='http://www.google.com/search?q=feeds+site:blog.superfeedr.com'>feeds</a>, 
+  
+  <a href='http://www.google.com/search?q=rss+site:blog.superfeedr.com'>rss</a>, 
+  
+  <a href='http://www.google.com/search?q=atom+site:blog.superfeedr.com'>atom</a>, 
+  
+  <a href='http://www.google.com/search?q=best practice+site:blog.superfeedr.com'>best practice</a>
+  
+</small>
+
+<div id="comments">
+    <h2>Comments</h2>
+    <div id="disqus_thread">
+    </div>
+    <script type="text/javascript" src="http://disqus.com/forums/superfeedr-thoughts/embed.js"></script>
+    <noscript>
+        <a href="http://superfeedr-thoughts.disqus.com/?url=ref">View the discussion thread.</a>
+    </noscript>
+    <a href="http://disqus.com" class="dsq-brlink">blog comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+
+    </div> <!--content-->
+
+    <div id="footer">
+      <ul id="footer_navigation">
+        <li><a href="http://documentation.superfeedr.com">Docs</a></li>
+        <li><a href="https://github.com/superfeedr/documentation/issues">Support</a></li>
+        <li><a href="http://blog.superfeedr.com">Blog</a></li>
+        <li><a href="https://superfeedr.com/cost">Pricing</a></li>
+        <li><a href="https://superfeedr.com/terms">Terms</a></li>
+      </ul>
+    </div>
+    <div id="log" style="" ></div>
+  </div> <!--main_bg-->
+</div><!--wrapper-->
+</div><!--bg-->
+<script type="text/javascript">
+  var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+  document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+  <!--//--><![CDATA[//><!--
+  try {
+      var pageTracker = _gat._getTracker('UA-9285763-1');
+      pageTracker._setDomainName("superfeedr.com");
+      pageTracker._initData();
+      pageTracker._trackPageview();
+  } catch(err) {}
+  //--><!]]>
+</script>
+</body>
+</html>

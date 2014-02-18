@@ -1,0 +1,102 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>Superfeedr : Notifixlite </title>
+  <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+  <meta name="google-site-verification" content="ofroHQ3qXBS1SQfblK9-U_oduGZ975Bb3i_uP13Myao" />
+
+  <!-- Stylesheets -->
+  <link href="http://yui.yahooapis.com/3.1.1/build/cssreset/reset-min.css" media="screen" rel="stylesheet" type="text/css" />
+  <link href="http://superfeedr.com/stylesheets/superfeedr.css" media="screen" rel="stylesheet" type="text/css" />
+  <link href="http://superfeedr.com/stylesheets/print.css" media="print" rel="stylesheet" type="text/css" />
+  <link href="http://superfeedr.com/stylesheets/shjs/sh_nedit.min.css" media="screen" rel="stylesheet" type="text/css" />
+  <link href="http://superfeedr.com/stylesheets/thickbox.css" media="screen" rel="stylesheet" type="text/css" />
+  <link href="/css/blog.css" media="screen" rel="stylesheet" type="text/css" />
+  <link rel="alternate" type="application/atom+xml" title="Atom Feed" href="/atom.xml">
+
+ </head>
+
+ <body class="blog">
+   <div id="bg">
+     <div id="wrapper">
+      <div id="logo">
+       <a href="http://superfeedr.com" class="home"><img alt="Superfeedr" src="http://superfeedr.com/images/superfeedr_complete.png" /></a>
+     </div>
+     <ul id="navigation">
+      <li><a href="http://documentation.superfeedr.com" alt="RTFM">Documentation</a></li>
+      <li><a href="http://superfeedr.com/about" alt="All you wanted to know. Almost">About</a></li>
+    </ul>
+    <div class="clear"></div>
+    <div id="main_bg">
+      <div id="main_top">
+       <h1>Notifixlite</h1>
+     </div> <!--main_top-->
+
+     <div id="content">
+        <div id="post">
+    <h2>Notifixlite</h2>
+    <div style="color:#666; font-size:0.9em; margin-bottom: 20px"><img style="float:left; margin: -2px 3px 3px 0px" src="http://www.gravatar.com/avatar/b30ce50678f0e934eaa6697425c59dd7?s=20" >By <a href="http://ouvre-boite.com">Julien</a>, on 14 Feb 2011</div>
+<p>Often times people email me to ask if <a href="http://superfeedr.com/">Superfeedr</a> can be used to get IM alerts when a feed they follow as been updated. I usually tell them that, even though we are able to <a href="http://documentation.superfeedr.com/subscribers.html#xmpppubsub">send traffic via <span class="caps">XMPP</span></a>, it&#8217;s unlikely that their client can &#8220;understand&#8221; that traffic, because it&#8217;s probably only a chat client, and not a PubSub client. In a nutshell, Superfeedr is a service on which <span class="caps">RSS</span> to IM bots can easily be built.</p>
+<p>That&#8217;s exactly how <a href="http://notifixlite.appspot.com/">Notifixlite</a> was built : a <del>very</del> simple bot which will send you messages whenever a feed that you follow has been updated. If you have a chat client that supports <span class="caps">XMPP</span> (see a <a href="http://xmpp.org/xmpp-software/clients/">full list of clients here</a>), and if you have a <a href="http://gmail.com">Google Mail</a> account, you can very easily get started. First, connect using your gmail credentials, and then, add <code>notifixlite@appspot.com</code> as a contact.</p>
+<p>Then, you&#8217;re set. Notifixlite is a bot to which you can give instructions. Right now the set of instructions is quite minimal :</p>
+<ul>
+	<li><code>/subscribe _url_</code> : subscribes to the feed in question.</li>
+	<li><code>/unsubscribe _url_</code> : unsubscribes from the feed. You can also use <em>all</em> to unsubscribe from all feeds.</li>
+	<li><code>/list _page_index_</code> :  list subscriptions, default to page 1.</li>
+	<li><code>/help</code> : shows this help message!</li>
+</ul>
+<p>Of course, you can track any feed out there&#8230; including <a href="http://documentation.superfeedr.com/misc.html#track">track feeds</a> ! Superfeedr provides a nice way to filter traffic based on keywords and you can easily subscribe to <a href="http://superfeedr.com/track?include=valentine">http://superfeedr.com/track?include=valentine</a> if you want to see any mention of Valentine!</p>
+<p>Also, one of the great things with Notifixlite is that it&#8217;s <strong>open source</strong> : you can not only <a href="https://github.com/superfeedr/notifixlight">fork it on github</a>, but also run it under your very own <a href="http://code.google.com/appengine/">Google App Engine</a> account.  If you&#8217;re feeling brave, feel free to implement any feature that you miss! An import from Google Reader would be quite handsome for example!</p>
+</div>
+
+<blockquote>
+  <p>Liked this post? <input type="button" onclick="(function(){var z=document.createElement('script');z.src='http://www.subtome.com/load.js';document.body.appendChild(z);})()" value="Follow this blog!" /> to get more or read the <a href="/archive.html">archive</a>.</p>
+</blockquote>
+
+
+<small class="meta">
+</small>
+
+<div id="comments">
+    <h2>Comments</h2>
+    <div id="disqus_thread">
+    </div>
+    <script type="text/javascript" src="http://disqus.com/forums/superfeedr-thoughts/embed.js"></script>
+    <noscript>
+        <a href="http://superfeedr-thoughts.disqus.com/?url=ref">View the discussion thread.</a>
+    </noscript>
+    <a href="http://disqus.com" class="dsq-brlink">blog comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+
+    </div> <!--content-->
+
+    <div id="footer">
+      <ul id="footer_navigation">
+        <li><a href="http://documentation.superfeedr.com">Docs</a></li>
+        <li><a href="https://github.com/superfeedr/documentation/issues">Support</a></li>
+        <li><a href="http://blog.superfeedr.com">Blog</a></li>
+        <li><a href="https://superfeedr.com/cost">Pricing</a></li>
+        <li><a href="https://superfeedr.com/terms">Terms</a></li>
+      </ul>
+    </div>
+    <div id="log" style="" ></div>
+  </div> <!--main_bg-->
+</div><!--wrapper-->
+</div><!--bg-->
+<script type="text/javascript">
+  var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+  document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+  <!--//--><![CDATA[//><!--
+  try {
+      var pageTracker = _gat._getTracker('UA-9285763-1');
+      pageTracker._setDomainName("superfeedr.com");
+      pageTracker._initData();
+      pageTracker._trackPageview();
+  } catch(err) {}
+  //--><!]]>
+</script>
+</body>
+</html>

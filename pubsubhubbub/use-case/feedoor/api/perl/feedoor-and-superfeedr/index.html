@@ -1,0 +1,120 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>Superfeedr : Feedoor and Superfeedr </title>
+  <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+  <meta name="google-site-verification" content="ofroHQ3qXBS1SQfblK9-U_oduGZ975Bb3i_uP13Myao" />
+
+  <!-- Stylesheets -->
+  <link href="http://yui.yahooapis.com/3.1.1/build/cssreset/reset-min.css" media="screen" rel="stylesheet" type="text/css" />
+  <link href="http://superfeedr.com/stylesheets/superfeedr.css" media="screen" rel="stylesheet" type="text/css" />
+  <link href="http://superfeedr.com/stylesheets/print.css" media="print" rel="stylesheet" type="text/css" />
+  <link href="http://superfeedr.com/stylesheets/shjs/sh_nedit.min.css" media="screen" rel="stylesheet" type="text/css" />
+  <link href="http://superfeedr.com/stylesheets/thickbox.css" media="screen" rel="stylesheet" type="text/css" />
+  <link href="/css/blog.css" media="screen" rel="stylesheet" type="text/css" />
+  <link rel="alternate" type="application/atom+xml" title="Atom Feed" href="/atom.xml">
+
+ </head>
+
+ <body class="blog">
+   <div id="bg">
+     <div id="wrapper">
+      <div id="logo">
+       <a href="http://superfeedr.com" class="home"><img alt="Superfeedr" src="http://superfeedr.com/images/superfeedr_complete.png" /></a>
+     </div>
+     <ul id="navigation">
+      <li><a href="http://documentation.superfeedr.com" alt="RTFM">Documentation</a></li>
+      <li><a href="http://superfeedr.com/about" alt="All you wanted to know. Almost">About</a></li>
+    </ul>
+    <div class="clear"></div>
+    <div id="main_bg">
+      <div id="main_top">
+       <h1>Feedoor and Superfeedr</h1>
+     </div> <!--main_top-->
+
+     <div id="content">
+        <div id="post">
+    <h2>Feedoor and Superfeedr</h2>
+    <div style="color:#666; font-size:0.9em; margin-bottom: 20px"><img style="float:left; margin: -2px 3px 3px 0px" src="http://www.gravatar.com/avatar/b30ce50678f0e934eaa6697425c59dd7?s=20" >By <a href="http://ouvre-boite.com">Julien</a>, on 29 Dec 2009</div>
+<p>Earlier this month <a href="http://twitter.com/Mamod">Mamod</a> sent me a notice saying that they enabled real-time feeds management to any website or blog (See <a href="http://arabcrunch.com/2009/12/feedoor-enables-real-time-feeds-management-to-any-website-or-blog.html">Arabcrunch</a>) used through <a href="http://www.feedoor.com/">Feedoor</a>.</p>
+<p>Mamod was kind enough to create this great presentation on how he integrated <a href="http://superfeedr.com/">Superfeedr</a> into Feedoor :</p>
+<div style="width:425px;text-align:left" id="__ss_2705362"><a style="font:14px Helvetica,Arial,Sans-serif;display:block;margin:12px 0 3px 0;text-decoration:underline;" href="http://www.slideshare.net/mamod/superfeedr-integration-with-feedoor2" title="Superfeedr Integration With Feedoor">Superfeedr Integration With Feedoor</a><object style="margin:0px" width="425" height="355"><param name="movie" value="http://static.slidesharecdn.com/swf/ssplayer2.swf?doc=superfeedrintegrationwithfeedoor2-091212111230-phpapp02&stripped_title=superfeedr-integration-with-feedoor2" /><param name="allowFullScreen" value="true"/><param name="allowScriptAccess" value="always"/><embed src="http://static.slidesharecdn.com/swf/ssplayer2.swf?doc=superfeedrintegrationwithfeedoor2-091212111230-phpapp02&stripped_title=superfeedr-integration-with-feedoor2" type="application/x-shockwave-flash" allowscriptaccess="always" allowfullscreen="true" width="425" height="355"></embed></object><div style="font-size:11px;font-family:tahoma,arial;height:26px;padding-top:2px;">View more <a style="text-decoration:underline;" href="http://www.slideshare.net/">presentations</a> from <a style="text-decoration:underline;" href="http://www.slideshare.net/mamod">mamod</a>.</div></div>
+<p>He also sent me the following :</p>
+<blockquote>
+<p>Our major concern was to make all bloggers able to <strong>enable real-time support for their feeds</strong>, and Superfeedr helped us to achieve that.</p>
+</blockquote>
+<blockquote>
+<p>In the beginning we supported <a href="http://rsscloud.org/">RssCloud</a> protocol and then <a href="http://code.google.com/p/pubsubhubbub/">Pubsubhubbub</a>, these protocols are the most well known protocols in the world of real-time, however, <strong>the problem lies in the lack of real-time protocols in most feeds</strong>, which means that we need to find a smart solution to overcome this problem. The solution is to poll feeds with no real-time protocol periodically and intelligently, and then match with the previous content, if there is new content we ping feed services and subscribers, this is the only way we can achieve as close as possible to real-time for feeds with no real-time protocols. For those who do not know how difficult this process is,* the process of polling thousands of feeds several times a day needs lots of resources and planning, it&#8217;s simply a very crazy task*. Luckily we found a crazy service which already do that exact thing we needed and surprisingly they do it right and efficiently, <strong>Superfeedr, they&#8217;re so crazy</strong> but glad we found them. Now when ever we manage a feed with no real-time protocol we send it to Superfeedr and <strong>they do the polling and the checking on our behalf</strong>, and all we need to do is waiting for their pings :)</p>
+</blockquote>
+<blockquote>
+<p>As for how to integrate Superfeedr in our service, we used <a href="http://documentation.superfeedr.com/subscribers.html#webhooks">their <span class="caps">HTTP</span> <span class="caps">API</span></a>, it was <strong>very easy</strong> and just like dealing with Pubsubhubbub real-time protocol as <strong>they use the same specifications</strong>, they are a big hub that supports all real-time protocols and smartly poll feeds frequently.</p>
+</blockquote>
+<p>Here is what Feedoor used to integrate with Superfeedr :</p>
+<ul>
+	<li>Superfeedr <span class="caps">API</span>: <a href="http://documentation.superfeedr.com/subscribers.html#webhooks"><em><span class="caps">HTTP</span> <span class="caps">API</span></em></a></li>
+	<li>Programming Language Used: <em>Perl</em></li>
+	<li>Modules and Libraries: <em>In house</em></li>
+</ul>
+</div>
+
+<blockquote>
+  <p>Liked this post? <input type="button" onclick="(function(){var z=document.createElement('script');z.src='http://www.subtome.com/load.js';document.body.appendChild(z);})()" value="Follow this blog!" /> to get more or read the <a href="/archive.html">archive</a>.</p>
+</blockquote>
+
+
+<small class="meta">
+  <a href='http://www.google.com/search?q=pubsubhubbub+site:blog.superfeedr.com'>pubsubhubbub</a>, 
+  
+  <a href='http://www.google.com/search?q=use-case+site:blog.superfeedr.com'>use-case</a>, 
+  
+  <a href='http://www.google.com/search?q=feedoor+site:blog.superfeedr.com'>feedoor</a>, 
+  
+  <a href='http://www.google.com/search?q=api+site:blog.superfeedr.com'>api</a>, 
+  
+  <a href='http://www.google.com/search?q=perl+site:blog.superfeedr.com'>perl</a>
+  
+</small>
+
+<div id="comments">
+    <h2>Comments</h2>
+    <div id="disqus_thread">
+    </div>
+    <script type="text/javascript" src="http://disqus.com/forums/superfeedr-thoughts/embed.js"></script>
+    <noscript>
+        <a href="http://superfeedr-thoughts.disqus.com/?url=ref">View the discussion thread.</a>
+    </noscript>
+    <a href="http://disqus.com" class="dsq-brlink">blog comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+
+    </div> <!--content-->
+
+    <div id="footer">
+      <ul id="footer_navigation">
+        <li><a href="http://documentation.superfeedr.com">Docs</a></li>
+        <li><a href="https://github.com/superfeedr/documentation/issues">Support</a></li>
+        <li><a href="http://blog.superfeedr.com">Blog</a></li>
+        <li><a href="https://superfeedr.com/cost">Pricing</a></li>
+        <li><a href="https://superfeedr.com/terms">Terms</a></li>
+      </ul>
+    </div>
+    <div id="log" style="" ></div>
+  </div> <!--main_bg-->
+</div><!--wrapper-->
+</div><!--bg-->
+<script type="text/javascript">
+  var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+  document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+  <!--//--><![CDATA[//><!--
+  try {
+      var pageTracker = _gat._getTracker('UA-9285763-1');
+      pageTracker._setDomainName("superfeedr.com");
+      pageTracker._initData();
+      pageTracker._trackPageview();
+  } catch(err) {}
+  //--><!]]>
+</script>
+</body>
+</html>

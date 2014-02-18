@@ -1,0 +1,125 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>Superfeedr : Superfeedr Jquery </title>
+  <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+  <meta name="google-site-verification" content="ofroHQ3qXBS1SQfblK9-U_oduGZ975Bb3i_uP13Myao" />
+
+  <!-- Stylesheets -->
+  <link href="http://yui.yahooapis.com/3.1.1/build/cssreset/reset-min.css" media="screen" rel="stylesheet" type="text/css" />
+  <link href="http://superfeedr.com/stylesheets/superfeedr.css" media="screen" rel="stylesheet" type="text/css" />
+  <link href="http://superfeedr.com/stylesheets/print.css" media="print" rel="stylesheet" type="text/css" />
+  <link href="http://superfeedr.com/stylesheets/shjs/sh_nedit.min.css" media="screen" rel="stylesheet" type="text/css" />
+  <link href="http://superfeedr.com/stylesheets/thickbox.css" media="screen" rel="stylesheet" type="text/css" />
+  <link href="/css/blog.css" media="screen" rel="stylesheet" type="text/css" />
+  <link rel="alternate" type="application/atom+xml" title="Atom Feed" href="/atom.xml">
+
+ </head>
+
+ <body class="blog">
+   <div id="bg">
+     <div id="wrapper">
+      <div id="logo">
+       <a href="http://superfeedr.com" class="home"><img alt="Superfeedr" src="http://superfeedr.com/images/superfeedr_complete.png" /></a>
+     </div>
+     <ul id="navigation">
+      <li><a href="http://documentation.superfeedr.com" alt="RTFM">Documentation</a></li>
+      <li><a href="http://superfeedr.com/about" alt="All you wanted to know. Almost">About</a></li>
+    </ul>
+    <div class="clear"></div>
+    <div id="main_bg">
+      <div id="main_top">
+       <h1>Superfeedr Jquery</h1>
+     </div> <!--main_top-->
+
+     <div id="content">
+        <div id="post">
+    <h2>Superfeedr Jquery</h2>
+    <div style="color:#666; font-size:0.9em; margin-bottom: 20px"><img style="float:left; margin: -2px 3px 3px 0px" src="http://www.gravatar.com/avatar/b30ce50678f0e934eaa6697425c59dd7?s=20" >By <a href="http://ouvre-boite.com">Julien</a>, on 22 Jan 2014</div>
+<p>Today, we&#8217;re happy to introduce the first <a href='http://plugins.jquery.com/superfeedr/'>Superfeedr Jquery plugin</a>. It&#8217;s simple piece of <em>syntactic</em> sugar that was aked by one of our customers but makes it really simple to <strong>integrate an RSS feed into a page</strong>!</p>
+
+<p>Its purpose is very simple: integrate a the content of any RSS or Atom feed in any page of your website, without the constraints of the <a href='https://en.wikipedia.org/wiki/Same_origin_policy'>same origin policy</a>. It&#8217;s very useful in the context of javascript <em>single page applications</em> for example or in the context of <em>full client side javascript applications</em> without any server side code, like the kind of apps that runs on <a href='http://www.mozilla.org/en-US/firefox/os/'>FirefoxOS</a> or <a href='http://www.chromium.org/chromium-os'>ChromeOS</a>.</p>
+
+<h3 id='example'>Example</h3>
+
+<p>The list of posts below is loaded using the following script (check the source! if you don&#8217;t trust me!).</p>
+<ul id='feed'>
+</ul><script src='https://gist.github.com/julien51/8567755.js'>
+</script><script src='http://code.jquery.com/jquery-1.10.1.min.js'>
+</script><script src='https://raw2.github.com/superfeedr/superfeedr-jquery/master/superfeedr.jquery.js'>
+</script><script type='text/javascript'>
+$.superfeedr.options.login = 'superfeedr';
+$.superfeedr.options.key = '1a8c661804873703802212503e75d3c2';
+
+var feed = new $.superfeedr.Feed('http://blog.superfeedr.com/atom.xml');
+
+feed.load({count: 5}, function(result) {
+  if (!result.error) {
+    var container = document.getElementById("feed");
+    for (var i = 0; result.feed.items.length > i ; i++) {
+      var entry = result.feed.items[i];
+      var div = document.createElement("li");
+      div.appendChild(document.createTextNode(entry.title));
+      container.appendChild(div);
+    }
+  }
+});
+</script>
+<p>The ticker on our <a href='http://superfeedr.com'>home page</a> uses the plugin if you&#8217;re looking for another example too!</p>
+
+<h2 id='final_notes'>Final notes</h2>
+
+<p>We believe this is an elegant <strong>replacement</strong> to the <a href='https://developers.google.com/feed/'>Google Feed API</a>. Try it out and let us know what you think. It&#8217;s also <a href='https://github.com/superfeedr/superfeedr-jquery'>on Github</a> and you&#8217;re more than welcome to ask for more features, fork or submit pull requests. There is a also a small guide on how to get started quickly.</p>
+</div>
+
+<blockquote>
+  <p>Liked this post? <input type="button" onclick="(function(){var z=document.createElement('script');z.src='http://www.subtome.com/load.js';document.body.appendChild(z);})()" value="Follow this blog!" /> to get more or read the <a href="/archive.html">archive</a>.</p>
+</blockquote>
+
+
+<small class="meta">
+</small>
+
+<div id="comments">
+    <h2>Comments</h2>
+    <div id="disqus_thread">
+    </div>
+    <script type="text/javascript" src="http://disqus.com/forums/superfeedr-thoughts/embed.js"></script>
+    <noscript>
+        <a href="http://superfeedr-thoughts.disqus.com/?url=ref">View the discussion thread.</a>
+    </noscript>
+    <a href="http://disqus.com" class="dsq-brlink">blog comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+
+    </div> <!--content-->
+
+    <div id="footer">
+      <ul id="footer_navigation">
+        <li><a href="http://documentation.superfeedr.com">Docs</a></li>
+        <li><a href="https://github.com/superfeedr/documentation/issues">Support</a></li>
+        <li><a href="http://blog.superfeedr.com">Blog</a></li>
+        <li><a href="https://superfeedr.com/cost">Pricing</a></li>
+        <li><a href="https://superfeedr.com/terms">Terms</a></li>
+      </ul>
+    </div>
+    <div id="log" style="" ></div>
+  </div> <!--main_bg-->
+</div><!--wrapper-->
+</div><!--bg-->
+<script type="text/javascript">
+  var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+  document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+  <!--//--><![CDATA[//><!--
+  try {
+      var pageTracker = _gat._getTracker('UA-9285763-1');
+      pageTracker._setDomainName("superfeedr.com");
+      pageTracker._initData();
+      pageTracker._trackPageview();
+  } catch(err) {}
+  //--><!]]>
+</script>
+</body>
+</html>

@@ -1,0 +1,133 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>Superfeedr : Moving RSS forward </title>
+  <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+  <meta name="google-site-verification" content="ofroHQ3qXBS1SQfblK9-U_oduGZ975Bb3i_uP13Myao" />
+
+  <!-- Stylesheets -->
+  <link href="http://yui.yahooapis.com/3.1.1/build/cssreset/reset-min.css" media="screen" rel="stylesheet" type="text/css" />
+  <link href="http://superfeedr.com/stylesheets/superfeedr.css" media="screen" rel="stylesheet" type="text/css" />
+  <link href="http://superfeedr.com/stylesheets/print.css" media="print" rel="stylesheet" type="text/css" />
+  <link href="http://superfeedr.com/stylesheets/shjs/sh_nedit.min.css" media="screen" rel="stylesheet" type="text/css" />
+  <link href="http://superfeedr.com/stylesheets/thickbox.css" media="screen" rel="stylesheet" type="text/css" />
+  <link href="/css/blog.css" media="screen" rel="stylesheet" type="text/css" />
+  <link rel="alternate" type="application/atom+xml" title="Atom Feed" href="/atom.xml">
+
+ </head>
+
+ <body class="blog">
+   <div id="bg">
+     <div id="wrapper">
+      <div id="logo">
+       <a href="http://superfeedr.com" class="home"><img alt="Superfeedr" src="http://superfeedr.com/images/superfeedr_complete.png" /></a>
+     </div>
+     <ul id="navigation">
+      <li><a href="http://documentation.superfeedr.com" alt="RTFM">Documentation</a></li>
+      <li><a href="http://superfeedr.com/about" alt="All you wanted to know. Almost">About</a></li>
+    </ul>
+    <div class="clear"></div>
+    <div id="main_bg">
+      <div id="main_top">
+       <h1>Moving RSS forward</h1>
+     </div> <!--main_top-->
+
+     <div id="content">
+        <div id="post">
+    <h2>Moving RSS forward</h2>
+    <div style="color:#666; font-size:0.9em; margin-bottom: 20px"><img style="float:left; margin: -2px 3px 3px 0px" src="http://www.gravatar.com/avatar/b30ce50678f0e934eaa6697425c59dd7?s=20" >By <a href="http://ouvre-boite.com">Julien</a>, on 15 Mar 2013</div>
+<p>The death for Google Reader will surely bring a gigantic wave of innovation in the RSS Reader &#8216;market&#8217;. We&#8217;ve shown yesterday that <a href='http://blog.superfeedr.com/state-of-readers/'>there are many many alternatives</a>. Superfeedr is <strong>in the business of making RSS easier</strong>, we&#8217;re introducing a little, simple (<a href='http://www.marco.org/2013/03/14/baby-steps-replacing-google-reader!'>baby step</a> thing which we hope will make a subscribing easier to use for everyone.</p>
+
+<h3 id='subscribing_is_hard'>Subscribing is hard</h3>
+
+<p>We&#8217;ve heard a lot of people say that they <em>replaced their RSS reader with Twitter, or Facebook</em>. It&#8217;s also possible that Google killed Reader to promote G+. These platforms are popular for news reading because it&#8217;s so easy to subscribe or follow news sources, or people sharing the blogs&#8230; etc. <strong>It&#8217;s just a click of a button</strong>.</p>
+
+<p>Subscribing to an <strong>RSS feed is still very hard</strong>. When I am on a site I like, I have to find the RSS link (which is often hidden), copy its url, open a new tab and paste the url in he right field. Finally, I can click on the &#8216;subscribe&#8217; button.</p>
+
+<blockquote>
+<p>UPDATE; people on HackerNews said that subscribing to an RSS feed is easy. Check this video of how people react when they&#8217;re asked <a href='http://www.youtube.com/watch?v=o4MwTvtyrUQ'>what a browser is</a>.</p>
+</blockquote>
+
+<h3 id='meet_subtome'>Meet SubToMe</h3>
+
+<p><a href='https://www.subtome.com/'>SubToMe</a> aims at simplifying that. It&#8217;s a button, click on it: <input id='followThis' type='button' value='Follow this Blog' /></p>
+<script>
+(function(){
+  window.onload = function() {
+    document.getElementById("followThis").onclick = function() {
+    var z=document.createElement('script');
+    z.src='https://www.subtome.com/load.js';
+    document.body.appendChild(z);    
+  }
+}})()
+</script>
+<p>If all goes well, you should see something like this:</p>
+<img alt='Msgboy' src='https://raw.github.com/superfeedr/subtome/master/misc/subtome-screenshot.png' style='margin: 10px' />
+<p>Of course, that&#8217;s kind of dumb you may think. This is just a list of readers and it&#8217;ll be hard to list them all. Luckily, this button has a <a href='https://www.subtome.com/developers.html'>registration mechanism</a>. For example, click on <a href='https://www.subtome.com/register.html?name=Feedly&amp;url=http%3A%2F%2Fwww.feedly.com%2Fhome%23subscription%2Ffeed%2F%7Bfeed%7D' target='_blank'>use Feedly</a> or <a href='https://www.subtome.com/register.html?name=Bloglovin&amp;url=http://www.bloglovin.com/search/%7Burl%7D' target='_blank'>Use Bloglovin</a>, and eventually, click again on the button above.</p>
+
+<p>You should now see only the services for which you have been registered. Of course, this should be <em>100% transparent to the user</em>, using iframes, like <a href='http://theoldreader.com/'>The Old Reader</a> already does! This way, <strong>each user will be able to use their favorite reader</strong> and publishers don&#8217;t have to put dozens of <em>follow me on xxx</em> buttons on their sites.</p>
+
+<p>Of course, you may wonder how this is done. Here is a little secret: it&#8217;s all stored in <code>localStorage</code>. All the SubToMe files are just static HTML files. No server involved, no app running and no data is ever leaked.</p>
+
+<p>We also have a <a href='https://www.subtome.com/settings.html'>bookmarklet and browser extensions</a> for you to subscribe easily.</p>
+
+<h3 id='do_you_have_a_blog'>Do you have a blog?</h3>
+
+<p>If you do, you probably understand the need for you to <strong>control the distribution of your content</strong>. You just can&#8217;t rely on Twitter, Facebook or Google+ to send your content to your subscribers and followers.</p>
+
+<p>Make sure you pick a platform that has RSS feeds and make sure you allow people to subscribe to your content in the easiest possible way. Follow these instructions if you want to <a href='https://www.subtome.com/publishers.html'>add a SubToMe button</a>.</p>
+
+<p>We have a <a href='http://wordpress.org/extend/plugins/subtome'>SubToMe Wordpress extension</a>. Install it!</p>
+</div>
+
+<blockquote>
+  <p>Liked this post? <input type="button" onclick="(function(){var z=document.createElement('script');z.src='http://www.subtome.com/load.js';document.body.appendChild(z);})()" value="Follow this blog!" /> to get more or read the <a href="/archive.html">archive</a>.</p>
+</blockquote>
+
+
+<small class="meta">
+</small>
+
+<div id="comments">
+    <h2>Comments</h2>
+    <div id="disqus_thread">
+    </div>
+    <script type="text/javascript" src="http://disqus.com/forums/superfeedr-thoughts/embed.js"></script>
+    <noscript>
+        <a href="http://superfeedr-thoughts.disqus.com/?url=ref">View the discussion thread.</a>
+    </noscript>
+    <a href="http://disqus.com" class="dsq-brlink">blog comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+
+    </div> <!--content-->
+
+    <div id="footer">
+      <ul id="footer_navigation">
+        <li><a href="http://documentation.superfeedr.com">Docs</a></li>
+        <li><a href="https://github.com/superfeedr/documentation/issues">Support</a></li>
+        <li><a href="http://blog.superfeedr.com">Blog</a></li>
+        <li><a href="https://superfeedr.com/cost">Pricing</a></li>
+        <li><a href="https://superfeedr.com/terms">Terms</a></li>
+      </ul>
+    </div>
+    <div id="log" style="" ></div>
+  </div> <!--main_bg-->
+</div><!--wrapper-->
+</div><!--bg-->
+<script type="text/javascript">
+  var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+  document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+  <!--//--><![CDATA[//><!--
+  try {
+      var pageTracker = _gat._getTracker('UA-9285763-1');
+      pageTracker._setDomainName("superfeedr.com");
+      pageTracker._initData();
+      pageTracker._trackPageview();
+  } catch(err) {}
+  //--><!]]>
+</script>
+</body>
+</html>

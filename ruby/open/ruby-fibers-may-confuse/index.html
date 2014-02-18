@@ -1,0 +1,122 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>Superfeedr : Ruby Fibers may confuse </title>
+  <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+  <meta name="google-site-verification" content="ofroHQ3qXBS1SQfblK9-U_oduGZ975Bb3i_uP13Myao" />
+
+  <!-- Stylesheets -->
+  <link href="http://yui.yahooapis.com/3.1.1/build/cssreset/reset-min.css" media="screen" rel="stylesheet" type="text/css" />
+  <link href="http://superfeedr.com/stylesheets/superfeedr.css" media="screen" rel="stylesheet" type="text/css" />
+  <link href="http://superfeedr.com/stylesheets/print.css" media="print" rel="stylesheet" type="text/css" />
+  <link href="http://superfeedr.com/stylesheets/shjs/sh_nedit.min.css" media="screen" rel="stylesheet" type="text/css" />
+  <link href="http://superfeedr.com/stylesheets/thickbox.css" media="screen" rel="stylesheet" type="text/css" />
+  <link href="/css/blog.css" media="screen" rel="stylesheet" type="text/css" />
+  <link rel="alternate" type="application/atom+xml" title="Atom Feed" href="/atom.xml">
+
+ </head>
+
+ <body class="blog">
+   <div id="bg">
+     <div id="wrapper">
+      <div id="logo">
+       <a href="http://superfeedr.com" class="home"><img alt="Superfeedr" src="http://superfeedr.com/images/superfeedr_complete.png" /></a>
+     </div>
+     <ul id="navigation">
+      <li><a href="http://documentation.superfeedr.com" alt="RTFM">Documentation</a></li>
+      <li><a href="http://superfeedr.com/about" alt="All you wanted to know. Almost">About</a></li>
+    </ul>
+    <div class="clear"></div>
+    <div id="main_bg">
+      <div id="main_top">
+       <h1>Ruby Fibers may confuse</h1>
+     </div> <!--main_top-->
+
+     <div id="content">
+        <div id="post">
+    <h2>Ruby Fibers may confuse</h2>
+    <div style="color:#666; font-size:0.9em; margin-bottom: 20px"><img style="float:left; margin: -2px 3px 3px 0px" src="http://www.gravatar.com/avatar/0120a25badc6b1e50f6890527dca7042?s=20" >By <a href="http://spaceboyz.net/~astro/">Astro</a>, on 14 Apr 2010</div>
+<p>Like many others, we use <a href="http://rubyeventmachine.com/">Ruby EventMachine</a> to make most use of <span class="caps">CPU</span> time in the cloud. Instead of blocking and waiting for responses from remote systems, we just memorize what is to be done and return to the main loop, taking care other things that are currently going on. The asynchronous programming model is callback-based and makes otherwise pretty Ruby code look a bit unwieldy:</p>
+<pre><code>server.get(key) do |content|
+  content.modify!
+  server.set(key, content) do
+    proceed_doing_stuff
+  end
+end</code></pre>
+<p><em>Call with Current Continuation</em> (<strong>callcc</strong>) and the advent of <strong>Fibers</strong> in Ruby 1.9 to the rescue. They can help us make the code look pretty again:</p>
+<pre><code>content = server.get(key)
+content.modify!
+server.set(key, content)
+proceed_doing_stuff</code></pre>
+<p>This works because <code>server.get</code> and <code>server.set</code> can obtain the remaining code as a reference (like the callback block before): the <em>Current Continuation</em>. The semantics are only subtly different, we can regard these simply as two ways to express code.</p>
+<p>This article is not a praise on the pretty syntax and features of Ruby. Remember what we gain with the asynchronous programming model: not only raw performance by avoiding threads and locking, but also the convenience of always running in a single thread and not having the current state made inconsistent by getting preempted by other code.</p>
+<p>Now what are Fibers introducing? We still run only one high-performing Ruby thread, but we gain <strong>cooperative multi-tasking</strong>. The situations a coder may find him/herself in are quite controllable through these &#8220;well-definable&#8221; preemption points. Still, to illustrate take a look at this stupid but trivial example:</p>
+<pre><code>received, sent = get_stats
+content = server.get(key)
+received += content.size
+content.modify!
+server.set(key, content)
+sent += content.size
+set_stats received, sent
+proceed_doing_stuff</code></pre>
+<p>This is the code from above, extended with very simple statistics collection. The statistics are global state, but we&#8217;re safe because we don&#8217;t use threads. Are we?</p>
+<p><img src="/images/shared-mutable-state.jpg" style="width:40%;float:right;margin:5px;" alt="" /><br />
+No. All the issues come back to life that are difficult with writing threaded code. During <code>server.get</code> and <code>server.set</code> the Fiber has been yielded and resumed, and another Fiber may have modified the stats in the meanwhile. This could have been caused by the very same code, just handling another server from your connection pool.</p>
+<p>By using callback blocks instead of Fibers the problem is still there but the code looks <strong>explicitly asynchronous</strong>. They tell the reader: <em>&#8220;I am running somewhat later, please pay attention to any shared state!&#8221;</em></p>
+</div>
+
+<blockquote>
+  <p>Liked this post? <input type="button" onclick="(function(){var z=document.createElement('script');z.src='http://www.subtome.com/load.js';document.body.appendChild(z);})()" value="Follow this blog!" /> to get more or read the <a href="/archive.html">archive</a>.</p>
+</blockquote>
+
+
+<small class="meta">
+  <a href='http://www.google.com/search?q=ruby+site:blog.superfeedr.com'>ruby</a>, 
+  
+  <a href='http://www.google.com/search?q=open+site:blog.superfeedr.com'>open</a>
+  
+</small>
+
+<div id="comments">
+    <h2>Comments</h2>
+    <div id="disqus_thread">
+    </div>
+    <script type="text/javascript" src="http://disqus.com/forums/superfeedr-thoughts/embed.js"></script>
+    <noscript>
+        <a href="http://superfeedr-thoughts.disqus.com/?url=ref">View the discussion thread.</a>
+    </noscript>
+    <a href="http://disqus.com" class="dsq-brlink">blog comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+
+    </div> <!--content-->
+
+    <div id="footer">
+      <ul id="footer_navigation">
+        <li><a href="http://documentation.superfeedr.com">Docs</a></li>
+        <li><a href="https://github.com/superfeedr/documentation/issues">Support</a></li>
+        <li><a href="http://blog.superfeedr.com">Blog</a></li>
+        <li><a href="https://superfeedr.com/cost">Pricing</a></li>
+        <li><a href="https://superfeedr.com/terms">Terms</a></li>
+      </ul>
+    </div>
+    <div id="log" style="" ></div>
+  </div> <!--main_bg-->
+</div><!--wrapper-->
+</div><!--bg-->
+<script type="text/javascript">
+  var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+  document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+  <!--//--><![CDATA[//><!--
+  try {
+      var pageTracker = _gat._getTracker('UA-9285763-1');
+      pageTracker._setDomainName("superfeedr.com");
+      pageTracker._initData();
+      pageTracker._trackPageview();
+  } catch(err) {}
+  //--><!]]>
+</script>
+</body>
+</html>

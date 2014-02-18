@@ -1,0 +1,335 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- New Digg check : 91e798b4288645588f593f30fc09aaea -->
+<feed xmlns="http://www.w3.org/2005/Atom">
+    <title>Superfeedr Blog : Real-time cloudy thoughts from a super-hero</title>
+    <link href="http://blog.superfeedr.com/atom.xml" rel="self" type="application/atom+xml"/>
+    <link href="http://blog.superfeedr.com/" rel="alternate" type="text/html"/>
+    <link rel="hub" href="http://pubsubhubbub.superfeedr.com/" />
+    <updated>2014-02-18T22:12:50+01:00</updated>
+    <id>http://blog.superfeedr.com/</id>
+
+    
+    <entry>
+        <title>Medium supports PubSubHubbub</title>
+        
+        <link href="http://blog.superfeedr.com/pubsubhubbub-medium"/>
+        <published>2014-02-18T00:00:00+01:00</published>
+        <updated>2014-02-18T00:00:00+01:00</updated>
+        <id>blog.superfeedr.com:/pubsubhubbub-medium</id>
+        <content type="html">&lt;p&gt;In the last couple months, the &lt;strong&gt;blogging platform&lt;/strong&gt; world has been innovative again. &lt;a href='https://medium.com/'&gt;Medium&lt;/a&gt;, one of these new players have been leading the way with an amazing interface to write and read content.&lt;/p&gt;
+
+&lt;p&gt;Very early on, Medium also supported the &lt;em&gt;open web&lt;/em&gt; through their addition of &lt;em&gt;RSS feeds&lt;/em&gt;. You can consume content posted on Medium in your favorite news reader :) The great news, is that they now support &lt;strong&gt;PubSubHubbub&lt;/strong&gt; as well.&lt;/p&gt;
+
+&lt;p&gt;Their hub is located at &lt;a href='https://medium.superfeedr.com/'&gt;https://medium.superfeedr.com/&lt;/a&gt; and is now linked from all their RSS feeds: user feeds, &lt;a href='https://medium.com/@julien51'&gt;like mine&lt;/a&gt; and category feeds too, &lt;a href='https://medium.com/feed/on-publishing'&gt;like this one&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;If &lt;a href='http://blog.superfeedr.com/state-of-pubsubhubbub/'&gt;your reader supports PubSubHubbub&lt;/a&gt;, that means that new posts will come to you in &lt;strong&gt;realtime&lt;/strong&gt;! They initially started to think about supporting the protocol because they were seeing a lot of our IPs polling some of their feeds on behalf of some of our customers like &lt;a href='https://ifttt.com/'&gt;IFTTT&lt;/a&gt;, but their hub is now subscribed by &lt;em&gt;almost 50 different applications&lt;/em&gt; which consume their RSS.&lt;/p&gt;
+
+&lt;p&gt;I also want to point to &lt;a href='https://medium.com/@dpup'&gt;Dan&amp;#8217;s&lt;/a&gt;, &lt;a href='https://github.com/dpup/gohubbub'&gt;Go Library for PubSubHubbub&lt;/a&gt;. Dan (thank you!) works for Medium.&lt;/p&gt;</content>
+        <author>
+            <name>Julien</name>
+            <uri>http://ouvre-boite.com</uri>
+        </author>
+    </entry>
+    
+    <entry>
+        <title>Feastie</title>
+        
+        <link href="http://blog.superfeedr.com/feastie"/>
+        <published>2014-02-13T00:00:00+01:00</published>
+        <updated>2014-02-13T00:00:00+01:00</updated>
+        <id>blog.superfeedr.com:/feastie</id>
+        <content type="html">&lt;p&gt;It&amp;#8217;s not always obvious to understand what apps you use and love are Superfeedr customers. This month, we&amp;#8217;d like to shed some light on &lt;a href='http://www.feastie.com/'&gt;Feastie&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;img alt='Feastie' src='/images/feastie.png' /&gt;&lt;/p&gt;
+
+&lt;p&gt;Feastie is a &lt;em&gt;search engine&lt;/em&gt; for recipes. They gather these recipes from a lot of delicious food blogs and Superfeedr helps them by sending them the content of each post when it&amp;#8217;s available. In this use case, it&amp;#8217;s not so much about realtime, but more about the convenience of not having to &lt;strong&gt;build and maintain an expensive crawler&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;Valerie Coffman describes her use of Superfeedr like that:&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;I use superfeedr to poll about 1600 &lt;a href='http://www.feastie.com/recipe-sources'&gt;food blogs&lt;/a&gt;. My callback endpoint invokes a parser that detects if the new blog post contains a recipe, and if it does, it extracts ingredient, diet, allergy, and season information as well as the photo and some social media metrics. Then the recipe gets added to an apache solr search index. The front page shows what is popular and new but visitors can also search by ingredient, diet, allergy, etc.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Search their &lt;a href='http://www.feastie.com/'&gt;best recipes&lt;/a&gt; now and &lt;a href='http://superfeedr.com/about'&gt;get in touch&lt;/a&gt; if you want to be featured on the Superfeedr blog!&lt;/p&gt;</content>
+        <author>
+            <name>Julien</name>
+            <uri>http://ouvre-boite.com</uri>
+        </author>
+    </entry>
+    
+    <entry>
+        <title>Retrieve Before or After</title>
+        
+        <link href="http://blog.superfeedr.com/retrieve-before-after"/>
+        <published>2014-02-03T00:00:00+01:00</published>
+        <updated>2014-02-03T00:00:00+01:00</updated>
+        <id>blog.superfeedr.com:/retrieve-before-after</id>
+        <content type="html">&lt;p&gt;As you know, we&amp;#8217;ve invested a lot recently in our retrieve API (see the &lt;a href='http://blog.superfeedr.com/jquery-superfeedr/'&gt;jquery plugin&lt;/a&gt; and &lt;a href='http://blog.superfeedr.com/subscribe-retrieve/'&gt;subscribe &amp;amp; retrieve&lt;/a&gt;. This API allows you to &lt;strong&gt;retrieve the past&lt;/strong&gt; content from any feed, based on what Superfeedr stored of it. It&amp;#8217;s an easy way to &lt;em&gt;bootstrap&lt;/em&gt; your application with historic data before you start getting new entries.&lt;/p&gt;
+
+&lt;p&gt;Today we&amp;#8217;re introducing a small addition to this API: the &lt;code&gt;before&lt;/code&gt; and &lt;code&gt;after&lt;/code&gt; params. They allow you to paginate over past entries by getting the ones that have been published &lt;strong&gt;before&lt;/strong&gt; or &lt;strong&gt;after&lt;/strong&gt; one that you&amp;#8217;ve identified.&lt;/p&gt;
+
+&lt;p&gt;The value that you have to pass is the &lt;code&gt;id&lt;/code&gt; of a entry which was previously published in the feed.&lt;/p&gt;
+
+&lt;p&gt;Try it out by typing the following into your shell:&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;
+$ curl -X GET https://push.superfeedr.com/ -d&amp;#39;hub.mode=retrieve&amp;#39; -udemo:demo -d&amp;#39;hub.topic=http://push-pub.appspot.com/feed&amp;#39; -D- -d&amp;#39;format=json&amp;#39; -d&amp;#39;count=10&amp;#39; -d&amp;#39;after=http://push-pub.appspot.com/feed/4045001&amp;#39;
+&lt;/code&gt;&lt;/p&gt;
+
+&lt;h3 id='staying_in_sync'&gt;Staying in Sync&lt;/h3&gt;
+
+&lt;p&gt;The most important benefit of this new feature is to make sure your client &lt;em&gt;did not miss any data&lt;/em&gt; and yet be able to quickly retrieve whatever data could have been missed.&lt;/p&gt;
+
+&lt;p&gt;Let&amp;#8217;s imagine your application goes down for a couple minutes or hours. When it comes back up, it will start getting notifications again. At this point, for each feed with a notification, you&amp;#8217;re able to send a request to get the entries published &lt;code&gt;before&lt;/code&gt; the one you just received. You could also keep track of the latest id you received for each feed and use the &lt;code&gt;after&lt;/code&gt; param accordingly.&lt;/p&gt;
+
+&lt;p&gt;Let us know what you think!&lt;/p&gt;</content>
+        <author>
+            <name>Julien</name>
+            <uri>http://ouvre-boite.com</uri>
+        </author>
+    </entry>
+    
+    <entry>
+        <title>Superfeedr Jquery</title>
+        
+        <link href="http://blog.superfeedr.com/jquery-superfeedr"/>
+        <published>2014-01-22T00:00:00+01:00</published>
+        <updated>2014-01-22T00:00:00+01:00</updated>
+        <id>blog.superfeedr.com:/jquery-superfeedr</id>
+        <content type="html">&lt;p&gt;Today, we&amp;#8217;re happy to introduce the first &lt;a href='http://plugins.jquery.com/superfeedr/'&gt;Superfeedr Jquery plugin&lt;/a&gt;. It&amp;#8217;s simple piece of &lt;em&gt;syntactic&lt;/em&gt; sugar that was aked by one of our customers but makes it really simple to &lt;strong&gt;integrate an RSS feed into a page&lt;/strong&gt;!&lt;/p&gt;
+
+&lt;p&gt;Its purpose is very simple: integrate a the content of any RSS or Atom feed in any page of your website, without the constraints of the &lt;a href='https://en.wikipedia.org/wiki/Same_origin_policy'&gt;same origin policy&lt;/a&gt;. It&amp;#8217;s very useful in the context of javascript &lt;em&gt;single page applications&lt;/em&gt; for example or in the context of &lt;em&gt;full client side javascript applications&lt;/em&gt; without any server side code, like the kind of apps that runs on &lt;a href='http://www.mozilla.org/en-US/firefox/os/'&gt;FirefoxOS&lt;/a&gt; or &lt;a href='http://www.chromium.org/chromium-os'&gt;ChromeOS&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h3 id='example'&gt;Example&lt;/h3&gt;
+
+&lt;p&gt;The list of posts below is loaded using the following script (check the source! if you don&amp;#8217;t trust me!).&lt;/p&gt;
+&lt;ul id='feed'&gt;
+&lt;/ul&gt;&lt;script src='https://gist.github.com/julien51/8567755.js'&gt;
+&lt;/script&gt;&lt;script src='http://code.jquery.com/jquery-1.10.1.min.js'&gt;
+&lt;/script&gt;&lt;script src='https://raw2.github.com/superfeedr/superfeedr-jquery/master/superfeedr.jquery.js'&gt;
+&lt;/script&gt;&lt;script type='text/javascript'&gt;
+$.superfeedr.options.login = 'superfeedr';
+$.superfeedr.options.key = '1a8c661804873703802212503e75d3c2';
+
+var feed = new $.superfeedr.Feed('http://blog.superfeedr.com/atom.xml');
+
+feed.load({count: 5}, function(result) {
+  if (!result.error) {
+    var container = document.getElementById(&quot;feed&quot;);
+    for (var i = 0; result.feed.items.length &gt; i ; i++) {
+      var entry = result.feed.items[i];
+      var div = document.createElement(&quot;li&quot;);
+      div.appendChild(document.createTextNode(entry.title));
+      container.appendChild(div);
+    }
+  }
+});
+&lt;/script&gt;
+&lt;p&gt;The ticker on our &lt;a href='http://superfeedr.com'&gt;home page&lt;/a&gt; uses the plugin if you&amp;#8217;re looking for another example too!&lt;/p&gt;
+
+&lt;h2 id='final_notes'&gt;Final notes&lt;/h2&gt;
+
+&lt;p&gt;We believe this is an elegant &lt;strong&gt;replacement&lt;/strong&gt; to the &lt;a href='https://developers.google.com/feed/'&gt;Google Feed API&lt;/a&gt;. Try it out and let us know what you think. It&amp;#8217;s also &lt;a href='https://github.com/superfeedr/superfeedr-jquery'&gt;on Github&lt;/a&gt; and you&amp;#8217;re more than welcome to ask for more features, fork or submit pull requests. There is a also a small guide on how to get started quickly.&lt;/p&gt;</content>
+        <author>
+            <name>Julien</name>
+            <uri>http://ouvre-boite.com</uri>
+        </author>
+    </entry>
+    
+    <entry>
+        <title>Introducing tokens</title>
+        
+        <link href="http://blog.superfeedr.com/introducing-tokens"/>
+        <published>2014-01-10T00:00:00+01:00</published>
+        <updated>2014-01-10T00:00:00+01:00</updated>
+        <id>blog.superfeedr.com:/introducing-tokens</id>
+        <content type="html">&lt;p&gt;This is yet another benefit from the introduction of &lt;a href='http://blog.superfeedr.com/push-endpoint/'&gt;our new frontend&lt;/a&gt; back in november: starting today, Superfeedr offers &lt;a href='https://superfeedr.com/tokens/new'&gt;authentication tokens&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Up until now, you had to use your main Superfeedr login and password to perform API calls. This was &lt;strong&gt;simple&lt;/strong&gt; but could also expose you to a security risk when working with a team if you had to share these credentials.&lt;/p&gt;
+
+&lt;p&gt;Today, we&amp;#8217;re &lt;strong&gt;introducing simple authentication tokens&lt;/strong&gt;. In practice, they &lt;em&gt;behave exactly like passwords&lt;/em&gt;. You will still use HTTP basic auth against our &lt;a href='https://push.superfeedr.com'&gt;&lt;code&gt;https://push.superfeedr.com&lt;/code&gt;&lt;/a&gt; endpoint: use &lt;strong&gt;HTTPS&lt;/strong&gt;. The only important difference is that they can only authenticate against the API, and they can also be &lt;em&gt;limited in scope&lt;/em&gt;. This means that a given token can only be used for certain calls:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;subscription&lt;/li&gt;
+
+&lt;li&gt;unsubscription&lt;/li&gt;
+
+&lt;li&gt;listing subscriptions&lt;/li&gt;
+
+&lt;li&gt;retrieving a feed&amp;#8217;s status&lt;/li&gt;
+
+&lt;li&gt;xmpp authentication&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;You can generate an &lt;strong&gt;unlimited&lt;/strong&gt; number of tokens, and &lt;strong&gt;revoke&lt;/strong&gt; them at will. Feel free to read more in our docs on how to use them with &lt;a href='http://documentation.superfeedr.com/subscribers.html#httpauthentication'&gt;PubSubHubbub&lt;/a&gt; or with &lt;a href='http://documentation.superfeedr.com/subscribers.html#xmpppubsub'&gt;XMPP&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h3 id='implementation'&gt;Implementation&lt;/h3&gt;
+
+&lt;p&gt;This is actually fairly simple, but I want to give a quick thank you to &lt;a href='http://brunopedro.com/'&gt;Bruno Pedro&lt;/a&gt;, from &lt;a href='http://apiux.com/'&gt;ApiUX&lt;/a&gt; for his quick help and tips.&lt;/p&gt;
+
+&lt;p&gt;The tokens are 32 bytes long strings, &lt;strong&gt;randomly&lt;/strong&gt; generated, except for a small &lt;strong&gt;CRC&lt;/strong&gt;. Using a CRC inside the string allows us to not hit the database for obviously wrong tokens.&lt;/p&gt;</content>
+        <author>
+            <name>Julien</name>
+            <uri>http://ouvre-boite.com</uri>
+        </author>
+    </entry>
+    
+    <entry>
+        <title>Moving to Prosody.im</title>
+        
+        <link href="http://blog.superfeedr.com/moving-to-prosody"/>
+        <published>2014-01-07T00:00:00+01:00</published>
+        <updated>2014-01-07T00:00:00+01:00</updated>
+        <id>blog.superfeedr.com:/moving-to-prosody</id>
+        <content type="html">&lt;p&gt;We have recently updated our XMPP servers and we&amp;#8217;re now using &lt;a href='https://prosody.im/'&gt;Prosody.im&lt;/a&gt;. It does not change much for our existing users.&lt;/p&gt;
+
+&lt;p&gt;There should be no interruption of service as the previous XMPP servers will be kept running for as long as there clients connected to them. All notifications are sent to both the old servers and the new servers. We also have offline messages enabled (limited to 1MB) on the new server, so when you&amp;#8217;ll disconnect your listeners and reconnect to the new server (as we have now changed the DNS), you&amp;#8217;ll get any message you might have missed while no client was connected.&lt;/p&gt;
+
+&lt;p&gt;There are a lot of great things about Prosody and we&amp;#8217;ve had a great time exploring them. For example, Prosody has a great http-based auth (a webhook in a way!) which is really convenient to keep the code dry.&lt;/p&gt;
+
+&lt;p&gt;Another cool benefit of this upgrade is that our XMPP servers are now rated A for both &lt;a href='https://xmpp.net/result.php?domain=superfeedr.com&amp;amp;type=client'&gt;C2S&lt;/a&gt; and &lt;a href='https://xmpp.net/result.php?domain=superfeedr.com&amp;amp;type=server'&gt;S2S&lt;/a&gt; communications.&lt;/p&gt;
+
+&lt;p&gt;Happy new year!&lt;/p&gt;</content>
+        <author>
+            <name>Julien</name>
+            <uri>http://ouvre-boite.com</uri>
+        </author>
+    </entry>
+    
+    <entry>
+        <title>PubSubHubbub is webhooks with benefits</title>
+        
+        <link href="http://blog.superfeedr.com/webhooks-improved"/>
+        <published>2013-12-28T00:00:00+01:00</published>
+        <updated>2013-12-28T00:00:00+01:00</updated>
+        <id>blog.superfeedr.com:/webhooks-improved</id>
+        <content type="html">&lt;p&gt;&lt;a href='http://en.wikipedia.org/wiki/Webhook'&gt;Webhooks&lt;/a&gt; provide a very elegant solution to the &lt;em&gt;polling problem&lt;/em&gt;, and many popular APIs such as &lt;a href='http://developer.github.com/v3/repos/hooks/'&gt;Github&lt;/a&gt;, &lt;a href='http://apidocs.mailchimp.com/webhooks/'&gt;Mailchimp&lt;/a&gt;, &lt;a href='http://instagram.com/developer/realtime/#'&gt;Instagram&lt;/a&gt; or even &lt;a href='http://docs.shopify.com/manual/settings/notifications/webhooks'&gt;Shopify&lt;/a&gt; provide such hooks.&lt;/p&gt;
+
+&lt;p&gt;However, we will see that they also have a bunch of limitations which are elegantly solved by &lt;a href='https://en.wikipedia.org/wiki/PubSubHubbub'&gt;PubSubHubbub&lt;/a&gt; and we want to encourage people with Webhook systems to consider these problems and maybe implement PubSubHubbub on top of them.&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Note: Even though PubSubHubbub was initially designed for RSS and Atom, &lt;a href='https://superfeedr-misc.s3.amazonaws.com/pubsubhubbub-core-0.4.html'&gt;its latest iteration&lt;/a&gt; is now completely agnostic as to what data is exchanged, making it very suitable for JSON resouces&lt;/em&gt;&lt;/p&gt;
+
+&lt;h3 id='automation'&gt;Automation&lt;/h3&gt;
+
+&lt;p&gt;Most webhooks patterns will require the developer to &lt;em&gt;manually&lt;/em&gt; enter the callback on a specific interface. In practice it means that it&amp;#8217;s quite hard to automate (using a script) the addition or removal of a webhook.&lt;/p&gt;
+
+&lt;p&gt;Even though some services may have an API to add a callback, it&amp;#8217;s specific to each of them.&lt;/p&gt;
+
+&lt;p&gt;PubSubHubbub provides a simple REST API, using a what we call a hub url (an API endpoint). Send a simple POST request to either set a hook: &lt;code&gt;hub.mode=subscribe&lt;/code&gt; or remove it: &lt;code&gt;hub.mode=unsubscribe&lt;/code&gt; along with the resource (&lt;code&gt;hub.topic&lt;/code&gt;) to which you want to hook (&lt;code&gt;hub.callback&lt;/code&gt;) and the webhook to use.&lt;/p&gt;
+
+&lt;h3 id='discovery'&gt;Discovery&lt;/h3&gt;
+
+&lt;p&gt;Now, even if an API allows for automation of addition and removal of a hook, you&amp;#8217;ll still need to find what&amp;#8217;s the resource to which you can subscribe, and what&amp;#8217;s the endpoint (the hub) to which you need to send these requests. This is where &lt;strong&gt;discovery&lt;/strong&gt; comes handy.&lt;/p&gt;
+
+&lt;p&gt;The discovery pattern is actually quite common and defines how to find &amp;#8216;linked&amp;#8217; resources. For example, using HTML, you can find the &lt;a href='http://en.wikipedia.org/wiki/Favicon'&gt;favicon&lt;/a&gt; of a page using the &lt;code&gt;&amp;lt;link&amp;gt;&lt;/code&gt; pattern.&lt;/p&gt;
+
+&lt;p&gt;PubSubHubbub provides a similar discovery pattern which relies on the &lt;a href='http://www.w3.org/wiki/LinkHeader'&gt;Link HTTP header&lt;/a&gt;. It&amp;#8217;s a simple mechanism which allows any resource to point to the subscription endpoint, which we call &lt;strong&gt;hub&lt;/strong&gt; in PuSH. Since we use the HTTP headers, it obviously works for any type of HTTP accessible ressource (from JSON to images&amp;#8230; etc).&lt;/p&gt;
+
+&lt;h3 id='dialback'&gt;Dialback&lt;/h3&gt;
+
+&lt;p&gt;Most webhook mechanism are subject to some kind of &lt;em&gt;denial of service attack&lt;/em&gt;. In practice, nothing prevents a malicious user from entering any url in a webhook form, so that the API will be the one sending POST request to the webhook upon updates. If the updates are frequent enough, it&amp;#8217;s possible to harm the recipient of all these notifications.&lt;/p&gt;
+
+&lt;p&gt;It&amp;#8217;s also possible to imagine a webhook that communicates back with the API again, triggering more webhooks&amp;#8230; and generating loops which can be hamrful for the API.&lt;/p&gt;
+
+&lt;p&gt;An easy workaround to such threats is to perform a dialback. When the API gets a new webhook, it could call it and &lt;em&gt;expect&lt;/em&gt; a specific result. If the condition is met, then the hook can be saved, and if not, it should be dropped. That&amp;#8217;s what PubSubHubbub does with its &lt;a href='https://superfeedr-misc.s3.amazonaws.com/pubsubhubbub-core-0.4.html#verifysub'&gt;verification of intent&lt;/a&gt; mechanism.&lt;/p&gt;
+
+&lt;p&gt;Using such a pattern also removes the need for user accounts when implementing a webhook system for simple applications with no user account logic.&lt;/p&gt;
+
+&lt;h3 id='authenticated_delivery'&gt;Authenticated delivery&lt;/h3&gt;
+
+&lt;p&gt;Another security threat when dealing with webhooks is to make sure that the &lt;em&gt;service calling the webhook is the service with which this webhook had been registered&lt;/em&gt;. Of course, it is recommanded to use &lt;strong&gt;obfuscated&lt;/strong&gt; -hard to guess- urls for your webhooks, but that&amp;#8217;s not secure and if someone eventually guesses the url, there is a significant risk of receiving &lt;strong&gt;forged&lt;/strong&gt; data.&lt;/p&gt;
+
+&lt;p&gt;PubSubHubbub solves that thru the use of a secret exchanged upon subscription (using SSL!). The secret is then used to compute and &lt;a href='http://en.wikipedia.org/wiki/Hash-based_message_authentication_code'&gt;HMAC signature&lt;/a&gt; passed along for delivery and the recipient should check that that provided signature is the same as the computed one and drop the data if they differ.&lt;/p&gt;
+
+&lt;h3 id='reusing_code'&gt;Reusing code&lt;/h3&gt;
+
+&lt;p&gt;&lt;strong&gt;PubSubHubbub is just a simple layer on top of webhooks&lt;/strong&gt; which makes a lot of aspects easier and more secure. It provides simple and standard mechanisms which can be implemented in re-usable code.&lt;/p&gt;</content>
+        <author>
+            <name>Julien</name>
+            <uri>http://ouvre-boite.com</uri>
+        </author>
+    </entry>
+    
+    <entry>
+        <title>Listing feeds with our PuSH endpoint</title>
+        
+        <link href="http://blog.superfeedr.com/listing-feeds"/>
+        <published>2013-12-02T00:00:00+01:00</published>
+        <updated>2013-12-02T00:00:00+01:00</updated>
+        <id>blog.superfeedr.com:/listing-feeds</id>
+        <content type="html">&lt;p&gt;Releasing our &lt;a href='/push-endpoint/'&gt;new API endpoint&lt;/a&gt; last month has already enabled us to release the oldest feature request: &lt;a href='/subscribe-retrieve/'&gt;subscribing and retrieving feeds in one single call&lt;/a&gt;. Today, we&amp;#8217;re introducing another long time requested feature: the ability to &lt;a href='http://documentation.superfeedr.com/subscribers.html#listingfeedswithpubsubhubbub'&gt;list PubSubHubbub subscriptions&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h3 id='listing_subscriptions_per_endpoint'&gt;Listing subscriptions per endpoint&lt;/h3&gt;
+
+&lt;p&gt;It&amp;#8217;s considered good practice when using &lt;em&gt;PubSubHubbub&lt;/em&gt; to use &lt;strong&gt;different callback urls&lt;/strong&gt; for each susbcription performed. This way it&amp;#8217;s much easier to debug, load balance (consistently!) or even handle notifications faster.&lt;/p&gt;
+
+&lt;p&gt;Our new API call allows you to quickly retrieve the susbcription matching a given callback url. It also allows for the inclusion of a &lt;strong&gt;wildcard&lt;/strong&gt; character &lt;code&gt;%&lt;/code&gt; to retrieve all subscriptions matching a given callback url template.&lt;/p&gt;
+
+&lt;p&gt;For example, when construction callback urls, it makes sense to include state information in them, like, maybe, a category for the feed. We could then use something like &lt;code&gt;https://mydomain.tld/push/tech/81239&lt;/code&gt; for the feed 81239 in the &amp;#8216;tech&amp;#8217; category.&lt;/p&gt;
+
+&lt;p&gt;It now becomes very easy to retrieve all subscriptions in the tech category by doing something like:&lt;/p&gt;
+&lt;script src='https://gist.github.com/julien51/7751088.js'&gt;
+&lt;/script&gt;
+&lt;p&gt;Of course, the callback url can be &lt;em&gt;just&lt;/em&gt; &lt;code&gt;%&lt;/code&gt;, and as you can see in this example, the subscriptions are listed with pages of up to 20 elements. Include a &lt;code&gt;page&lt;/code&gt; parameter to navigate thru them.&lt;/p&gt;</content>
+        <author>
+            <name>Julien</name>
+            <uri>http://ouvre-boite.com</uri>
+        </author>
+    </entry>
+    
+    <entry>
+        <title>How can we help the open web?</title>
+        
+        <link href="http://blog.superfeedr.com/how-can-we-help-open-web"/>
+        <published>2013-11-28T00:00:00+01:00</published>
+        <updated>2013-11-28T00:00:00+01:00</updated>
+        <id>blog.superfeedr.com:/how-can-we-help-open-web</id>
+        <content type="html">&lt;p&gt;Today is thanksgiving in the USA. It&amp;#8217;s a holliday in where you &lt;em&gt;celebrate others and thank them for the help they provided&lt;/em&gt;. Of course, we want to thank everyone in our community: our customers, developers, partners and investors. It&amp;#8217;s a pleasure to be working with you and we hope to keep doing that for a long time.&lt;/p&gt;
+
+&lt;p&gt;However, we also want to take a couple words to &lt;strong&gt;thank everyone who&amp;#8217;s building the open web&lt;/strong&gt;, every developer, indie or not that&amp;#8217;s making the web a better place to interract with each other.&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;Fighting for the open web is not an easy feat and every day is a new battle to make sure the web giants don&amp;#8217;t own the web, our personal data and our relationships.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;It&amp;#8217;s not obvious, but there are a ton of projects which contribute to the open web: popular things like &lt;a href='http://getbootstrap.com/'&gt;Bootstrap&lt;/a&gt;, which anyone can use to make a consistent-looking interface, controversial protocols, like &lt;a href='http://bitcoin.org/en/'&gt;Bitcoin&lt;/a&gt; who can simplify the way people pay for our services and apps, fast growing services which simplify how developers can build the web&amp;#8230; or even &lt;a href='https://github.com/node-xmpp/node-xmpp'&gt;small libraries&lt;/a&gt; on Github.&lt;/p&gt;
+
+&lt;p&gt;We also know that, even it&amp;#8217;s a priceless, sometimes, &lt;strong&gt;&amp;#8216;thank you&amp;#8217; is not enough&lt;/strong&gt;. There are open web projects which are stuck because they tripped on a road block too big for the small team working on them. There are open web projects that have a hard time getting attention because whoever is in charge of them is not the stereotypical developer. There are open web projects looking for a couple donations to pay for their hosting and bandwidth.&lt;/p&gt;
+
+&lt;p&gt;We want to help these projects. &lt;a href='http://superfeedr.com'&gt;Superfeedr&lt;/a&gt; is a cashflow positive machine that&amp;#8217;s built using open web libraries, protocols and software: it&amp;#8217;s time that we give back.&lt;/p&gt;
+
+&lt;p&gt;If there is anything we can do to help: review code, fix bugs, write posts, help get introductions&amp;#8230; etc, please, feel free to let us know.&lt;/p&gt;</content>
+        <author>
+            <name>Julien</name>
+            <uri>http://ouvre-boite.com</uri>
+        </author>
+    </entry>
+    
+    <entry>
+        <title>Susbcribe and Retrieve</title>
+        
+        <link href="http://blog.superfeedr.com/subscribe-retrieve"/>
+        <published>2013-11-18T00:00:00+01:00</published>
+        <updated>2013-11-18T00:00:00+01:00</updated>
+        <id>blog.superfeedr.com:/subscribe-retrieve</id>
+        <content type="html">&lt;p&gt;Do you know what has been the oldest Superfeedr &lt;em&gt;feature request&lt;/em&gt;? It&amp;#8217;s the ability to &lt;a href='http://documentation.superfeedr.com/subscribers.html#addingfeedswithpubsubhubbub'&gt;subscribe&lt;/a&gt; and &lt;a href='http://documentation.superfeedr.com/subscribers.html#retrievingentrieswithpubsubhubbub'&gt;retrieve&lt;/a&gt; a feed in one single call.&lt;/p&gt;
+
+&lt;p&gt;Basically, up until now, when your app needed the content of a feed from Superfeedr, you first had to subscribe to the feed and then wait for us ot send you all the next, upcoming entries. It was not the best experience for users who may want to quickly have a &amp;#8220;visual confirmation&amp;#8221; of what&amp;#8217;s the previous content in a feed. For many of our customers that meant that they had to themselves fetch the feed first.&lt;/p&gt;
+
+&lt;h3 id='susbcribe_and_retrieve'&gt;Susbcribe and retrieve&lt;/h3&gt;
+
+&lt;p&gt;One of the goals of our most recent deployment was to bring the users closer to our backend. This means that it&amp;#8217;s now possible to combine our &lt;em&gt;frontend API&lt;/em&gt; (the one that gets your requests), our &lt;em&gt;cave storage&lt;/em&gt; (in which we store the past content of feeds) and our &lt;em&gt;fetchers and parsers&lt;/em&gt; (just in case the feed has not yet been added to Superfeedr).&lt;/p&gt;
+
+&lt;p&gt;It&amp;#8217;s as easy as adding a simple &lt;code&gt;retrieve&lt;/code&gt; parameter to your POST request.&lt;/p&gt;
+&lt;script src='https://gist.github.com/julien51/7531368.js'&gt;
+&lt;/script&gt;
+&lt;p&gt;Of course, the data will be returned as JSON if you&amp;#8217;ve added the &lt;code&gt;format=json&lt;/code&gt; or the &lt;code&gt;Accept: application/json&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;This way, your applications won&amp;#8217;t even have to fetch the original feeds and you can just &lt;em&gt;blindly&lt;/em&gt; subscribe to any feed with Superfeedr.&lt;/p&gt;</content>
+        <author>
+            <name>Julien</name>
+            <uri>http://ouvre-boite.com</uri>
+        </author>
+    </entry>
+    
+</feed>

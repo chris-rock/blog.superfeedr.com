@@ -1,0 +1,105 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>Superfeedr : Ruby 1.9.2 </title>
+  <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+  <meta name="google-site-verification" content="ofroHQ3qXBS1SQfblK9-U_oduGZ975Bb3i_uP13Myao" />
+
+  <!-- Stylesheets -->
+  <link href="http://yui.yahooapis.com/3.1.1/build/cssreset/reset-min.css" media="screen" rel="stylesheet" type="text/css" />
+  <link href="http://superfeedr.com/stylesheets/superfeedr.css" media="screen" rel="stylesheet" type="text/css" />
+  <link href="http://superfeedr.com/stylesheets/print.css" media="print" rel="stylesheet" type="text/css" />
+  <link href="http://superfeedr.com/stylesheets/shjs/sh_nedit.min.css" media="screen" rel="stylesheet" type="text/css" />
+  <link href="http://superfeedr.com/stylesheets/thickbox.css" media="screen" rel="stylesheet" type="text/css" />
+  <link href="/css/blog.css" media="screen" rel="stylesheet" type="text/css" />
+  <link rel="alternate" type="application/atom+xml" title="Atom Feed" href="/atom.xml">
+
+ </head>
+
+ <body class="blog">
+   <div id="bg">
+     <div id="wrapper">
+      <div id="logo">
+       <a href="http://superfeedr.com" class="home"><img alt="Superfeedr" src="http://superfeedr.com/images/superfeedr_complete.png" /></a>
+     </div>
+     <ul id="navigation">
+      <li><a href="http://documentation.superfeedr.com" alt="RTFM">Documentation</a></li>
+      <li><a href="http://superfeedr.com/about" alt="All you wanted to know. Almost">About</a></li>
+    </ul>
+    <div class="clear"></div>
+    <div id="main_bg">
+      <div id="main_top">
+       <h1>Ruby 1.9.2</h1>
+     </div> <!--main_top-->
+
+     <div id="content">
+        <div id="post">
+    <h2>Ruby 1.9.2</h2>
+    <div style="color:#666; font-size:0.9em; margin-bottom: 20px"><img style="float:left; margin: -2px 3px 3px 0px" src="http://www.gravatar.com/avatar/b30ce50678f0e934eaa6697425c59dd7?s=20" >By <a href="http://ouvre-boite.com">Julien</a>, on 23 Dec 2010</div>
+<p>We&#8217;re probably late to that game, but one of our goals for December was to switch to Ruby 1.9. We use a lot of Ruby at Superfeedr. Some people claim (and some of them are right) that Ruby has a poor performance compared to other languages in the same category. <strong>It probably doesn&#8217;t matter much if the global architecture allows for horizontal scaling</strong>. That&#8217;s how we built Superfeedr.</p>
+<p><img src="http://www.prestonlee.com/wp-content/uploads/2008/09/ruby.png" style="width:150px;float:right;" alt="" /></p>
+<p>Yet, making each of the node perform better is also a way to increase performance per dollar spent. Additionally, it&#8217;s also important to stick with the most active developer community. Even though we haven&#8217;t heard of <a href="http://isitruby19.com/">many gems that are not 1.9 compatible</a>, it&#8217;s now clear that <strong>1.9 is the &#8220;base&#8221; for most of the Ruby development</strong>. Superfeedr is following this trend too!</p>
+<h2>Porting</h2>
+<p>To be fair, we were slightly scared of this and expected a few days of work to port our code from 1.8.7 (<a href="http://www.rubyenterpriseedition.com/">Enterprise Edition</a>) to Ruby 1.9. It was actually much smoother than expected. All the gems we use were actually 1.9 ready, which allowed us to focus only on our own code.</p>
+<p>One of the 2 issues we had was the fact that <code>Array::to_s</code> has a different implementation in 1.9. Replacing by <code>Array::join</code> is the way to fix it. Easy.</p>
+<p>The 2nd issue was much more complex. <em>Like everyone else, we struggled with Encodings_. Ruby 1.9 is much much better at dealing with encodings than 1.8. Yet, it also requires more work and is a lot more demanding, specially when your app actually ingests a lot of external data, for which you do not control the encoding. Luckily the <a href="http://yehudakatz.com/2010/05/05/ruby-1-9-encodings-a-primer-and-the-solution-for-rails/">web has a lot of resources</a>, and I particularly <a href="http://blog.grayproductions.net/articles/understanding_m17n">liked James Gray&#8217;s series</a>. No matter what, <strong>do not use <code>force_encoding</code></strong>, unless you exactly know and understand what you&#8217;re doing. Also, don&#8217;t forget that <a href="http://blog.marc-seeger.de/2010/04/21/Dealing_with_invalid_encodings_in_Ruby_1">you can use options when converting from one encoding to the other</a></em>9 to avoid errors. Of course, when dealing with evented libraries (like we do), it&#8217;s possible that the buffer on which you receive content will only deal with bytes, and not characters, so you want to be very careful with the data that you get from these buffers, as some characters may be truncated.</p>
+<p>I didn&#8217;t even mentioned it but, <a href="http://rvm.beginrescueend.com/"><span class="caps">RVM</span></a> is the way to go on your local development machines if you&#8217;d like to switch from a flavor to another.</p>
+<h3>Performance</h3>
+<p>No surprise here, <strong>Ruby 1.9 is much much better than 1.8.7 <span class="caps">MRI</span> and 1.8.7 <span class="caps">REE</span></strong>. We&#8217;re <span class="caps">CPU</span> bound, which means that it was our focus, rather than memory.</p>
+<p>To make a little benchmark, we pulled 60 feeds from our database, with different formats, different encodings, different sizes (short entries or very long entries), and we ran a our parser on them 20 times each, in a random order, 12 times for each version. We removed outliers and you can <a href="https://gist.github.com/751807">find the results here</a>. As you can see <strong>the average performance gain is over 35%</strong>, which is quite good.</p>
+<p>We also measure what we the <em>reactor latency</em> of our different evented applications. As you probably know these use the reactor pattern, which is nothing but an infinite loop that checks sockets, timers and a few other things. From there, it&#8217;s easy to use a periodic timer of 1sec and measure exactly how much time was actually spent until we fired it. In a perfect world, this should be exactly 1sec. In reality, when our reactors are actually computing things, they can be slightly slower and we may see a little bit over 1sec. With our Ruby 1.8, the average latency was about 0.1. With 1.9, it&#8217;s actually <strong>closer to 0.07 which proves once again that our reactors are faster</strong> at processing the same code.</p>
+<p>Finally, our memory tests proved us that <strong>we gained about 20%</strong>. Not sure if it&#8217;s related to the fact that our code runs faster and hence doesn&#8217;t need to use as much memory as it used to, or if it&#8217;s just that data-structures are slightly more efficient in 1.9.2, but it&#8217;s a decent gain there too.</p>
+<p>Happy holidays!</p>
+</div>
+
+<blockquote>
+  <p>Liked this post? <input type="button" onclick="(function(){var z=document.createElement('script');z.src='http://www.subtome.com/load.js';document.body.appendChild(z);})()" value="Follow this blog!" /> to get more or read the <a href="/archive.html">archive</a>.</p>
+</blockquote>
+
+
+<small class="meta">
+</small>
+
+<div id="comments">
+    <h2>Comments</h2>
+    <div id="disqus_thread">
+    </div>
+    <script type="text/javascript" src="http://disqus.com/forums/superfeedr-thoughts/embed.js"></script>
+    <noscript>
+        <a href="http://superfeedr-thoughts.disqus.com/?url=ref">View the discussion thread.</a>
+    </noscript>
+    <a href="http://disqus.com" class="dsq-brlink">blog comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+
+    </div> <!--content-->
+
+    <div id="footer">
+      <ul id="footer_navigation">
+        <li><a href="http://documentation.superfeedr.com">Docs</a></li>
+        <li><a href="https://github.com/superfeedr/documentation/issues">Support</a></li>
+        <li><a href="http://blog.superfeedr.com">Blog</a></li>
+        <li><a href="https://superfeedr.com/cost">Pricing</a></li>
+        <li><a href="https://superfeedr.com/terms">Terms</a></li>
+      </ul>
+    </div>
+    <div id="log" style="" ></div>
+  </div> <!--main_bg-->
+</div><!--wrapper-->
+</div><!--bg-->
+<script type="text/javascript">
+  var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+  document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+  <!--//--><![CDATA[//><!--
+  try {
+      var pageTracker = _gat._getTracker('UA-9285763-1');
+      pageTracker._setDomainName("superfeedr.com");
+      pageTracker._initData();
+      pageTracker._trackPageview();
+  } catch(err) {}
+  //--><!]]>
+</script>
+</body>
+</html>

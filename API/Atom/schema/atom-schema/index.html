@@ -1,0 +1,110 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>Superfeedr : The New Atom Schema is up! </title>
+  <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+  <meta name="google-site-verification" content="ofroHQ3qXBS1SQfblK9-U_oduGZ975Bb3i_uP13Myao" />
+
+  <!-- Stylesheets -->
+  <link href="http://yui.yahooapis.com/3.1.1/build/cssreset/reset-min.css" media="screen" rel="stylesheet" type="text/css" />
+  <link href="http://superfeedr.com/stylesheets/superfeedr.css" media="screen" rel="stylesheet" type="text/css" />
+  <link href="http://superfeedr.com/stylesheets/print.css" media="print" rel="stylesheet" type="text/css" />
+  <link href="http://superfeedr.com/stylesheets/shjs/sh_nedit.min.css" media="screen" rel="stylesheet" type="text/css" />
+  <link href="http://superfeedr.com/stylesheets/thickbox.css" media="screen" rel="stylesheet" type="text/css" />
+  <link href="/css/blog.css" media="screen" rel="stylesheet" type="text/css" />
+  <link rel="alternate" type="application/atom+xml" title="Atom Feed" href="/atom.xml">
+
+ </head>
+
+ <body class="blog">
+   <div id="bg">
+     <div id="wrapper">
+      <div id="logo">
+       <a href="http://superfeedr.com" class="home"><img alt="Superfeedr" src="http://superfeedr.com/images/superfeedr_complete.png" /></a>
+     </div>
+     <ul id="navigation">
+      <li><a href="http://documentation.superfeedr.com" alt="RTFM">Documentation</a></li>
+      <li><a href="http://superfeedr.com/about" alt="All you wanted to know. Almost">About</a></li>
+    </ul>
+    <div class="clear"></div>
+    <div id="main_bg">
+      <div id="main_top">
+       <h1>The New Atom Schema is up!</h1>
+     </div> <!--main_top-->
+
+     <div id="content">
+        <div id="post">
+    <h2>The New Atom Schema is up!</h2>
+    <div style="color:#666; font-size:0.9em; margin-bottom: 20px"><img style="float:left; margin: -2px 3px 3px 0px" src="http://www.gravatar.com/avatar/b30ce50678f0e934eaa6697425c59dd7?s=20" >By <a href="http://ouvre-boite.com">Julien</a>, on 18 Sep 2009</div>
+<p>We deployed yesterday a new code for our parsers, and it now includes a more <a href="http://documentation.superfeedr.com/schema.html">complete schema</a> that will allow you to do a lot more things with superfeedr!</p>
+<h3>Content or summary?</h3>
+<p>Up until now we were considering that anything was a summary, which wasn&#8217;t really accurate since some feeds actually <strong>offer the whole content</strong>. We fixed that. If the entry contains the full content, you&#8217;ll have a <code>&lt;content&gt;</code> tag, if not, then, it will have a <code>&lt;summary&gt;</code> tag.</p>
+<h3>Links</h3>
+<p>The biggest addition is the fact that <code>&lt;entry&gt;</code> elements now include all the <code>&lt;links&gt;</code> of the original entry, including attachments. Of course, to differentiate between them you can use the <em><code>"rel"</code> value</em>, as well as <code>"type"</code> which gives you the <em>mime type</em>. For example, here is what you&#8217;d receive for this flick <span class="caps">RSS</span> feed :<br />
+<script src="http://gist.github.com/189179.js"></script></p>
+<p>As you can see, there are 2 <code>&lt;link&gt;</code> elements, <strong>one for the entry</strong> (the page that contains the image), and <strong>one for the image itself</strong>. These links are various and may include links to the <em>comments section, to the <span class="caps">RSS</span> feed of comments, to any attachment, to related articles</em>&#8230; etc.</p>
+<h3>Categories</h3>
+<p>The Web2.0 era has long be associated with the presence of <strong>tags</strong>, implemented by <a href="http://delicious.com">Delicious</a>, <a href="http://flickr.com">Flickr</a>, <a href="http://youtube.com">Youtube</a> and by bloggers. They are very useful to group things and can do a better job than search engines to find &#8220;binary&#8221; content. <strong>Superfeedr will now provide the tags</strong> (or categories from the original entries).<br />
+In the above example, you can see that the tags used are <em>sergio, expo, lyon, western and prefecture</em>.</p>
+<h3>Authors</h3>
+<p>Last, but not least, we now support <strong>author informations</strong>. There can be several authors in one entry. For each author, we provide (when available) a <em>name, an email address and a profile <span class="caps">URI</span></em>.</p>
+<p>If you&#8217;d like anything else to be added, please let us know in the comments. With the current information, we estimate we cover 80-90% of the original entry content. Also, if you&#8217;re not satisfied with our mapping, please do not hesitate to <a href="http://blog.superfeedr.com/Atom/schema/a-better-schema/">suggest fixes</a> as well.</p>
+</div>
+
+<blockquote>
+  <p>Liked this post? <input type="button" onclick="(function(){var z=document.createElement('script');z.src='http://www.subtome.com/load.js';document.body.appendChild(z);})()" value="Follow this blog!" /> to get more or read the <a href="/archive.html">archive</a>.</p>
+</blockquote>
+
+
+<small class="meta">
+  <a href='http://www.google.com/search?q=api+site:blog.superfeedr.com'>api</a>, 
+  
+  <a href='http://www.google.com/search?q=atom+site:blog.superfeedr.com'>atom</a>, 
+  
+  <a href='http://www.google.com/search?q=schema+site:blog.superfeedr.com'>schema</a>
+  
+</small>
+
+<div id="comments">
+    <h2>Comments</h2>
+    <div id="disqus_thread">
+    </div>
+    <script type="text/javascript" src="http://disqus.com/forums/superfeedr-thoughts/embed.js"></script>
+    <noscript>
+        <a href="http://superfeedr-thoughts.disqus.com/?url=ref">View the discussion thread.</a>
+    </noscript>
+    <a href="http://disqus.com" class="dsq-brlink">blog comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+
+    </div> <!--content-->
+
+    <div id="footer">
+      <ul id="footer_navigation">
+        <li><a href="http://documentation.superfeedr.com">Docs</a></li>
+        <li><a href="https://github.com/superfeedr/documentation/issues">Support</a></li>
+        <li><a href="http://blog.superfeedr.com">Blog</a></li>
+        <li><a href="https://superfeedr.com/cost">Pricing</a></li>
+        <li><a href="https://superfeedr.com/terms">Terms</a></li>
+      </ul>
+    </div>
+    <div id="log" style="" ></div>
+  </div> <!--main_bg-->
+</div><!--wrapper-->
+</div><!--bg-->
+<script type="text/javascript">
+  var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+  document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+  <!--//--><![CDATA[//><!--
+  try {
+      var pageTracker = _gat._getTracker('UA-9285763-1');
+      pageTracker._setDomainName("superfeedr.com");
+      pageTracker._initData();
+      pageTracker._trackPageview();
+  } catch(err) {}
+  //--><!]]>
+</script>
+</body>
+</html>

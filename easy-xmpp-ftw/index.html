@@ -1,0 +1,126 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>Superfeedr : XMPP-FTW XMPP and JSON for the Web </title>
+  <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+  <meta name="google-site-verification" content="ofroHQ3qXBS1SQfblK9-U_oduGZ975Bb3i_uP13Myao" />
+
+  <!-- Stylesheets -->
+  <link href="http://yui.yahooapis.com/3.1.1/build/cssreset/reset-min.css" media="screen" rel="stylesheet" type="text/css" />
+  <link href="http://superfeedr.com/stylesheets/superfeedr.css" media="screen" rel="stylesheet" type="text/css" />
+  <link href="http://superfeedr.com/stylesheets/print.css" media="print" rel="stylesheet" type="text/css" />
+  <link href="http://superfeedr.com/stylesheets/shjs/sh_nedit.min.css" media="screen" rel="stylesheet" type="text/css" />
+  <link href="http://superfeedr.com/stylesheets/thickbox.css" media="screen" rel="stylesheet" type="text/css" />
+  <link href="/css/blog.css" media="screen" rel="stylesheet" type="text/css" />
+  <link rel="alternate" type="application/atom+xml" title="Atom Feed" href="/atom.xml">
+
+ </head>
+
+ <body class="blog">
+   <div id="bg">
+     <div id="wrapper">
+      <div id="logo">
+       <a href="http://superfeedr.com" class="home"><img alt="Superfeedr" src="http://superfeedr.com/images/superfeedr_complete.png" /></a>
+     </div>
+     <ul id="navigation">
+      <li><a href="http://documentation.superfeedr.com" alt="RTFM">Documentation</a></li>
+      <li><a href="http://superfeedr.com/about" alt="All you wanted to know. Almost">About</a></li>
+    </ul>
+    <div class="clear"></div>
+    <div id="main_bg">
+      <div id="main_top">
+       <h1>XMPP-FTW XMPP and JSON for the Web</h1>
+     </div> <!--main_top-->
+
+     <div id="content">
+        <div id="post">
+    <h2>XMPP-FTW XMPP and JSON for the Web</h2>
+    <div style="color:#666; font-size:0.9em; margin-bottom: 20px"><img style="float:left; margin: -2px 3px 3px 0px" src="http://www.gravatar.com/avatar/b30ce50678f0e934eaa6697425c59dd7?s=20" >By <a href="http://ouvre-boite.com">Julien</a>, on 13 May 2013</div>
+<p>XMPP always had a special place in our heart. It&#8217;s an amazing protocol which comes with presence, addressing, as well as PubSub baked in. It&#8217;s no surprise we&#8217;ve had an <a href='http://documentation.superfeedr.com/subscribers.html#xmpppubsub'>XMPP API</a> since day 1 at Superfeedr.</p>
+
+<p>Now, though, XMPP scares a lot of people because of it&#8217;s X part: it uses XML as its data schema. Knowing that, Lloyd, an extremely talented web developer invented a very elegant solution for people to <em>discover</em> XMPP without dealing with the XML at all, thru <a href='https://xmpp-ftw.jit.su/'>XMPP for the Web</a> (XMPP-FTW).</p>
+
+<h3 id='xmppftw'>XMPP-FTW</h3>
+
+<p>XMPP-FTW is actually a proxy XMPP client which converts all the XML into a json API. It sits between the XMPP server and any app which can consume JSON. It supports the code XMPP protocol as well as a bunch of other features, including Superfeedr.</p>
+
+<p><a href='https://xmpp-ftw.jit.su/demo'>The demo</a> is quite helpful to understand exactly what is going on. You can perform calls and configure them. In the back, they&#8217;ll be converted by XMPP-FTW to regular XMPP stanzas. Similarly, incoming XMPP messages will be converted into javsacript events which your app can handle.</p>
+
+<h3 id='superfeedr_support'>Superfeedr support</h3>
+
+<p>Recently, <a href='http://www.evilprofessor.co.uk/615-xmpp-ftw-now-supports-superfeedr/'>Lloyd added support</a> for the Superfeedr API and it&#8217;s a great playground to get started. Here is a little HOW-TO that you can try in <a href='https://xmpp-ftw.jit.su/demo'>the demo app</a>. (you could also run your own XMPP-FTW)</p>
+
+<ul>
+<li>Type <code>xmpp.login</code>, in the &#8216;event name&#8217; box.</li>
+
+<li>Options should appear in the following grey box. Replace them with <code>{&quot;jid&quot;: &quot;demo@superfeedr.com&quot;,&quot;password&quot;: &quot;demo&quot;}</code>. Hit &#8216;send&#8217;.</li>
+
+<li>Quickly, you should see an incoming event indicating that you&#8217;re now connected to Superfeedr XMPP server!</li>
+
+<li>Type <code>xmpp.superfeedr.subscribe</code></li>
+
+<li>Complete the option box with <code>{ &quot;feed&quot;: &quot;http://push-pub.appspot.com/feed&quot;}</code></li>
+
+<li>You should see a response indicating that you&#8217;re now subscribed to that feed. The response also includes its status, the last time we parsed the feed&#8230; etc</li>
+
+<li>In another browser tab, publish something new in that feed <a href='http://push-pub.appspot.com/'>using this app</a>.</li>
+
+<li>You should see the incoming notification in XMPP-FTW!</li>
+</ul>
+
+<p>That&#8217;s that simple and you should quickly replace the example feed url with any feed url that you may be interested in susbcribing to.</p>
+
+<p>Also, once you&#8217;ve played with XMPP-FTW a bit more, we stringly encourage you to look at XMPP in more details. It&#8217;s a very elegant protocol and federates by default (as opposed to many APIs out there).</p>
+</div>
+
+<blockquote>
+  <p>Liked this post? <input type="button" onclick="(function(){var z=document.createElement('script');z.src='http://www.subtome.com/load.js';document.body.appendChild(z);})()" value="Follow this blog!" /> to get more or read the <a href="/archive.html">archive</a>.</p>
+</blockquote>
+
+
+<small class="meta">
+</small>
+
+<div id="comments">
+    <h2>Comments</h2>
+    <div id="disqus_thread">
+    </div>
+    <script type="text/javascript" src="http://disqus.com/forums/superfeedr-thoughts/embed.js"></script>
+    <noscript>
+        <a href="http://superfeedr-thoughts.disqus.com/?url=ref">View the discussion thread.</a>
+    </noscript>
+    <a href="http://disqus.com" class="dsq-brlink">blog comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+
+    </div> <!--content-->
+
+    <div id="footer">
+      <ul id="footer_navigation">
+        <li><a href="http://documentation.superfeedr.com">Docs</a></li>
+        <li><a href="https://github.com/superfeedr/documentation/issues">Support</a></li>
+        <li><a href="http://blog.superfeedr.com">Blog</a></li>
+        <li><a href="https://superfeedr.com/cost">Pricing</a></li>
+        <li><a href="https://superfeedr.com/terms">Terms</a></li>
+      </ul>
+    </div>
+    <div id="log" style="" ></div>
+  </div> <!--main_bg-->
+</div><!--wrapper-->
+</div><!--bg-->
+<script type="text/javascript">
+  var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+  document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+  <!--//--><![CDATA[//><!--
+  try {
+      var pageTracker = _gat._getTracker('UA-9285763-1');
+      pageTracker._setDomainName("superfeedr.com");
+      pageTracker._initData();
+      pageTracker._trackPageview();
+  } catch(err) {}
+  //--><!]]>
+</script>
+</body>
+</html>

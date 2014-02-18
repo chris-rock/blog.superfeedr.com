@@ -1,0 +1,102 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>Superfeedr : Track v2 </title>
+  <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+  <meta name="google-site-verification" content="ofroHQ3qXBS1SQfblK9-U_oduGZ975Bb3i_uP13Myao" />
+
+  <!-- Stylesheets -->
+  <link href="http://yui.yahooapis.com/3.1.1/build/cssreset/reset-min.css" media="screen" rel="stylesheet" type="text/css" />
+  <link href="http://superfeedr.com/stylesheets/superfeedr.css" media="screen" rel="stylesheet" type="text/css" />
+  <link href="http://superfeedr.com/stylesheets/print.css" media="print" rel="stylesheet" type="text/css" />
+  <link href="http://superfeedr.com/stylesheets/shjs/sh_nedit.min.css" media="screen" rel="stylesheet" type="text/css" />
+  <link href="http://superfeedr.com/stylesheets/thickbox.css" media="screen" rel="stylesheet" type="text/css" />
+  <link href="/css/blog.css" media="screen" rel="stylesheet" type="text/css" />
+  <link rel="alternate" type="application/atom+xml" title="Atom Feed" href="/atom.xml">
+
+ </head>
+
+ <body class="blog">
+   <div id="bg">
+     <div id="wrapper">
+      <div id="logo">
+       <a href="http://superfeedr.com" class="home"><img alt="Superfeedr" src="http://superfeedr.com/images/superfeedr_complete.png" /></a>
+     </div>
+     <ul id="navigation">
+      <li><a href="http://documentation.superfeedr.com" alt="RTFM">Documentation</a></li>
+      <li><a href="http://superfeedr.com/about" alt="All you wanted to know. Almost">About</a></li>
+    </ul>
+    <div class="clear"></div>
+    <div id="main_bg">
+      <div id="main_top">
+       <h1>Track v2</h1>
+     </div> <!--main_top-->
+
+     <div id="content">
+        <div id="post">
+    <h2>Track v2</h2>
+    <div style="color:#666; font-size:0.9em; margin-bottom: 20px"><img style="float:left; margin: -2px 3px 3px 0px" src="http://www.gravatar.com/avatar/b30ce50678f0e934eaa6697425c59dd7?s=20" >By <a href="http://ouvre-boite.com">Julien</a>, on 11 Aug 2010</div>
+<blockquote>
+  <p>Our Track <span class="caps">API</span> evolved over time&#8230; Please make sure you refer to the <a href="http://documentation.superfeedr.com/misc.html#track">track documentation</a> for the current status</p>
+</blockquote>
+<p>It&#8217;s been up for a few days&#8230; just enough time for us to iron anything that you could have gone wrong, but the version 2.0 of our track is live. Internally, we call it trackr, because it&#8217;s now Ruby (like red diamonds). It uses a handful of Redis, <span class="caps">XMPP</span>, Ruby and a few other awesome things. Please ask if you want more details on how it&#8217;s built. What does it bring?</p>
+<h3>Operands</h3>
+<p>The first thing is the end of the awesome bug which would create matches for &#8220;super hamster&#8221; when <a href="http://twitter.com/mperham">somebody</a> subscribed to <em>perham</em>. It could have been a feature, but for now, we&#8217;ll stick to something more natural!</p>
+<p>It brings the <span class="caps">AND</span> operator. Looking for info about the <a href="http://superfeedr.com/track?include=apple,store">Apple Store</a>, about <a href="http://superfeedr.com/track?include=san,francisco">San Francisco</a>? That&#8217;s easy. You can also exclude terms. <a href="http://superfeedr.com/track?include=apple&amp;exclude=iphone,ipad,ipod">Apple-iphone-ipad-ipod</a> should help you screen Apple&#8217;s ex-core business.</p>
+<p>The OR is by essence quite easy : subscribe to 2 feeds matching whatever you need. For once, we&#8217;re pushing the complexity down to you, but we think it makes sense.</p>
+<h3>Scoping</h3>
+<p>We love geo stuff and can&#8217;t wait to see more feeds actually geo-tagged, so we&#8217;re paving the way : you can already start to geo-filter searches : want to know about wildfires around your place? Just give us a latitude and longitude, as well as a radius, and we&#8217;ll be happy to filter out anything that&#8217;s outside of this. The radius is in kilometers (metric system <span class="caps">FTW</span>!). Check <a href="http://superfeedr.com/track?include=mushrooms&amp;lat=37.7718&amp;lon=-122.445717&amp;within=5">this example</a>.</p>
+<p>Of course, there is more to be done, but check <a href="http://documentation.superfeedr.com/misc.html#track">our documentation</a> if you&#8217;d like to start tracking some data. We&#8217;re working on adding more stuff&#8230; and if you&#8217;re a crazy <strong>XPath expert</strong> and know how to build fast matching, I want to chat with you, because Superfeedr&#8217;s got work for you too.</p>
+</div>
+
+<blockquote>
+  <p>Liked this post? <input type="button" onclick="(function(){var z=document.createElement('script');z.src='http://www.subtome.com/load.js';document.body.appendChild(z);})()" value="Follow this blog!" /> to get more or read the <a href="/archive.html">archive</a>.</p>
+</blockquote>
+
+
+<small class="meta">
+</small>
+
+<div id="comments">
+    <h2>Comments</h2>
+    <div id="disqus_thread">
+    </div>
+    <script type="text/javascript" src="http://disqus.com/forums/superfeedr-thoughts/embed.js"></script>
+    <noscript>
+        <a href="http://superfeedr-thoughts.disqus.com/?url=ref">View the discussion thread.</a>
+    </noscript>
+    <a href="http://disqus.com" class="dsq-brlink">blog comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+
+    </div> <!--content-->
+
+    <div id="footer">
+      <ul id="footer_navigation">
+        <li><a href="http://documentation.superfeedr.com">Docs</a></li>
+        <li><a href="https://github.com/superfeedr/documentation/issues">Support</a></li>
+        <li><a href="http://blog.superfeedr.com">Blog</a></li>
+        <li><a href="https://superfeedr.com/cost">Pricing</a></li>
+        <li><a href="https://superfeedr.com/terms">Terms</a></li>
+      </ul>
+    </div>
+    <div id="log" style="" ></div>
+  </div> <!--main_bg-->
+</div><!--wrapper-->
+</div><!--bg-->
+<script type="text/javascript">
+  var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+  document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+  <!--//--><![CDATA[//><!--
+  try {
+      var pageTracker = _gat._getTracker('UA-9285763-1');
+      pageTracker._setDomainName("superfeedr.com");
+      pageTracker._initData();
+      pageTracker._trackPageview();
+  } catch(err) {}
+  //--><!]]>
+</script>
+</body>
+</html>

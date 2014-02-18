@@ -1,0 +1,146 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>Superfeedr : Appticles </title>
+  <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+  <meta name="google-site-verification" content="ofroHQ3qXBS1SQfblK9-U_oduGZ975Bb3i_uP13Myao" />
+
+  <!-- Stylesheets -->
+  <link href="http://yui.yahooapis.com/3.1.1/build/cssreset/reset-min.css" media="screen" rel="stylesheet" type="text/css" />
+  <link href="http://superfeedr.com/stylesheets/superfeedr.css" media="screen" rel="stylesheet" type="text/css" />
+  <link href="http://superfeedr.com/stylesheets/print.css" media="print" rel="stylesheet" type="text/css" />
+  <link href="http://superfeedr.com/stylesheets/shjs/sh_nedit.min.css" media="screen" rel="stylesheet" type="text/css" />
+  <link href="http://superfeedr.com/stylesheets/thickbox.css" media="screen" rel="stylesheet" type="text/css" />
+  <link href="/css/blog.css" media="screen" rel="stylesheet" type="text/css" />
+  <link rel="alternate" type="application/atom+xml" title="Atom Feed" href="/atom.xml">
+
+ </head>
+
+ <body class="blog">
+   <div id="bg">
+     <div id="wrapper">
+      <div id="logo">
+       <a href="http://superfeedr.com" class="home"><img alt="Superfeedr" src="http://superfeedr.com/images/superfeedr_complete.png" /></a>
+     </div>
+     <ul id="navigation">
+      <li><a href="http://documentation.superfeedr.com" alt="RTFM">Documentation</a></li>
+      <li><a href="http://superfeedr.com/about" alt="All you wanted to know. Almost">About</a></li>
+    </ul>
+    <div class="clear"></div>
+    <div id="main_bg">
+      <div id="main_top">
+       <h1>Appticles</h1>
+     </div> <!--main_top-->
+
+     <div id="content">
+        <div id="post">
+    <h2>Appticles</h2>
+    <div style="color:#666; font-size:0.9em; margin-bottom: 20px"><img style="float:left; margin: -2px 3px 3px 0px" src="http://www.gravatar.com/avatar/b30ce50678f0e934eaa6697425c59dd7?s=20" >By <a href="http://ouvre-boite.com">Julien</a>, on 06 Feb 2013</div>
+<blockquote>
+<p><a href='http://appticles.com'>Appticles.com</a> is a mobile content delivery and monetization platform for small and medium publishers completely based around the concept of Open Web and HTML5 and it is being developed by <a href='http://webcrumbz.co/'>Webcrumbz.co</a>. They&#8217;re using Superfeedr as you&#8217;ll see below and we opened the door of this blog to them!</p>
+</blockquote>
+
+<h3 id='weve_integrated_with_superfeedr_and_we_love_it'>We’ve integrated with Superfeedr and we love it!</h3>
+
+<p>Ever since we started working with RSS/ATOM feeds from our publishers, it became obvious for us that we needed a simple and robust solution to keep the content flowing, allowing their mobile readers to always enjoy the latest news/articles on their mobile web application.</p>
+
+<p>We dug a bit around the <a href='https://code.google.com/p/pubsubhubbub/'>Pubsubhubbub</a> real-time web protocol as it seemed the right solution for our situation. In essence, the main purpose was to provide near-instant notifications of feeds updates, which would represent a consistent improvement on the typical situation where we had to periodically poll the feeds at some arbitrary interval.</p>
+
+<p>In essence, PuSH can be described as:</p>
+
+<ul>
+<li>A simple publish/subscribe protocol</li>
+
+<li>Turns Atom and RSS feeds into real-time streams</li>
+
+<li>Web-scale, low-latency messaging</li>
+
+<li>Three participants: Publisher, Subscriber, Hubs.</li>
+</ul>
+
+<p>Although this stuff is pretty technical, from a publisher’s perspective, it means that you have to have this on the header of your RSS feed:</p>
+
+<p><code>&lt;link rel=”hub” href=”https://pubsubhubbub.appspot.com/” /&gt;</code></p>
+
+<p>And whenever you add a new article in the feed, you should send a ping to the Hub with the feed URL. From here onwards, the Hub is taking care of pushing the new content to all of your subscribers (including Appticles). The good news is that if your website is based on <a href='http://wordpress.org/extend/plugins/pubsubhubbub/'>Wordpress</a>, <a href='http://drupal.org/project/push_hub'>Drupal</a> or <a href='http://extensions.joomla.org/'>Joomla</a> it’s just a matter of installing a plugin to make it work, leaving the rest up to us.</p>
+
+<p>Even in the absence of the PuSH protocol (no Hub declaration in your RSS/ATOM feeds) we’re making sure your mobile web application is updated regularly. This obviously means that the infrastructure behind the scene is pretty complex and we couldn’t have done it without our trusted partner, <a href='http://superfeedr.com'>Superfeedr.com</a>. They’ve built a <em>complex feed fetching and parsing infrastructure</em> so we didn&#8217;t have to, allowing us focus on what we’re best at: providing you with awesome mobile HTML5 applications to help you grow your mobile readership.</p>
+
+<p><img alt='Appticles Integration' src='../images/appticles.jpg' /></p>
+
+<p>Going into technicalities, our integration with Superfeedr.com had 2 phases: subscribing/unsubscribing and parsing the new content when we’re notified.</p>
+
+<h3 id='subscribingunsubscribing'>Subscribing/Unsubscribing</h3>
+
+<p>In the above scheme our platform, Appticles.com, is a subscriber. This means that for every feed a publisher is adding into the platform to create its mobile HTML5 application we have to do the following operations to subscribe to that feed:</p>
+
+<ul>
+<li>Detect the Hub declaration in the feed</li>
+
+<li>Send a subscribe request to the feed’s Hub or to Superfeedr.com if we can’t find any Hub declaration in your feed.</li>
+
+<li>The Hub sends back a request to verify the subscription and we have to answer accordingly.</li>
+</ul>
+
+<p>Unsubscribing from a feed is done in a similar way, whenever a feed is deleted from our platform. A couple of inspirational integrations that we’ve used are: a simple <a href='https://github.com/adrinavarro/Superfeedr.php'>PHP Superfeedr subscriber</a> library which got us started, a basic <a href='http://codesnipp.it/javascript/node.js-basic-pubsubhubbub-librarymiddleware'>NodeJs Pubsubhubbub</a> library and the <a href='https://github.com/urbanairship/pubsubsuperfeedr'>PubSubSuperfeedr Python</a> library from Urban Airship that we actually integrated in our platform.</p>
+
+<h3 id='parsing_the_content'>Parsing the content</h3>
+
+<p>After the subscription has been made we’re ready to receive new content. Because our mobile HTML5 applications have a specific way of displaying the news/articles we have to export the content in a certain format, which is done through our parsing daemon.</p>
+
+<p>So far so good, everything runs smoothly and we’re happy we’ve found a great partner in Superfeedr.com. You may ask why we chose them instead of others? To be honest, that was mainly because it was impossible for us to escape Julien’s helpful comments every time we’ve posted some question about Pubsubhubbub on Stackoverflow.</p>
+
+<p>Also, he was there every time we needed him over e-mail or Twitter, which made the integration super easy and fun.</p>
+</div>
+
+<blockquote>
+  <p>Liked this post? <input type="button" onclick="(function(){var z=document.createElement('script');z.src='http://www.subtome.com/load.js';document.body.appendChild(z);})()" value="Follow this blog!" /> to get more or read the <a href="/archive.html">archive</a>.</p>
+</blockquote>
+
+
+<small class="meta">
+</small>
+
+<div id="comments">
+    <h2>Comments</h2>
+    <div id="disqus_thread">
+    </div>
+    <script type="text/javascript" src="http://disqus.com/forums/superfeedr-thoughts/embed.js"></script>
+    <noscript>
+        <a href="http://superfeedr-thoughts.disqus.com/?url=ref">View the discussion thread.</a>
+    </noscript>
+    <a href="http://disqus.com" class="dsq-brlink">blog comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+
+    </div> <!--content-->
+
+    <div id="footer">
+      <ul id="footer_navigation">
+        <li><a href="http://documentation.superfeedr.com">Docs</a></li>
+        <li><a href="https://github.com/superfeedr/documentation/issues">Support</a></li>
+        <li><a href="http://blog.superfeedr.com">Blog</a></li>
+        <li><a href="https://superfeedr.com/cost">Pricing</a></li>
+        <li><a href="https://superfeedr.com/terms">Terms</a></li>
+      </ul>
+    </div>
+    <div id="log" style="" ></div>
+  </div> <!--main_bg-->
+</div><!--wrapper-->
+</div><!--bg-->
+<script type="text/javascript">
+  var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+  document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+  <!--//--><![CDATA[//><!--
+  try {
+      var pageTracker = _gat._getTracker('UA-9285763-1');
+      pageTracker._setDomainName("superfeedr.com");
+      pageTracker._initData();
+      pageTracker._trackPageview();
+  } catch(err) {}
+  //--><!]]>
+</script>
+</body>
+</html>

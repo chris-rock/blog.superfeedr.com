@@ -1,0 +1,104 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>Superfeedr : Publisher Callback Extension to PubSubHubbub </title>
+  <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+  <meta name="google-site-verification" content="ofroHQ3qXBS1SQfblK9-U_oduGZ975Bb3i_uP13Myao" />
+
+  <!-- Stylesheets -->
+  <link href="http://yui.yahooapis.com/3.1.1/build/cssreset/reset-min.css" media="screen" rel="stylesheet" type="text/css" />
+  <link href="http://superfeedr.com/stylesheets/superfeedr.css" media="screen" rel="stylesheet" type="text/css" />
+  <link href="http://superfeedr.com/stylesheets/print.css" media="print" rel="stylesheet" type="text/css" />
+  <link href="http://superfeedr.com/stylesheets/shjs/sh_nedit.min.css" media="screen" rel="stylesheet" type="text/css" />
+  <link href="http://superfeedr.com/stylesheets/thickbox.css" media="screen" rel="stylesheet" type="text/css" />
+  <link href="/css/blog.css" media="screen" rel="stylesheet" type="text/css" />
+  <link rel="alternate" type="application/atom+xml" title="Atom Feed" href="/atom.xml">
+
+ </head>
+
+ <body class="blog">
+   <div id="bg">
+     <div id="wrapper">
+      <div id="logo">
+       <a href="http://superfeedr.com" class="home"><img alt="Superfeedr" src="http://superfeedr.com/images/superfeedr_complete.png" /></a>
+     </div>
+     <ul id="navigation">
+      <li><a href="http://documentation.superfeedr.com" alt="RTFM">Documentation</a></li>
+      <li><a href="http://superfeedr.com/about" alt="All you wanted to know. Almost">About</a></li>
+    </ul>
+    <div class="clear"></div>
+    <div id="main_bg">
+      <div id="main_top">
+       <h1>Publisher Callback Extension to PubSubHubbub</h1>
+     </div> <!--main_top-->
+
+     <div id="content">
+        <div id="post">
+    <h2>Publisher Callback Extension to PubSubHubbub</h2>
+    <div style="color:#666; font-size:0.9em; margin-bottom: 20px"><img style="float:left; margin: -2px 3px 3px 0px" src="http://www.gravatar.com/avatar/b30ce50678f0e934eaa6697425c59dd7?s=20" >By <a href="http://ouvre-boite.com">Julien</a>, on 20 Jan 2010</div>
+<p>Superfeedr now hosts <a href="http://push.superfeedr.com/">several hubs</a>. We had discussion with a lot of data publishers, including blog platforms, but also social network and regular &#8220;media&#8221; sites.</p>
+<p>All of the people with whom we talked were <strong>excited by real-time feeds</strong> and most of them see <strong>PubSubHubbub</strong> as a good way for them to rely less on polling and actively push their data toward subscribers. However, a lot of them <em>raised the concern that the protocol was a little too blind</em> for them. They want to have a certain visibility on who (the callback urls) subscribed to what (the feed urls).</p>
+<p>The concern goes from regular logging and backup of the subscriptions, to spam control or even paid-subscription.</p>
+<p>The following scenario scared a lot of the media sites we talked to: we all know that a lot of spam sites crawl and &#8216;steal&#8217; content from them. They put <del>a lot of</del> ads and usually use black hat <span class="caps">SEO</span> to obtain better rankings in the search engines. PubSubHubbub makes the spammer&#8217;s life easier because they don&#8217;t even have to poll for the data anymore. There are several techniques for publishers to filter spammers when they poll (IP filtering&#8230; etc), but they don&#8217;t apply to PubSubHubbub since the publisher is <em>blind</em>.</p>
+<p>Obviously <strong>this is a legal matter more than a technical matter</strong>, but there is no reason either to provide spammers with a tool which would make that easier for them (specially since it&#8217;s not always easy to enforce copyright internationally).</p>
+<p>Another use case is to allow subscriptions from certain feeds only. Take our <a href="http://tumblr.com">Tumblr hub</a> as an example. We can only allow subscriptions for feeds that are on Tumblr. The callback mechanism can help us query Tumblr to make sure they actually host a given blog (when the blog uses a custom domain, it&#8217;s not always easy to tell).</p>
+<p>We <a href="http://code.google.com/p/pubsubhubbub/wiki/AcceptingSubscriptionForPublishers">published the proposal</a> for this (optional!) extension, we&#8217;d love to have feedback from the community. Obviously this is a draft, which means that it <span class="caps">NEEDS</span> more work :)</p>
+</div>
+
+<blockquote>
+  <p>Liked this post? <input type="button" onclick="(function(){var z=document.createElement('script');z.src='http://www.subtome.com/load.js';document.body.appendChild(z);})()" value="Follow this blog!" /> to get more or read the <a href="/archive.html">archive</a>.</p>
+</blockquote>
+
+
+<small class="meta">
+  <a href='http://www.google.com/search?q=pubsubhubbub+site:blog.superfeedr.com'>pubsubhubbub</a>, 
+  
+  <a href='http://www.google.com/search?q=spec+site:blog.superfeedr.com'>spec</a>, 
+  
+  <a href='http://www.google.com/search?q=extension+site:blog.superfeedr.com'>extension</a>
+  
+</small>
+
+<div id="comments">
+    <h2>Comments</h2>
+    <div id="disqus_thread">
+    </div>
+    <script type="text/javascript" src="http://disqus.com/forums/superfeedr-thoughts/embed.js"></script>
+    <noscript>
+        <a href="http://superfeedr-thoughts.disqus.com/?url=ref">View the discussion thread.</a>
+    </noscript>
+    <a href="http://disqus.com" class="dsq-brlink">blog comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+
+    </div> <!--content-->
+
+    <div id="footer">
+      <ul id="footer_navigation">
+        <li><a href="http://documentation.superfeedr.com">Docs</a></li>
+        <li><a href="https://github.com/superfeedr/documentation/issues">Support</a></li>
+        <li><a href="http://blog.superfeedr.com">Blog</a></li>
+        <li><a href="https://superfeedr.com/cost">Pricing</a></li>
+        <li><a href="https://superfeedr.com/terms">Terms</a></li>
+      </ul>
+    </div>
+    <div id="log" style="" ></div>
+  </div> <!--main_bg-->
+</div><!--wrapper-->
+</div><!--bg-->
+<script type="text/javascript">
+  var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+  document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+  <!--//--><![CDATA[//><!--
+  try {
+      var pageTracker = _gat._getTracker('UA-9285763-1');
+      pageTracker._setDomainName("superfeedr.com");
+      pageTracker._initData();
+      pageTracker._trackPageview();
+  } catch(err) {}
+  //--><!]]>
+</script>
+</body>
+</html>

@@ -1,0 +1,131 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>Superfeedr : How we built Analytics </title>
+  <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+  <meta name="google-site-verification" content="ofroHQ3qXBS1SQfblK9-U_oduGZ975Bb3i_uP13Myao" />
+
+  <!-- Stylesheets -->
+  <link href="http://yui.yahooapis.com/3.1.1/build/cssreset/reset-min.css" media="screen" rel="stylesheet" type="text/css" />
+  <link href="http://superfeedr.com/stylesheets/superfeedr.css" media="screen" rel="stylesheet" type="text/css" />
+  <link href="http://superfeedr.com/stylesheets/print.css" media="print" rel="stylesheet" type="text/css" />
+  <link href="http://superfeedr.com/stylesheets/shjs/sh_nedit.min.css" media="screen" rel="stylesheet" type="text/css" />
+  <link href="http://superfeedr.com/stylesheets/thickbox.css" media="screen" rel="stylesheet" type="text/css" />
+  <link href="/css/blog.css" media="screen" rel="stylesheet" type="text/css" />
+  <link rel="alternate" type="application/atom+xml" title="Atom Feed" href="/atom.xml">
+
+ </head>
+
+ <body class="blog">
+   <div id="bg">
+     <div id="wrapper">
+      <div id="logo">
+       <a href="http://superfeedr.com" class="home"><img alt="Superfeedr" src="http://superfeedr.com/images/superfeedr_complete.png" /></a>
+     </div>
+     <ul id="navigation">
+      <li><a href="http://documentation.superfeedr.com" alt="RTFM">Documentation</a></li>
+      <li><a href="http://superfeedr.com/about" alt="All you wanted to know. Almost">About</a></li>
+    </ul>
+    <div class="clear"></div>
+    <div id="main_bg">
+      <div id="main_top">
+       <h1>How we built Analytics</h1>
+     </div> <!--main_top-->
+
+     <div id="content">
+        <div id="post">
+    <h2>How we built Analytics</h2>
+    <div style="color:#666; font-size:0.9em; margin-bottom: 20px"><img style="float:left; margin: -2px 3px 3px 0px" src="http://www.gravatar.com/avatar/b30ce50678f0e934eaa6697425c59dd7?s=20" >By <a href="http://ouvre-boite.com">Julien</a>, on 15 Dec 2009</div>
+<p>We weren&#8217;t quite sure how to build <a href="http://blog.superfeedr.com/Real-time/analytics/pubsubhubbub/analytics-launched">these analytics</a>. We slowly established a set of requirements and constraints</p>
+<ul>
+	<li>Zero performance impact</li>
+	<li>Fully decoupled from the current infrastructure</li>
+	<li>Results at most hourly</li>
+	<li>Data is more important than graphs</li>
+	<li>Easily-extensible, in case we want to measure more things</li>
+</ul>
+<h3>Collecting</h3>
+<p>There are 2 ways to collect data : on the fly, when things happen, or by just collecting stuff in the database. Since the top requirement was to have 0 performance impact, the most obvious way was to have a <strong>&#8220;maintenance&#8221; script</strong> that runs forever and measures what needs to be <strong>measured in a loop</strong>.</p>
+<p>We <strong>added a slave server to our main MySQL</strong> server(s). We use this server for the analytics. It&#8217;s a regular slave because, obviously doing analytics is about <em>reads</em>, not <em>writes</em>. With that, we can guarantee that the performance impact on the current is zero. If the analytics dies, nothing else will be impacted.</p>
+<p>The scripts runs at <strong>regular intervals so that it takes several set of measures</strong> by doing queries on the slave database.</p>
+<h3>Storage</h3>
+<p><img src="http://mongo-db.appspot.com/static/images/logo-mongodb-onwhite.png" style="margin: 20px;width: 40%; float:right;" alt="" /></p>
+<p>Since we need to have an <strong>extensible schema</strong>, we <strong>eliminated anything with a &#8220;fixed&#8221; schema</strong>, like MySQL. Additionally, analytics can really be <strong>regarded as documents</strong>, which naively lead us look at Document stores. We chose <a href="http://www.mongodb.org/">MongoDB</a>. It&#8217;s probably the most actively maintained of its category and Ruby has a pretty neat library: <a href="http://mongomapper.com/">MongoMapper</a>.</p>
+<p>It also has some <em>MapReduce functionalities</em>, which will probably be useful when start having a lot of data and we want to make complex analysis of it. Unfortunately, there is no event-machine driver for it, but <strong>it seems that inserts return immediately</strong>, which shouldn&#8217;t be too bad in terms of performance.</p>
+<h3>Querying</h3>
+<p>Right now we don&#8217;t have a lot of data, so the regular MongoMapper interface does a pretty good job. Typically, here is how we process results : <strong>we get all the data for a given time query in a given time-frame</strong>, like a day. We <strong>then so some kind of Map-Reduce</strong> to get results on an hourly basis : we split the result set by hours (map), compute averages/max/min (reduce) and then return the final result set.</p>
+<p>When we&#8217;ll start computing more complex stuff, we&#8217;ll probably need to use Mongo&#8217;s capabilities for MapReduce, but right now we&#8217;re &#8220;emulating&#8221; that behavior from within a Ruby script.</p>
+<p>Since the data is not expected to be updated more than hourly, <strong>we also cache the results in our Memcache server</strong>. Another option that we&#8217;re evaluating is storing this as actual documents, so we have the raw data (collected from MySQL), as well as the computed results.</p>
+<p><strong>All the results are returned in a Json format</strong>, which is pretty convenient for direct export!</p>
+<h3>Displaying</h3>
+<p>We did some research on various solutions to display the data. The first choice we had to make was :</p>
+<ul>
+	<li>query some service that would build the graphs for us (like <a href="http://code.google.com/apis/chart/">Google Graph</a>)</li>
+	<li>or build the graphs by ourselves.</li>
+</ul>
+<p><img src="http://a3.twimg.com/profile_background_images/3310603/Raphaël-white-bg.png" style="margin: 20px;width: 20%; float:left;" alt="" /><br />
+The first solution initially looked sexier, but then we couldn&#8217;t find the flexibility we wanted, and since we export results as Json, we thought* that anyone could actually plug the data we generate for them into the 3rd party* app they wanted.</p>
+<p>The second decision was for the &#8220;type&#8221; of graphs : flash? images? Usually the first one are more interactive, but they require the use of flash :/ Lucklily we found <a href="http://raphaeljs.com/">Rapheal.js</a> and its <a href="http://g.raphaeljs.com/">charting library</a> which allows us to generate nice looking interactive graphs by using the browser&#8217;s capabilities to deal with <span class="caps">SVG</span> and other open formats! We got our winner :) Feel free to look at the source code of the graphs page to see more&#8230; Hopefully I can find the time soon to &#8220;bundle&#8221; that in something nice on github.</p>
+</div>
+
+<blockquote>
+  <p>Liked this post? <input type="button" onclick="(function(){var z=document.createElement('script');z.src='http://www.subtome.com/load.js';document.body.appendChild(z);})()" value="Follow this blog!" /> to get more or read the <a href="/archive.html">archive</a>.</p>
+</blockquote>
+
+
+<small class="meta">
+  <a href='http://www.google.com/search?q=analytics+site:blog.superfeedr.com'>analytics</a>, 
+  
+  <a href='http://www.google.com/search?q=pubsubhubbub+site:blog.superfeedr.com'>pubsubhubbub</a>, 
+  
+  <a href='http://www.google.com/search?q=publisher+site:blog.superfeedr.com'>publisher</a>, 
+  
+  <a href='http://www.google.com/search?q=tutorial+site:blog.superfeedr.com'>tutorial</a>, 
+  
+  <a href='http://www.google.com/search?q=mongodb+site:blog.superfeedr.com'>mongodb</a>
+  
+</small>
+
+<div id="comments">
+    <h2>Comments</h2>
+    <div id="disqus_thread">
+    </div>
+    <script type="text/javascript" src="http://disqus.com/forums/superfeedr-thoughts/embed.js"></script>
+    <noscript>
+        <a href="http://superfeedr-thoughts.disqus.com/?url=ref">View the discussion thread.</a>
+    </noscript>
+    <a href="http://disqus.com" class="dsq-brlink">blog comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+
+    </div> <!--content-->
+
+    <div id="footer">
+      <ul id="footer_navigation">
+        <li><a href="http://documentation.superfeedr.com">Docs</a></li>
+        <li><a href="https://github.com/superfeedr/documentation/issues">Support</a></li>
+        <li><a href="http://blog.superfeedr.com">Blog</a></li>
+        <li><a href="https://superfeedr.com/cost">Pricing</a></li>
+        <li><a href="https://superfeedr.com/terms">Terms</a></li>
+      </ul>
+    </div>
+    <div id="log" style="" ></div>
+  </div> <!--main_bg-->
+</div><!--wrapper-->
+</div><!--bg-->
+<script type="text/javascript">
+  var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+  document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+  <!--//--><![CDATA[//><!--
+  try {
+      var pageTracker = _gat._getTracker('UA-9285763-1');
+      pageTracker._setDomainName("superfeedr.com");
+      pageTracker._initData();
+      pageTracker._trackPageview();
+  } catch(err) {}
+  //--><!]]>
+</script>
+</body>
+</html>

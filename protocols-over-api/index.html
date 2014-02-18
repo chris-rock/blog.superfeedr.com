@@ -1,0 +1,102 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>Superfeedr : Protocols over APIs </title>
+  <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+  <meta name="google-site-verification" content="ofroHQ3qXBS1SQfblK9-U_oduGZ975Bb3i_uP13Myao" />
+
+  <!-- Stylesheets -->
+  <link href="http://yui.yahooapis.com/3.1.1/build/cssreset/reset-min.css" media="screen" rel="stylesheet" type="text/css" />
+  <link href="http://superfeedr.com/stylesheets/superfeedr.css" media="screen" rel="stylesheet" type="text/css" />
+  <link href="http://superfeedr.com/stylesheets/print.css" media="print" rel="stylesheet" type="text/css" />
+  <link href="http://superfeedr.com/stylesheets/shjs/sh_nedit.min.css" media="screen" rel="stylesheet" type="text/css" />
+  <link href="http://superfeedr.com/stylesheets/thickbox.css" media="screen" rel="stylesheet" type="text/css" />
+  <link href="/css/blog.css" media="screen" rel="stylesheet" type="text/css" />
+  <link rel="alternate" type="application/atom+xml" title="Atom Feed" href="/atom.xml">
+
+ </head>
+
+ <body class="blog">
+   <div id="bg">
+     <div id="wrapper">
+      <div id="logo">
+       <a href="http://superfeedr.com" class="home"><img alt="Superfeedr" src="http://superfeedr.com/images/superfeedr_complete.png" /></a>
+     </div>
+     <ul id="navigation">
+      <li><a href="http://documentation.superfeedr.com" alt="RTFM">Documentation</a></li>
+      <li><a href="http://superfeedr.com/about" alt="All you wanted to know. Almost">About</a></li>
+    </ul>
+    <div class="clear"></div>
+    <div id="main_bg">
+      <div id="main_top">
+       <h1>Protocols over APIs</h1>
+     </div> <!--main_top-->
+
+     <div id="content">
+        <div id="post">
+    <h2>Protocols over APIs</h2>
+    <div style="color:#666; font-size:0.9em; margin-bottom: 20px"><img style="float:left; margin: -2px 3px 3px 0px" src="http://www.gravatar.com/avatar/b30ce50678f0e934eaa6697425c59dd7?s=20" >By <a href="http://ouvre-boite.com">Julien</a>, on 15 May 2012</div>
+<p>There is not a week where I don&#8217;t see developers discovering that a given <span class="caps">API</span> has been deprecated. Today&#8217;s disappointment (at least in my twitter stream) comes from the <a href="https://developers.google.com/chart/">Google Chart Tool <span class="caps">API</span></a>.</p>
+<p>Don&#8217;t get me wrong. <strong>I feel for these developers</strong> and I would be upset should the same problem happen to me. Now, being upset is great. Learning how to prevent that is better, and I believe there are many ways to avoid that. The most obvious one is to re-invent the wheel as suggested by <a href="https://twitter.com/#!/Adactio">Adactio</a>.</p>
+<blockquote class="twitter-tweet tw-align-center"><p>Next time someone asks why I&#8217;m reinventing the wheel, I&#8217;m telling them it&#8217;s because the wheel <span class="caps">API</span> is being deprecated. <a href="https://t.co/fVozGTfZ" title="https://developers.google.com/chart/terms">developers.google.com/chart/terms</a></p><p>&mdash; Jeremy Keith (@adactio) <a href="https://twitter.com/adactio/status/202420431284740096" data-datetime="2012-05-15T15:29:26+00:00">May 15, 2012</a></blockquote><br />
+<script src="//platform.twitter.com/widgets.js" charset="utf-8"></script></p>
+<p>That is obviously not always possible&#8230; and is probably not the right solution either because <em>re-inventing the wheel can be a real rabbit-hole</em> which may take you to building a power grid!</p>
+<p>Another solution is to favor protocols over APIs. To over-simplify things, an <strong><span class="caps">API</span> is just a combination of uni-laterally decided upon protocol and an endpoint</strong>. <em>The Twitter <span class="caps">API</span> is the twitter protocol used against twitter.com</em>. Got it? This is what Status.net understood when they decided to write a compatible <span class="caps">API</span>&#8230; for which you would just have to change the endpoint from twitter.com to status.net. That worked until Twitter changed its <span class="caps">API</span>.</p>
+<p>Now, if developers relied more on protocols, that means that when a providers disappears or deprecates a service, developers could just change the endpoint, without changing anything in their code to make sure everything keeps working. Re-using code is the most satisfying feeling for many developers.</p>
+<p>Want an example? Last week, I got tired of <a href="http://myopenid.com/">myopenid.net</a> inability to stay up. I used them as a provider for <a href="http://ouvre-boite.com/">my personal openid endpoint</a>. Changing the provider was as simple as changing the <code>openid2.provider</code> href in the <span class="caps">HTML</span> and I was done.</p>
+<p>When you decide to work with a given&#8217;s service <span class="caps">API</span>, please tell them <strong>you want their <span class="caps">API</span> to become a protocol</strong>, something for which <em>you are a stake holder</em>, that you can help improve. Also, if there is <strong>any open protocol or any schema</strong> that does what this <span class="caps">API</span> aims at doing, please convince them that it&#8217;s way to go, that this will make the web better and that will make your code more useful to more people :)</p>
+<p>At Superfeedr, we&#8217;re obviously big promoters of protocols (<a href="http://superfeedr.com/documentation/#xmpp_pubsub"><span class="caps">XMPP</span></a>, <a href="http://superfeedr.com/documentation/#pubsubhubbub">PubSubHubbub</a>, <span class="caps">ATOM</span>, ActivityStreams) over APIs, and we obviously kept the same philosophy for <a href="http://msgboy.com/">Msgboy</a>.</p>
+<p><em>Addendum: what makes me even sadder about this story is that <a href="http://bradfitz.com/">Brad Fitz</a>, who wrote the <a href="https://developers.google.com/social-graph/">Social Graph <span class="caps">API</span></a> is the one who told me first about protocols being better than <span class="caps">API</span>..; and guess what? The Social Graph <span class="caps">API</span> has been deprecated as well. :(</em></p>
+</div>
+
+<blockquote>
+  <p>Liked this post? <input type="button" onclick="(function(){var z=document.createElement('script');z.src='http://www.subtome.com/load.js';document.body.appendChild(z);})()" value="Follow this blog!" /> to get more or read the <a href="/archive.html">archive</a>.</p>
+</blockquote>
+
+
+<small class="meta">
+</small>
+
+<div id="comments">
+    <h2>Comments</h2>
+    <div id="disqus_thread">
+    </div>
+    <script type="text/javascript" src="http://disqus.com/forums/superfeedr-thoughts/embed.js"></script>
+    <noscript>
+        <a href="http://superfeedr-thoughts.disqus.com/?url=ref">View the discussion thread.</a>
+    </noscript>
+    <a href="http://disqus.com" class="dsq-brlink">blog comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+
+    </div> <!--content-->
+
+    <div id="footer">
+      <ul id="footer_navigation">
+        <li><a href="http://documentation.superfeedr.com">Docs</a></li>
+        <li><a href="https://github.com/superfeedr/documentation/issues">Support</a></li>
+        <li><a href="http://blog.superfeedr.com">Blog</a></li>
+        <li><a href="https://superfeedr.com/cost">Pricing</a></li>
+        <li><a href="https://superfeedr.com/terms">Terms</a></li>
+      </ul>
+    </div>
+    <div id="log" style="" ></div>
+  </div> <!--main_bg-->
+</div><!--wrapper-->
+</div><!--bg-->
+<script type="text/javascript">
+  var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+  document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+  <!--//--><![CDATA[//><!--
+  try {
+      var pageTracker = _gat._getTracker('UA-9285763-1');
+      pageTracker._setDomainName("superfeedr.com");
+      pageTracker._initData();
+      pageTracker._trackPageview();
+  } catch(err) {}
+  //--><!]]>
+</script>
+</body>
+</html>

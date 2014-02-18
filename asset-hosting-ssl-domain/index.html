@@ -1,0 +1,127 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>Superfeedr : Static files hosting with SSL on custom domain </title>
+  <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+  <meta name="google-site-verification" content="ofroHQ3qXBS1SQfblK9-U_oduGZ975Bb3i_uP13Myao" />
+
+  <!-- Stylesheets -->
+  <link href="http://yui.yahooapis.com/3.1.1/build/cssreset/reset-min.css" media="screen" rel="stylesheet" type="text/css" />
+  <link href="http://superfeedr.com/stylesheets/superfeedr.css" media="screen" rel="stylesheet" type="text/css" />
+  <link href="http://superfeedr.com/stylesheets/print.css" media="print" rel="stylesheet" type="text/css" />
+  <link href="http://superfeedr.com/stylesheets/shjs/sh_nedit.min.css" media="screen" rel="stylesheet" type="text/css" />
+  <link href="http://superfeedr.com/stylesheets/thickbox.css" media="screen" rel="stylesheet" type="text/css" />
+  <link href="/css/blog.css" media="screen" rel="stylesheet" type="text/css" />
+  <link rel="alternate" type="application/atom+xml" title="Atom Feed" href="/atom.xml">
+
+ </head>
+
+ <body class="blog">
+   <div id="bg">
+     <div id="wrapper">
+      <div id="logo">
+       <a href="http://superfeedr.com" class="home"><img alt="Superfeedr" src="http://superfeedr.com/images/superfeedr_complete.png" /></a>
+     </div>
+     <ul id="navigation">
+      <li><a href="http://documentation.superfeedr.com" alt="RTFM">Documentation</a></li>
+      <li><a href="http://superfeedr.com/about" alt="All you wanted to know. Almost">About</a></li>
+    </ul>
+    <div class="clear"></div>
+    <div id="main_bg">
+      <div id="main_top">
+       <h1>Static files hosting with SSL on custom domain</h1>
+     </div> <!--main_top-->
+
+     <div id="content">
+        <div id="post">
+    <h2>Static files hosting with SSL on custom domain</h2>
+    <div style="color:#666; font-size:0.9em; margin-bottom: 20px"><img style="float:left; margin: -2px 3px 3px 0px" src="http://www.gravatar.com/avatar/b30ce50678f0e934eaa6697425c59dd7?s=20" >By <a href="http://ouvre-boite.com">Julien</a>, on 08 Mar 2013</div>
+<p><a href='http://www.subtome.com/'>SubToMe</a> is a <em>universal subscribe button</em>. One of its key design goals was to use <strong>only static files</strong>. There should be no server involved: it&#8217;s not an app, it&#8217;s a button.</p>
+
+<p>Another key aspects of the SubToMe button is that it&#8217;s included on many page, and needs to be able to run on any page (thanks to the bookmarklet), <strong>including https pages</strong>. With that in mind, we are forced to host the button on a system that supports SSL.</p>
+
+<p>The third (and final) constraint is that we must be <strong>using the subtome.com domain</strong> for it, because it stores the user&#8217;s default in his browser&#8217;s localstorage. As we know browsers have different localStorage instances for each domain. If we used different domains, then, we&#8217;ll found ourselves with different versions of the users default.</p>
+
+<h3 id='we_needed_a_platform_to_host_static_files_with_our_domain_and_ssl'>We needed a platform to host static files, with our domain and SSL.</h3>
+
+<p>When thinking about static files in a very scalable and fully managed way, the almost immediate answer is <a href='http://aws.amazon.com/s3/'>AWS S3</a>. That&#8217;s what we initially tried&#8230; create a <code>www.subtome.com</code> bucket, create the right CNAME, upload and hope for profit. The problem is that this does not match the SSL requirement. Amazon offers SSL, but only on their <code>*.aws.amazon.com</code> domain.</p>
+
+<p>In despair, we started considering running a small box somewhere, put Nginx on top, get an SSL cert and run it like in the old days: hoping that I&#8217;ll always find the courage to do the basic ops this box will eventually need.</p>
+
+<p>At that point, my first savior comes in the picture. <a href='http://paddy.io/'>Paddy Foran</a> tweets:</p>
+<blockquote class='twitter-tweet'>
+  <p>@<a href='https://twitter.com/julien51'>julien51</a> <a href='https://t.co/uSizmul6Cf' title='https://developers.google.com/appengine/docs/ssl'>developers.google.com/appengine/docs…</a> ?</p>&mdash; Paddy Foran (@paddyforan) <a href='https://twitter.com/paddyforan/status/309611169071652865'>March 7, 2013</a>
+</blockquote><script src='https://platform.twitter.com/widgets.js'>
+</script>
+<p>After reading that doc, I felt that this could be a solution, but was still a bit <em>worried</em> about <em><a href='https://developers.google.com/appengine/'>Google App Engine</a>&#8217;s heavy bills</em>. Of course, if that worked, it meant I wouldn&#8217;t have to maintain any box after all, but that could cost me more than a full time engineer to maintain these boxes =)</p>
+
+<p>And that&#8217;s where my 2nd hero of the day comes to the party. In one of his posts, <a href='https://harperreed.org/'>Harper Reed</a> wrote this:</p>
+
+<blockquote>
+<p>I am constantly telling my friends about the new technology tricks that I learn in my internet travels. I learn a lot, which has caused my friends to ignore around 90% of what I say about technology. I don&#8217;t mind, because I know that I am a genius(heh) and they will come around some day.</p>
+</blockquote>
+
+<p>Well, in <a href='https://www.nata2.org/2011/01/26/how-to-use-app-engine-to-host-static-sites-for-free'>this exact same post</a>, Harper gives out a little secret that I ignored for too long: hosting static files on GAE is <em>free</em>, free as in beer.</p>
+
+<p>The GAE pricing machine is triggered only when instances are running. For static files, Google uses some kind of cache which means that there is no CPU involved in running them&#8230;</p>
+
+<h3 id='hosting_any_static_site_on_gae_is_easy'>Hosting any static site on GAE is easy.</h3>
+
+<p>Here is what it took to run SubToMe for free on Google App Engine: a <a href='https://github.com/superfeedr/subtome/blob/master/app.yaml'>small app.yaml file</a>. That&#8217;s it.</p>
+
+<p>Configuring SSL was a bit trickier, but I followed the docs, got a free cert from <a href='http://www.startssl.com/'>startssl</a>; configured it and <a href='https://github.com/superfeedr/subtome/blob/master/index.html#L64'>added Javascript redirects</a> to all the SubToMe files.</p>
+
+<p>All in all, we get static files hosting, under our own domain, with SSL, unlimited free traffic (and bandwidth) for $9/month, which is what GAE charges for 5 SSL SNI Certificates. I&#8217;d say it&#8217;s a good deal which becomes even better when I remember that it&#8217;s fully managed!</p>
+</div>
+
+<blockquote>
+  <p>Liked this post? <input type="button" onclick="(function(){var z=document.createElement('script');z.src='http://www.subtome.com/load.js';document.body.appendChild(z);})()" value="Follow this blog!" /> to get more or read the <a href="/archive.html">archive</a>.</p>
+</blockquote>
+
+
+<small class="meta">
+</small>
+
+<div id="comments">
+    <h2>Comments</h2>
+    <div id="disqus_thread">
+    </div>
+    <script type="text/javascript" src="http://disqus.com/forums/superfeedr-thoughts/embed.js"></script>
+    <noscript>
+        <a href="http://superfeedr-thoughts.disqus.com/?url=ref">View the discussion thread.</a>
+    </noscript>
+    <a href="http://disqus.com" class="dsq-brlink">blog comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+
+    </div> <!--content-->
+
+    <div id="footer">
+      <ul id="footer_navigation">
+        <li><a href="http://documentation.superfeedr.com">Docs</a></li>
+        <li><a href="https://github.com/superfeedr/documentation/issues">Support</a></li>
+        <li><a href="http://blog.superfeedr.com">Blog</a></li>
+        <li><a href="https://superfeedr.com/cost">Pricing</a></li>
+        <li><a href="https://superfeedr.com/terms">Terms</a></li>
+      </ul>
+    </div>
+    <div id="log" style="" ></div>
+  </div> <!--main_bg-->
+</div><!--wrapper-->
+</div><!--bg-->
+<script type="text/javascript">
+  var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+  document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+  <!--//--><![CDATA[//><!--
+  try {
+      var pageTracker = _gat._getTracker('UA-9285763-1');
+      pageTracker._setDomainName("superfeedr.com");
+      pageTracker._initData();
+      pageTracker._trackPageview();
+  } catch(err) {}
+  //--><!]]>
+</script>
+</body>
+</html>

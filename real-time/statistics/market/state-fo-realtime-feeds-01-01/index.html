@@ -1,0 +1,140 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>Superfeedr : State of Real-Time feeds </title>
+  <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+  <meta name="google-site-verification" content="ofroHQ3qXBS1SQfblK9-U_oduGZ975Bb3i_uP13Myao" />
+
+  <!-- Stylesheets -->
+  <link href="http://yui.yahooapis.com/3.1.1/build/cssreset/reset-min.css" media="screen" rel="stylesheet" type="text/css" />
+  <link href="http://superfeedr.com/stylesheets/superfeedr.css" media="screen" rel="stylesheet" type="text/css" />
+  <link href="http://superfeedr.com/stylesheets/print.css" media="print" rel="stylesheet" type="text/css" />
+  <link href="http://superfeedr.com/stylesheets/shjs/sh_nedit.min.css" media="screen" rel="stylesheet" type="text/css" />
+  <link href="http://superfeedr.com/stylesheets/thickbox.css" media="screen" rel="stylesheet" type="text/css" />
+  <link href="/css/blog.css" media="screen" rel="stylesheet" type="text/css" />
+  <link rel="alternate" type="application/atom+xml" title="Atom Feed" href="/atom.xml">
+
+ </head>
+
+ <body class="blog">
+   <div id="bg">
+     <div id="wrapper">
+      <div id="logo">
+       <a href="http://superfeedr.com" class="home"><img alt="Superfeedr" src="http://superfeedr.com/images/superfeedr_complete.png" /></a>
+     </div>
+     <ul id="navigation">
+      <li><a href="http://documentation.superfeedr.com" alt="RTFM">Documentation</a></li>
+      <li><a href="http://superfeedr.com/about" alt="All you wanted to know. Almost">About</a></li>
+    </ul>
+    <div class="clear"></div>
+    <div id="main_bg">
+      <div id="main_top">
+       <h1>State of Real-Time feeds</h1>
+     </div> <!--main_top-->
+
+     <div id="content">
+        <div id="post">
+    <h2>State of Real-Time feeds</h2>
+    <div style="color:#666; font-size:0.9em; margin-bottom: 20px"><img style="float:left; margin: -2px 3px 3px 0px" src="http://www.gravatar.com/avatar/b30ce50678f0e934eaa6697425c59dd7?s=20" >By <a href="http://ouvre-boite.com">Julien</a>, on 26 Jan 2010</div>
+<p>It&#8217;s this time again : the time for the <em>very</em> controversial numbers about realtime feeds. Before anything else, I&#8217;d like to indicate that it would be great for other services to publish similar numbers. We know <a href="http://blog.superfeedr.com/Feeds/PubSubHubbub/real-time/stats/who-implemented-pubsubhubbub/">who</a> <a href="http://blog.superfeedr.com/Feeds/PubSubHubbub/real-time/stats/who-pubsubhubbub/:http://blog.superfeedr.com/Feeds/PubSubHubbub/real-time/stats/who-pubsubhubbub/">implemented</a> <strong>PubSubHubbub</strong>, I guess some of them implemented <strong>RSSCloud</strong> and <strong><span class="caps">SUP</span></strong> too.</p>
+<p>Since we have so much debate in the past about the methodology:</p>
+<ul>
+	<li>Superfeedr has many feeds in management. Some of them are for the <a href="http://push.superfeedr.com/">hubs we host</a>. <strong>We don&#8217;t count the feeds from the hubs we host</strong>, because they would obviously inflate the PubSubHubbub number a lot.</li>
+	<li>For each feed, since we try to avoid polling it too, we use any available technique to get in realtime, se we&#8217;re able to tell whether it&#8217;s PubSubHubbub, RSSCloud, or <span class="caps">SUP</span>. We just counted these.</li>
+	<li>Some feeds implemented 2 or more protocols (the best example would be wordpress.com blog that have a feedburner feed), we counted them in both categories.</li>
+</ul>
+<p>A few notes on the result set before. We have <strong>multiplied by 6 the number of feeds we managed</strong> since the last time we count, which should make our set a little more representative. As a matter of fact we gained a lot of feeds that are not blogs.</p>
+<table style="text-align:center;">
+<tr>
+        <th></th>
+        <th style="width: 20%;">Polling</th>
+        <th style="width: 20%;">RSSCloud</th>
+        <th style="width: 20%;">PubSubHubbub</th>
+        <th style="width: 20%;"><span class="caps">SUP</span></th>
+</tr>
+<tr>
+        <td>Oct 1,  2009</td>
+        <td>92.7%</td>
+        <td>0.3%</td>
+        <td>7.1%</td>
+        <td>0.0%<sup class="footnote" id="fnr1"><a href="#fn1">1</a></sup></td>
+</tr>
+<tr>
+        <td>Nov 1,  2009</td>
+        <td>73.3%</td>
+        <td>0.8%</td>
+        <td>25.8%</td>
+        <td>0.1%</td>
+</tr>
+<tr style="font-weight:bold">
+        <td>Jan 26, 2010</td>
+        <td>87.4%</td>
+        <td>0.9%</td>
+        <td>11.5%</td>
+        <td>0.1%</td>
+</tr>
+</table>
+<p><img src="/images/push-rsscloud-sup-01-10.png" style="float:left; display:block;" alt="" /></p>
+<p>You can immediately see that the <strong>proportion of feeds we&#8217;re polling increased</strong> compared to the last measure. This is the <em>consequence of less PubSubHubbub feeds</em>. Back in november, <a href="/real-time/statistics/market/state-of-real-time-feeds/">we counted the PubSubHubbub feeds</a> we were hosting. <strong>That was a mistake</strong>, we changed that this time and <em>will not count them in the future either</em>. The RSSCloud proportion grew in comparison, since PubSubHubbub numbers were inflated.</p>
+<p>We are now <strong>continuously measuring</strong> the proportions, which should make these posts way more regular. I look forward to the next month!</p>
+<p>In conclusion, I&#8217;d like to remind you that <a href="http://superfeedr.com/technology">we implemented many other ways</a> of getting feed updates, including some specific APIs, <a href="/xml-rpc/ping/pubsubhubbub/xmpp/real-time/XMLRPC-Ping-to-PubSubHubbub/"><span class="caps">XML</span>-<span class="caps">RPC</span> Ping</a> and other techniques. If you use Superfeedr, you will benefit from these and get feeds in realtime!</p>
+<p class="footnote" id="fn1"><a href="#fnr1"><sup>1</sup></a> At that time we had not implemented <span class="caps">SUP</span>.</p>
+</div>
+
+<blockquote>
+  <p>Liked this post? <input type="button" onclick="(function(){var z=document.createElement('script');z.src='http://www.subtome.com/load.js';document.body.appendChild(z);})()" value="Follow this blog!" /> to get more or read the <a href="/archive.html">archive</a>.</p>
+</blockquote>
+
+
+<small class="meta">
+  <a href='http://www.google.com/search?q=real-time+site:blog.superfeedr.com'>real-time</a>, 
+  
+  <a href='http://www.google.com/search?q=statistics+site:blog.superfeedr.com'>statistics</a>, 
+  
+  <a href='http://www.google.com/search?q=market+site:blog.superfeedr.com'>market</a>
+  
+</small>
+
+<div id="comments">
+    <h2>Comments</h2>
+    <div id="disqus_thread">
+    </div>
+    <script type="text/javascript" src="http://disqus.com/forums/superfeedr-thoughts/embed.js"></script>
+    <noscript>
+        <a href="http://superfeedr-thoughts.disqus.com/?url=ref">View the discussion thread.</a>
+    </noscript>
+    <a href="http://disqus.com" class="dsq-brlink">blog comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+
+    </div> <!--content-->
+
+    <div id="footer">
+      <ul id="footer_navigation">
+        <li><a href="http://documentation.superfeedr.com">Docs</a></li>
+        <li><a href="https://github.com/superfeedr/documentation/issues">Support</a></li>
+        <li><a href="http://blog.superfeedr.com">Blog</a></li>
+        <li><a href="https://superfeedr.com/cost">Pricing</a></li>
+        <li><a href="https://superfeedr.com/terms">Terms</a></li>
+      </ul>
+    </div>
+    <div id="log" style="" ></div>
+  </div> <!--main_bg-->
+</div><!--wrapper-->
+</div><!--bg-->
+<script type="text/javascript">
+  var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+  document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+  <!--//--><![CDATA[//><!--
+  try {
+      var pageTracker = _gat._getTracker('UA-9285763-1');
+      pageTracker._setDomainName("superfeedr.com");
+      pageTracker._initData();
+      pageTracker._trackPageview();
+  } catch(err) {}
+  //--><!]]>
+</script>
+</body>
+</html>
